@@ -78,8 +78,8 @@ header {
     background-color: #fff;
     padding: 15px 10px; /* Adicionei padding nas laterais */
     border-bottom: 2px solid var(--cor-primaria);
-    
-    /* Ativa o Flexbox para o cabeçalho (útil para logo e nav) */
+
+/* Ativa o Flexbox para o cabeçalho (útil para logo e nav) */
     display: flex; 
     flex-direction: column; /* No mobile, empilha os itens (h1 e nav) */
     align-items: center;
@@ -178,37 +178,6 @@ button:hover, .btn:hover {
     margin-top: 15px; /* Margem superior para separar do texto */
 }
 
-/* Estilo para os agrupamentos lógicos (Fieldset) */
-fieldset {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-/* Estilo para o título do agrupamento (Legend) */
-legend {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--cor-primaria);
-    padding: 0 10px;
-    margin-left: -10px;
-}
-
-/* Garante que o rótulo (label) fique em uma linha própria */
-label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-/* ========================================================= */
-/* 3. ESTILOS DE ERRO E ACESSIBILIDADE (WCAG 2.1 AA) */
-/* ========================================================= */
-
-/* Campos de Formulário (Animação/Transição no Foco) */
 input[type="text"], input[type="email"], input[type="date"], select {
     width: 100%;
     padding: 10px;
@@ -223,29 +192,21 @@ input:focus, select:focus {
     outline: none; 
 }
 
-/* NOVO BLOCO: Foco para Acessibilidade (Teclado) - WCAG AA */
-a:focus,
-button:focus {
-    outline: 2px solid var(--cor-secundaria); 
-    box-shadow: 0 0 5px var(--cor-primaria); 
-    outline-offset: 2px; 
+/* Estilo para os agrupamentos lógicos (Fieldset) */
+fieldset {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
-/* 1. Estilo para a borda do campo INPUT que falhou na validação */
-.campo-erro {
-    border: 2px solid #cc0000 !important; /* Vermelho destacado */
-    box-shadow: 0 0 5px rgba(204, 0, 0, 0.5); 
-    transition: border-color 0.3s ease; 
-}
-
-/* 2. Estilo para a mensagem de erro (o <span>) */
-.mensagem-erro {
-    color: #cc0000; /* Cor vermelha para alto contraste (WCAG AA) */
-    font-size: 0.85em; 
-    margin-top: 4px;
-    display: block; 
-    min-height: 1.2em; /* Reserva espaço para evitar que o layout 'pule' */
-    font-weight: 600; 
+/* Garante que o rótulo (label) fique em uma linha própria */
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 /* Garante que o botão de submit ocupe a largura total no mobile */
@@ -253,6 +214,7 @@ form button[type="submit"] {
     width: 100%;
     font-size: 1.2em;
 }
+
 
 /* ========================================================= */
 /* 5. RESPONSIVIDADE (MEDIA QUERIES) */
@@ -268,7 +230,7 @@ form button[type="submit"] {
         padding: 40px 0;
 }
 
-    /* Header (Flexbox: Horizontal no Desktop), torna o cabeçalho horizontal em telas grandes*/
+/* Header (Flexbox: Horizontal no Desktop), torna o cabeçalho horizontal em telas grandes*/
     header {
     flex-direction: row;
     justify-content: space-between;
@@ -281,7 +243,7 @@ form button[type="submit"] {
     font-size: 1.8em; 
     }
 
-    /* Torna a lista de links horizontal */
+/* Torna a lista de links horizontal */
     nav ul {
         display: flex;
         gap: 25px; /* Adiciona espaçamento entre os links */
@@ -292,51 +254,4 @@ form button[type="submit"] {
         padding: 0; /* Remove padding vertical */
     }
 
-    /* Tipografia Desktop */
-    h1 {
-        font-size: 3em; 
-    }
-
-    h2 {
-        font-size: 2.2em;
-    }
-
-    /* Aplica o Grid Container à seção de projetos (Requisito: Layout Avançado) */
-    #projetos {
-        display: grid;
-        /* Define 3 colunas de tamanhos iguais, adaptáveis ao espaço */
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 30px; /* Espaçamento entre os cartões (linhas e colunas) */
-        margin-top: 30px;
-    }
-
-    /* Remove a margem inferior que é desnecessária quando o gap está ativo */
-    #projetos article {
-        margin-bottom: 0; 
-    }
-
-    /* ******************************************************** */
-    /* APLICAMOS O GRID AO FIELDSET PARA FORMULÁRIO (Desktop)   */
-    /* ******************************************************** */
-
-    fieldset {
-        /* Garante que o Fieldset use o Grid */
-        display: grid; 
-        /* Define 2 colunas com espaçamento de 20px */
-        grid-template-columns: 1fr 1fr; 
-        gap: 20px; 
-    }
-
-    /* Regra para garantir que itens que precisam da largura total
-       (Ex: Endereço completo, Observações) ocupem 2 colunas */
-    fieldset div.full-width {
-        grid-column: 1 / span 2; 
-    }
-
-     /* Estilo para que o botão de submit ocupe 2 colunas e não 1 */
-    form button[type="submit"] {
-        width: auto;
-        margin-top: 20px;
-        display: block;
-    }
 }
