@@ -33,19 +33,25 @@ body {
 /* ========================================================= */
 
 
+/* Contêiner Base para Centralizar o Conteúdo (Usado na MAIN e/ou SECTIONS) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 /* Garante que imagens e mídia se ajustem a qualquer tela (Correção da Imagem no Index) */
 img, picture img {
     max-width: 100%;
-    height: auto;
+    height:  auto;
     display: block;
 }
 
-/* Contêiner Base para Centralizar o Conteúdo (Usado na MAIN e/ou SECTIONS) */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 0;
+hr {
+    border: none; /* Remove a borda padrão */
+    border-top: 1px solid #ddd; /* Define uma nova linha cinza sutil */
+    width: 100%; /* Garante que a linha ocupe toda a largura do seu contêiner pai */
+    margin: 20px auto; /* Centraliza a linha e adiciona margem acima/abaixo */
 }
 
 /* Aplicar também à imagem dentro do <picture> */
@@ -64,14 +70,6 @@ a {
 a:hover {
     color: var(--cor-secundaria);
     text-decoration: underline;
-}
-
-/* Estilos de Títulos (Hierarquia e Tipografia) */
-h1 {
-    font-size: 2.2em; 
-    color: var(--cor-primaria);
-    margin-bottom: 20px;
-    font-weight: 700;
 }
 
 h2 {
@@ -99,17 +97,17 @@ p {
 /* 2. LAYOUT E ESTRUTURA GERAL (MOBILE FIRST) */
 /* ========================================================= */
 
-/* Header (Flexbox: Vertical no Mobile) */
 header {
-    background-color: #fff;
-    padding: 15px 10px; /* Adicionei padding nas laterais */
-    border-bottom: 2px solid var(--cor-primaria);
-    
-    /* Ativa o Flexbox para o cabeçalho (útil para logo e nav) */
-    display: flex; 
-    flex-direction: column; /* No mobile, empilha os itens (h1 e nav) */
-    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o título e o menu horizontalmente */
+    justify-content: center;
     text-align: center;
+    padding: 15px 0;
+    background-color: #fff; /* Ajuste conforme seu tema */
+    position: relative;
+    gap: 12px; /* Espaço entre título e menu */
 }
 
 /* Adicione este ajuste de título para o mobile */
@@ -122,11 +120,12 @@ header h1 {
 /* O estilo para nav ul e nav ul li a que já colocamos continua válido para o mobile */
 
 nav ul {
-    display: flex;                 /* Remove os pontos da lista */
-    flex-direction: row;           /* CHAVE: Alinha os itens na horizontal */
-    flex-wrap: wrap;               /* Garante a direção em linha */
-    justify-content: center;
-    padding: 0px ;
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Empilhado no mobile */
+    align-items: center;
+    gap: 8px; /* Espaço entre links */
+    padding: 0;
     margin: 0;
 }
 
@@ -138,9 +137,8 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
-    
-    font-weight: bold; 
+    color: #333; /* Cor ajustável */
+    font-weight: 500;
 }
 
 header h1 {
@@ -163,6 +161,12 @@ footer {
     border-top: 5px solid var(--cor-secundaria); /* Linha de destaque */
     margin-left: -15px; /* Ajusta a margem do <body> */
     margin-right: -15px; /* Ajusta a margem do <body> */
+}
+
+/* Ajusta o parágrafo ou div logo abaixo da imagem dentro do card */
+.card p { /* Use o seletor mais específico que você tiver para o card */
+    margin-top: 15px; /* Adiciona 15 pixels de espaço entre a imagem e o texto */
+    padding-top: 5px;
 }
 
 /* ========================================================= */
@@ -328,12 +332,13 @@ form button[type="submit"] {
         padding: 40px 0;
 }
 
-    /* Header (Flexbox: Horizontal no Desktop), torna o cabeçalho horizontal em telas grandes*/
     header {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 15px 40px;
-}
+        flex-direction: row; /* Título à esquerda, menu à direita */
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 40px;
+        text-align: left;
+    }
 
 /* Adicione este ajuste de título para o mobile */
     header h1 {
@@ -348,8 +353,9 @@ form button[type="submit"] {
         padding: 0; /* Remove padding desnecessário */
     }
 
-    nav ul li {
-        padding: 0; /* Remove padding vertical */
+    nav ul {
+        flex-direction: row; /* Links em linha */
+        gap: 20px;
     }
 
     /* Tipografia Desktop */
