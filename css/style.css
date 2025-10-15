@@ -28,34 +28,6 @@ body {
     padding: 0 15px; /* Garante padding lateral no mobile */
 }
 
-/* ========================================================= */
-/* REGRAS GLOBAIS E RESET INDEX.HTML no mobile */
-/* ========================================================= */
-
-/*Garante que todas as imagens se ajustem à largura do dispositivo, prevenindo quebras de layout. */
-img {
-    max-width: 100%;    /* Faz a imagem nunca ser maior que seu contêiner */
-    height: auto;       /* Mantém a proporção correta da imagem */
-    display: block;     /* Ajuda a remover espaços em branco indesejados abaixo da imagem */
-}
-
-/*Contêiner principal usado em todas as páginas para centralizar o conteúdo e limitar a largura máxima. */
-.container {
-    width: 90%;       /* Ocupa 90% da largura da tela */
-    max-width: 1200px; /* Limite máximo para telas grandes */
-    margin: 0 auto;   /* Centraliza o contêiner horizontalmente */
-    padding: 20px 0;  /* Adiciona espaço vertical no topo e base */
-}
-
-/* Garante que o elemento 'img' dentro de 'picture' ocupe 100% do seu espaço. */
-picture img {
-    width: 100%; /* Garante que ela ocupe toda a largura disponível no seu contêiner */
-}
-
-/* ========================================================= */
-/* FIM DAS REGRAS GLOBAIS DE BASE */
-/* ========================================================= */
-
 /* Estilo para todos os links e transições */
 a {
     color: var(--cor-primaria);
@@ -114,7 +86,7 @@ header {
     text-align: center;
 }
 
-/* Adicione este ajuste de título para o mobile */
+/* Ajuste de título para o mobile */
 header h1 {
     font-size: 1.5em; /* Tamanho de título para mobile */
     color: var(--cor-primaria);
@@ -125,34 +97,32 @@ header h1 {
 
 /* Estilo para a navegação móvel (será ajustada para desktop depois) */
 nav ul {
-    list-style: none; /* Remove os pontos da lista */
-    padding: 0;
+    display: flex; /* Alinha os itens da lista horizontalmente */
+    flex-direction: row;
+    flex-wrap: wrap; /* Permite que o menu quebre em várias linhas se não couber */
+    justify-content: space-around; /* Distribui o espaço entre os links, para que ocupem 100% da largura */
+    align-items: center; /* Centraliza o menu na tela, se houver espaço sobrando */
+    /* Remove a borda e padding vertical que estava deixando o menu empilhado */
+    padding: 10px 0;
+    border-bottom: none;
 }
 
 nav ul li {
-    padding: 5px 0;
+    margin: 4px 6px; /* Ajusta a margem para dar um espaçamento horizontal e vertical */
+    padding: 0;  /* Remove o padding que estava contribuindo para o empilhamento */
 }
 
 nav ul li a {
-    text-decoration: none; /* Remove o sublinhado dos links */
-    color: var(--cor-texto);
-    font-weight: bold;
-    padding: 8px 0;
-    border-bottom: 1px dashed #eee; /* Linha sutil para separar os links no mobile */
-    display: block; /* Ocupa a largura total para facilitar o toque no mobile */
+    white-space: nowrap;  /* Garante que o texto, como "Projetos Sociais...", não quebre */ 
+    border-bottom: none; /* Remove a linha sutil que estava separando os links empilhados */ 
+    font-size: 0.8em; /* Diminui um pouco a fonte para caber mais itens lado a lado (estético) */ 
+    padding: 5px; /* Adiciona um pequeno padding para facilitar o toque */ 
 }
 
 /* Conteúdo Principal */
 main {
     padding: 20px 15px; /* Padding interno para telas pequenas */
     min-height: 80vh; /* Garante que o conteúdo ocupe a maior parte da tela */
-}
-
-/*Garante que as seções internas fluam corretamente no mobile */
-main section {
-    width: 100%; /* Garante que a seção ocupe toda a largura do main */
-    box-sizing: border-box; /* O padding de 10px não estourará a largura */
-    padding: 10px; /* Pequeno respiro interno para o conteúdo */
 }
 
 /* Rodapé (Ajuste de Margem para cobrir 100% da largura da tela) */
@@ -258,7 +228,7 @@ input:focus, select:focus {
     outline: none; 
 }
 
-/* NOVO BLOCO: Foco para Acessibilidade (Teclado) - WCAG AA */
+/* Foco para Acessibilidade (Teclado) - WCAG AA */
 a:focus,
 button:focus {
     outline: 2px solid var(--cor-secundaria); 
@@ -310,7 +280,7 @@ form button[type="submit"] {
     padding: 15px 40px;
 }
 
-/* Adicione este ajuste de título para o mobile */
+/* Ajuste de título para o mobile */
     header h1 {
     margin-bottom: 0;
     font-size: 1.8em; 
@@ -374,5 +344,4 @@ form button[type="submit"] {
         margin-top: 20px;
         display: block;
     }
-
 }
