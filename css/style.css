@@ -97,26 +97,24 @@ header h1 {
 
 /* Estilo para a navegação móvel (será ajustada para desktop depois) */
 nav ul {
-    display: flex; /* Alinha os itens da lista horizontalmente */
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* Permite que o menu quebre em várias linhas se não couber */
-    justify-content: space-around; /* Distribui o espaço entre os links, para que ocupem 100% da largura */
-    align-items: center; /* Centraliza o menu na tela, se houver espaço sobrando */
-    /* Remove a borda e padding vertical que estava deixando o menu empilhado */
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 10px 0;
     border-bottom: none;
 }
 
 nav ul li {
-    margin: 4px 6px; /* Ajusta a margem para dar um espaçamento horizontal e vertical */
-    padding: 0;  /* Remove o padding que estava contribuindo para o empilhamento */
+    margin: 4px 6px;
+    padding: 0; 
 }
 
 nav ul li a {
-    white-space: nowrap;  /* Garante que o texto, como "Projetos Sociais...", não quebre */ 
-    border-bottom: none; /* Remove a linha sutil que estava separando os links empilhados */ 
-    font-size: 0.8em; /* Diminui um pouco a fonte para caber mais itens lado a lado (estético) */ 
-    padding: 5px; /* Adiciona um pequeno padding para facilitar o toque */ 
+    white-space: nowrap; 
+    border-bottom: none; 
+    font-size: 0.8em;
+    padding: 5px;
 }
 
 /* Conteúdo Principal */
