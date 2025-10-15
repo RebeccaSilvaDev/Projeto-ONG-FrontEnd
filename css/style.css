@@ -28,6 +28,34 @@ body {
     padding: 0 15px; /* Garante padding lateral no mobile */
 }
 
+/* ========================================================= */
+/* REGRAS GLOBAIS E RESET INDEX.HTML no mobile */
+/* ========================================================= */
+
+/*Garante que todas as imagens se ajustem à largura do dispositivo, prevenindo quebras de layout. */
+img {
+    max-width: 100%;    /* Faz a imagem nunca ser maior que seu contêiner */
+    height: auto;       /* Mantém a proporção correta da imagem */
+    display: block;     /* Ajuda a remover espaços em branco indesejados abaixo da imagem */
+}
+
+/*Contêiner principal usado em todas as páginas para centralizar o conteúdo e limitar a largura máxima. */
+.container {
+    width: 90%;       /* Ocupa 90% da largura da tela */
+    max-width: 1200px; /* Limite máximo para telas grandes */
+    margin: 0 auto;   /* Centraliza o contêiner horizontalmente */
+    padding: 20px 0;  /* Adiciona espaço vertical no topo e base */
+}
+
+/* Garante que o elemento 'img' dentro de 'picture' ocupe 100% do seu espaço. */
+picture img {
+    width: 100%; /* Garante que ela ocupe toda a largura disponível no seu contêiner */
+}
+
+/* ========================================================= */
+/* FIM DAS REGRAS GLOBAIS DE BASE */
+/* ========================================================= */
+
 /* Estilo para todos os links e transições */
 a {
     color: var(--cor-primaria);
@@ -118,6 +146,13 @@ nav ul li a {
 main {
     padding: 20px 15px; /* Padding interno para telas pequenas */
     min-height: 80vh; /* Garante que o conteúdo ocupe a maior parte da tela */
+}
+
+/*Garante que as seções internas fluam corretamente no mobile */
+main section {
+    width: 100%; /* Garante que a seção ocupe toda a largura do main */
+    box-sizing: border-box; /* O padding de 10px não estourará a largura */
+    padding: 10px; /* Pequeno respiro interno para o conteúdo */
 }
 
 /* Rodapé (Ajuste de Margem para cobrir 100% da largura da tela) */
@@ -339,4 +374,5 @@ form button[type="submit"] {
         margin-top: 20px;
         display: block;
     }
+
 }
