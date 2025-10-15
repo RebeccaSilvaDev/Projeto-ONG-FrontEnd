@@ -1,38 +1,29 @@
 /* ========================================================= */
 /* 1. SETUP: RESET, VARIÁVEIS CSS E ESTILOS GERAIS */
 /* ========================================================= */
-
-/* Variáveis para cores da ONG (Sistema de Design) */
 :root {
-    --cor-primaria: #007bff; /* Azul vibrante */
-    --cor-secundaria: #28a745; /* Verde para sucesso/botões */
-    --cor-fundo: #f8f9fa; /* Cinza claro */
-    --cor-texto: #343a40; /* Cinza escuro */
+    --cor-primaria: #007bff;
+    --cor-secundaria: #28a745;
+    --cor-fundo: #f8f9fa;
+    --cor-texto: #343a40;
     --font-principal: 'Arial', sans-serif;
 }
-
-/* Reset e Box-Sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
 }
-
-/* Estilo Base (Mobile-First) */
 body {
     font-family: var(--font-principal);
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     font-size: 16px; 
     line-height: 1.6; 
-    /* Sem padding lateral aqui */
 }
 
 /* ======================================= */
 /* 2. TIPOGRAFIA E LINKS                   */
 /* ======================================= */
-
-/* Estilos de Links */
 a {
     color: var(--cor-primaria);
     text-decoration: none; 
@@ -42,8 +33,6 @@ a:hover {
     color: var(--cor-secundaria);
     text-decoration: underline;
 }
-
-/* Estilos de Títulos */
 h1 {
     font-size: 2.2em; 
     color: var(--cor-primaria);
@@ -72,10 +61,7 @@ p {
 /* ======================================= */
 /* 3. LAYOUT GERAL (MOBILE FIRST BASE E COMPONENTES) */
 /* ======================================= */
-
-/* Conteúdo Principal */
 main {
-    /* Padding lateral para o conteúdo em telas pequenas */
     padding: 20px 15px; 
     min-height: 80vh; 
 }
@@ -83,11 +69,10 @@ main {
 /* Header (Estilo base: Lado a Lado no Desktop) */
 header {
     background-color: #fff;
-    /* Padding lateral de 15px para mobile (mesmo do main) */
     padding: 15px 15px; 
     border-bottom: 2px solid #ddd;
     margin-bottom: 20px; 
-    /* LAYOUT DESKTOP: Lado a Lado */
+    /* LAYOUT DESKTOP: Lado a Lado - Esta é a regra padrão */
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -99,7 +84,7 @@ header {
     display: flex;
     padding: 0;
     margin: 0;
-    gap: 25px; /* Espaço entre os links no desktop */
+    gap: 25px; 
 }
 .menu-principal li a {
     text-decoration: none; 
@@ -114,13 +99,11 @@ header {
     width: 100%; 
     gap: 30px; 
 }
-/* Define a proporção de largura para Título e Cards no Desktop */
 #projetos > h2 {
     flex-basis: 30%; 
 }
 #projetos article {
     flex-basis: 65%;
-    /* Estilos Visuais do Card */
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -170,17 +153,12 @@ input[type="text"], input[type="email"], input[type="date"], select {
     border-radius: 4px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-input:focus, select:focus {
-    border-color: var(--cor-primaria); 
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
-    outline: none; 
-}
 form button[type="submit"] {
     width: 100%;
     font-size: 1.2em;
 }
 
-/* Componentes Botão */
+/* Componentes Botão e Acessibilidade (WCAG) */
 button, .btn {
     background-color: var(--cor-secundaria);
     color: white;
@@ -197,28 +175,17 @@ button:hover, .btn:hover {
     transform: translateY(-2px); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
 }
-
-
-/* ======================================= */
-/* 4. ACESSIBILIDADE E VALIDAÇÃO (WCAG AA) */
-/* ======================================= */
-
-/* Foco para Acessibilidade (Teclado) */
 a:focus, button:focus, input:focus {
     outline: 2px solid var(--cor-secundaria); 
     box-shadow: 0 0 5px var(--cor-primaria); 
     outline-offset: 2px; 
 }
-
-/* Estilos de Erro */
 .campo-erro {
     border: 2px solid #cc0000 !important;
-    box-shadow: 0 0 5px rgba(204, 0, 0, 0.5); 
 }
 .mensagem-erro {
     color: #cc0000;
     font-size: 0.85em; 
-    margin-top: 4px;
     display: block; 
     min-height: 1.2em; 
     font-weight: 600; 
@@ -231,30 +198,23 @@ a:focus, button:focus, input:focus {
 
 /* A) TELAS GRANDES (A partir de 768px: Tablet e Desktop) */
 @media (min-width: 768px) {
-    /* Centraliza e limita a largura do conteúdo principal */
     main {
         max-width: 1200px;
         margin: 0 auto;
         padding: 40px 0; 
     }
-    
-    /* Header (Alinhar o padding com o main centralizado) */
     header {
-        padding: 15px 40px; /* Mais espaço nas laterais do header */
+        padding: 15px 40px;
     }
-    
-    /* Ajustes Finos de Tipografia */
     h1 { font-size: 3em; }
     h2 { font-size: 2.2em; }
     
     /* Layout Avançado de Projetos (Grid) */
     #projetos {
         display: grid;
-        /* Colunas: 1 para o Título, 2 para os Cards */
         grid-template-columns: 1fr repeat(2, 1fr); 
         gap: 30px; 
     }
-    /* Faz o Título da seção (h2) ocupar a primeira coluna do Grid */
     #projetos > h2 {
         grid-column: 1 / 2;
         flex-basis: auto; 
@@ -277,19 +237,19 @@ a:focus, button:focus, input:focus {
 /* B) TELAS PEQUENAS (Até 600px: Celular) */
 @media (max-width: 600px) {
     
-    /* AJUSTES DO HEADER (Empilha Logo e Menu) */
+    /* CORREÇÃO DO HEADER: Empilhamento e Centralização */
     header {
-        flex-direction: column; /* CORRIGIDO: Empilha */
-        align-items: center;    /* CORRIGIDO: Centraliza horizontalmente */
+        flex-direction: column; 
+        align-items: center;    
         text-align: center;     
-        padding: 15px 15px; /* Mantém padding lateral consistente com o main */
+        padding: 15px 15px; 
     }
     header h1 {
-        font-size: 1.5em; /* Título menor para mobile */
+        font-size: 1.5em; 
         margin-bottom: 10px;
     }
     
-    /* AJUSTES DO MENU (Empilhamento e Alinhamento à Direita) */
+    /* AJUSTES DO MENU (Empilhamento e Alinhamento) */
     .menu-principal ul {
         flex-direction: column; 
         width: 100%;
