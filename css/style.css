@@ -132,7 +132,45 @@ footer {
 }
 
 /* ========================================================= */
-/* 3. COMPONENTES E ESTILOS REUTILIZÁVEIS */
+/* 3. ESTILOS DE ERRO E ACESSIBILIDADE (WCAG 2.1 AA) */
+/* ========================================================= */
+
+/* Campos de Formulário (Animação/Transição no Foco) */
+input[type="text"], input[type="email"], input[type="date"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Foco para Acessibilidade (Teclado) - WCAG AA */
+a:focus,
+button:focus {
+    outline: 2px solid var(--cor-secundaria); 
+    box-shadow: 0 0 5px var(--cor-primaria); 
+    outline-offset: 2px; 
+}
+
+/* 1. Estilo para a borda do campo INPUT que falhou na validação */
+.campo-erro {
+    border: 2px solid #cc0000 !important; /* Vermelho destacado */
+    box-shadow: 0 0 5px rgba(204, 0, 0, 0.5); 
+    transition: border-color 0.3s ease; 
+}
+
+/* 2. Estilo para a mensagem de erro (o <span>) */
+.mensagem-erro {
+    color: #cc0000; /* Cor vermelha para alto contraste (WCAG AA) */
+    font-size: 0.85em; 
+    margin-top: 4px;
+    display: block; 
+    min-height: 1.2em; /* Reserva espaço para evitar que o layout 'pule' */
+    font-weight: 600; 
+}
+
+/* ========================================================= */
+/* 4. COMPONENTES E ESTILOS REUTILIZÁVEIS */
 /* ========================================================= */
 
 /* Botões de Ação (Componentes e Animação/Transição) indicam os botões (Doar, Cadastrar) */
@@ -273,3 +311,34 @@ form button[type="submit"] {
         gap: 30px; /* Espaçamento entre os cartões (linhas e colunas) */
         margin-top: 30px;
     }
+
+    /* Remove a margem inferior que é desnecessária quando o gap está ativo */
+    #projetos article {
+        margin-bottom: 0; 
+    }
+
+    /* ******************************************************** */
+    /* APLICANDO O GRID AO FIELDSET PARA FORMULÁRIO (Desktop)   */
+    /* ******************************************************** */
+
+    fieldset {
+        /* Garante que o Fieldset use o Grid */
+        display: grid; 
+        /* Define 2 colunas com espaçamento de 20px */
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px; 
+    }
+
+    /* Regra para garantir que itens que precisam da largura total
+       (Ex: Endereço completo, Observações) ocupem 2 colunas */
+    fieldset div.full-width {
+        grid-column: 1 / span 2; 
+    }
+
+    /* Estilo para que o botão de submit ocupe 2 colunas e não 1 */
+    form button[type="submit"] {
+        width: auto;
+        margin-top: 20px;
+        display: block;
+    }
+
