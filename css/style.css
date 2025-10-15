@@ -28,6 +28,11 @@ body {
     padding: 0 15px; /* Garante padding lateral no mobile */
 }
 
+/* ========================================================= */
+/* REGRAS GLOBAIS E RESET INDEX.HTML no mobile */
+/* ========================================================= */
+
+
 /* Garante que imagens e mídia se ajustem a qualquer tela (Correção da Imagem no Index) */
 img, picture img {
     max-width: 100%;
@@ -96,12 +101,15 @@ p {
 
 /* Header (Flexbox: Vertical no Mobile) */
 header {
-    display: flex;
-    flex-direction: column;
+    background-color: #fff;
+    padding: 15px 10px; /* Adicionei padding nas laterais */
+    border-bottom: 2px solid var(--cor-primaria);
+    
+    /* Ativa o Flexbox para o cabeçalho (útil para logo e nav) */
+    display: flex; 
+    flex-direction: column; /* No mobile, empilha os itens (h1 e nav) */
     align-items: center;
-    justify-content: center;
     text-align: center;
-    gap: 10px; /* Espaçamento entre o título e o menu */
 }
 
 /* Adicione este ajuste de título para o mobile */
@@ -113,19 +121,29 @@ header h1 {
 
 /* O estilo para nav ul e nav ul li a que já colocamos continua válido para o mobile */
 
-/* Ajuste adicional para os links não ficarem colados */
 nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza os links no mobile */
-    gap: 8px; /* Espaçamento vertical entre os itens */
+    list-style: none;       /* Remove os pontos da lista */
+    display: flex;          /* CHAVE: Alinha os itens na horizontal */
+    flex-direction: row;    /* Garante a direção em linha */
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px ;
+    margin: 0;
 }
 
 nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 5px 8px;         
     padding: 5px 0;
 }
 
 nav ul li a {
+    white-space: nowrap;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #007bff; 
+
     text-decoration: none; /* Remove o sublinhado dos links */
     color: var(--cor-texto);
     font-weight: bold;
@@ -134,18 +152,16 @@ nav ul li a {
     display: block; /* Ocupa a largura total para facilitar o toque no mobile */
 }
 
+header h1 {
+        text-align: center;  /*Centraliza o texto "Transformando Vidas" se necessário */
+    }
+
 /* Conteúdo Principal */
 main {
     padding: 20px 15px; /* Padding interno para telas pequenas */
     min-height: 80vh; /* Garante que o conteúdo ocupe a maior parte da tela */
 }
 
-/* Garante que o conteúdo da seção flua verticalmente no mobile */
-main section {
-    width: 100%; /* Ocupa 100% do container */
-    box-sizing: border-box; /* Garante que padding não estoure a largura */
-    padding: 10px; /* Pequeno padding para respiro interno */
-}
 
 /* Rodapé (Ajuste de Margem para cobrir 100% da largura da tela) */
 footer {
@@ -288,6 +304,32 @@ form button[type="submit"] {
 /* Estilos aplicados APENAS quando a tela tiver 768px ou mais (tablets e desktops) */
 @media (min-width: 768px) {
 
+    .seu-seletor-da-lista-ul {
+        display: flex; /* Transforma em linha */
+        flex-direction: row; /* Garante que estejam em linha (row) */
+        flex-wrap: wrap; /* Permite que quebrem a linha se não couberem */
+        justify-content: flex-start; /* Alinha os itens à esquerda (ou 'space-around' para distribuir) */
+        padding: 0;
+        margin: 0;
+    }
+
+    /* 2. Remove a formatação de bloco dos itens da lista (LI) 
+       e adiciona um espaço entre eles
+       Use o seletor correto para os seus itens (LI)
+    */
+    .seu-seletor-da-lista-ul li {
+        margin-right: 15px; /* Espaço entre os itens */
+        list-style: none; /* Remove bolinhas/marcadores de lista */
+        /* Outros ajustes de estilo se necessário */
+    }
+
+    /* 3. Ajuste nos links (A) para que o texto não quebre (opcional)
+    */
+    .seu-seletor-da-lista-ul li a {
+        white-space: nowrap; /* Impede que o texto de um link quebre em várias linhas */
+    }
+}
+
     /* Centraliza e limita a largura do conteúdo em telas grandes */
     main {
         max-width: 1200px;
@@ -366,4 +408,3 @@ form button[type="submit"] {
         margin-top: 20px;
         display: block;
     }
-}
