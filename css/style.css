@@ -97,24 +97,27 @@ header h1 {
 
 /* Estilo para a navegação móvel (será ajustada para desktop depois) */
 nav ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 10px 0;
-    border-bottom: none;
+    display: flex !important; 
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important; 
+    padding: 10px 0 !important;
+    margin: 0 !important;
 }
 
 nav ul li {
-    margin: 4px 6px;
-    padding: 0; 
+    display: inline !important;
+    margin: 5px 8px !important; 
+    padding: 0;
+    list-style: none !important; 
 }
 
 nav ul li a {
-    white-space: nowrap; 
-    border-bottom: none; 
+    white-space: nowrap !important; 
+    font-size: 0.85em !important; 
     font-size: 0.8em;
-    padding: 5px;
+    color: #007bff !important;
+    text-decoration: none !important; 
 }
 
 /* Conteúdo Principal */
@@ -286,7 +289,7 @@ form button[type="submit"] {
 
     /* Torna a lista de links horizontal */
     nav ul {
-        display: flex;
+        display: flex; 
         gap: 25px; /* Adiciona espaçamento entre os links */
         padding: 0; /* Remove padding desnecessário */
     }
