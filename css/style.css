@@ -255,3 +255,21 @@ form button[type="submit"] {
     }
 
 }
+
+/* Tipografia Desktop */
+    h1 {
+        font-size: 3em; 
+    }
+
+    h2 {
+        font-size: 2.2em;
+    }
+
+    /* Aplica o Grid Container à seção de projetos (Requisito: Layout Avançado) */
+    #projetos {
+        display: grid;
+        /* Define 3 colunas de tamanhos iguais, adaptáveis ao espaço */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px; /* Espaçamento entre os cartões (linhas e colunas) */
+        margin-top: 30px;
+    }
