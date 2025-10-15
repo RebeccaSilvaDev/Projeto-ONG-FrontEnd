@@ -28,6 +28,27 @@ body {
     padding: 0 15px; /* Garante padding lateral no mobile */
 }
 
+/* Garante que imagens e mídia se ajustem a qualquer tela (Correção da Imagem no Index) */
+img, picture img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Contêiner Base para Centralizar o Conteúdo (Usado na MAIN e/ou SECTIONS) */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Aplicar também à imagem dentro do <picture> */
+picture img {
+    width: 100%;
+    /* Se a imagem estiver muito larga, o width: 100% resolve */
+}
+
 /* Estilo para todos os links e transições */
 a {
     color: var(--cor-primaria);
@@ -75,18 +96,15 @@ p {
 
 /* Header (Flexbox: Vertical no Mobile) */
 header {
-    background-color: #fff;
-    padding: 15px 10px; /* Adicionei padding nas laterais */
-    border-bottom: 2px solid var(--cor-primaria);
-    
-    /* Ativa o Flexbox para o cabeçalho (útil para logo e nav) */
-    display: flex; 
-    flex-direction: column; /* No mobile, empilha os itens (h1 e nav) */
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    gap: 10px; /* Espaçamento entre o título e o menu */
 }
 
-/* Ajuste de título para o mobile */
+/* Adicione este ajuste de título para o mobile */
 header h1 {
     font-size: 1.5em; /* Tamanho de título para mobile */
     color: var(--cor-primaria);
@@ -95,35 +113,38 @@ header h1 {
 
 /* O estilo para nav ul e nav ul li a que já colocamos continua válido para o mobile */
 
-/* Estilo para a navegação móvel (será ajustada para desktop depois) */
+/* Ajuste adicional para os links não ficarem colados */
 nav ul {
-    display: flex !important; 
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important; 
-    padding: 10px 0 !important;
-    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os links no mobile */
+    gap: 8px; /* Espaçamento vertical entre os itens */
 }
 
 nav ul li {
-    display: inline !important;
-    margin: 5px 8px !important; 
-    padding: 0;
-    list-style: none !important; 
+    padding: 5px 0;
 }
 
 nav ul li a {
-    white-space: nowrap !important; 
-    font-size: 0.85em !important; 
-    font-size: 0.8em;
-    color: #007bff !important;
-    text-decoration: none !important; 
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: var(--cor-texto);
+    font-weight: bold;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee; /* Linha sutil para separar os links no mobile */
+    display: block; /* Ocupa a largura total para facilitar o toque no mobile */
 }
 
 /* Conteúdo Principal */
 main {
     padding: 20px 15px; /* Padding interno para telas pequenas */
     min-height: 80vh; /* Garante que o conteúdo ocupe a maior parte da tela */
+}
+
+/* Garante que o conteúdo da seção flua verticalmente no mobile */
+main section {
+    width: 100%; /* Ocupa 100% do container */
+    box-sizing: border-box; /* Garante que padding não estoure a largura */
+    padding: 10px; /* Pequeno padding para respiro interno */
 }
 
 /* Rodapé (Ajuste de Margem para cobrir 100% da largura da tela) */
@@ -229,7 +250,7 @@ input:focus, select:focus {
     outline: none; 
 }
 
-/* Foco para Acessibilidade (Teclado) - WCAG AA */
+/* NOVO BLOCO: Foco para Acessibilidade (Teclado) - WCAG AA */
 a:focus,
 button:focus {
     outline: 2px solid var(--cor-secundaria); 
@@ -281,7 +302,7 @@ form button[type="submit"] {
     padding: 15px 40px;
 }
 
-/* Ajuste de título para o mobile */
+/* Adicione este ajuste de título para o mobile */
     header h1 {
     margin-bottom: 0;
     font-size: 1.8em; 
@@ -289,7 +310,7 @@ form button[type="submit"] {
 
     /* Torna a lista de links horizontal */
     nav ul {
-        display: flex; 
+        display: flex;
         gap: 25px; /* Adiciona espaçamento entre os links */
         padding: 0; /* Remove padding desnecessário */
     }
