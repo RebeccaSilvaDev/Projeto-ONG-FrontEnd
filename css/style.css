@@ -81,9 +81,19 @@ header {
 
 /* Ativa o Flexbox para o cabeçalho (útil para logo e nav) */
     display: flex; 
-    flex-direction: column; /* No mobile, empilha os itens (h1 e nav) */
-    align-items: center;
-    text-align: center;
+}
+
+/* Estilos para o menu principal em telas GRANDES */
+.menu-principal ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end; 
+    padding: 0;
+    margin: 0;
+}
+
+.menu-principal li {
+    margin-left: 20px; 
 }
 
 /* Adicione este ajuste de título para o mobile */
@@ -259,6 +269,30 @@ form button[type="submit"] {
 /* ========================================================= */
 
 /* Estilos aplicados APENAS quando a tela tiver 768px ou mais (tablets e desktops) */
+@media (max-width: 600px) {
+    
+   header {
+    flex-direction: column;     /* No mobile, empilha os itens (h1 e nav) */
+    align-items: center;        /* Centraliza logo e nav */
+    text-align: center;          /* Centraliza o texto dentro dos itens */
+    
+    /* Regras que SÓ se aplicam a telas pequenas */
+
+    .menu-principal ul {
+        flex-direction: column; /* Empilha os itens no mobile */
+        width: 100%;
+    }
+    
+    .menu-principal li {
+        text-align: right; /* Alinha o texto do item à direita no mobile */
+        margin-left: 0; 
+        margin-bottom: 8px; 
+    }
+}
+
+}
+
+/* Estilos aplicados APENAS quando a tela tiver 768px ou mais (tablets e desktops) */
 @media (min-width: 768px) {
 
     /* Centraliza e limita a largura do conteúdo em telas grandes */
@@ -316,6 +350,8 @@ form button[type="submit"] {
     #projetos article {
         margin-bottom: 0; 
     }
+
+    
 
     /* ******************************************************** */
     /* APLICANDO O GRID AO FIELDSET PARA FORMULÁRIO (Desktop)   */
