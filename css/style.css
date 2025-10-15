@@ -2,20 +2,20 @@
 /* 1. SETUP: RESET, VARIÁVEIS CSS E ESTILOS GERAIS */
 /* ========================================================= */
 
-/* Reset e Box-Sizing para facilitar o cálculo de layout */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura total */
-}
-
 /* Variáveis para cores da ONG (Sistema de Design) */
 :root {
-    --cor-primaria: #007bff; /* Azul vibrante, por exemplo */
-    --cor-secundaria: #28a745; /* Verde para sucesso ou botões de doação */
+    --cor-primaria: #007bff; /* Azul vibrante */
+    --cor-secundaria: #28a745; /* Verde para sucesso/botões */
     --cor-fundo: #f8f9fa; /* Cinza claro */
     --cor-texto: #343a40; /* Cinza escuro */
     --font-principal: 'Arial', sans-serif;
+}
+
+/* Reset e Box-Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
 }
 
 /* Estilo Base (Mobile-First) */
@@ -25,29 +25,31 @@ body {
     color: var(--cor-texto);
     font-size: 16px; 
     line-height: 1.6; 
-    padding: 0 15px; /* Garante padding lateral no mobile */
+    padding: 0 15px; /* Padding lateral no mobile */
 }
 
-/* Estilo para todos os links e transições */
+/* ======================================= */
+/* 2. TIPOGRAFIA E LINKS                   */
+/* ======================================= */
+
+/* Estilos de Links */
 a {
     color: var(--cor-primaria);
     text-decoration: none; 
     transition: color 0.3s ease; 
 }
-
 a:hover {
     color: var(--cor-secundaria);
     text-decoration: underline;
 }
 
-/* Estilos de Títulos (Hierarquia e Tipografia) */
+/* Estilos de Títulos */
 h1 {
     font-size: 2.2em; 
     color: var(--cor-primaria);
     margin-bottom: 20px;
     font-weight: 700;
 }
-
 h2 {
     font-size: 1.8em; 
     color: var(--cor-texto);
@@ -56,7 +58,6 @@ h2 {
     margin-top: 30px;
     margin-bottom: 15px;
 }
-
 h3 {
     font-size: 1.3em; 
     color: var(--cor-secundaria); 
@@ -64,70 +65,76 @@ h3 {
     margin-bottom: 10px;
     font-weight: bold;
 }
-
 p {
     margin-bottom: 15px;
 }
 
-/* ========================================================= */
-/* 2. LAYOUT E ESTRUTURA GERAL (MOBILE FIRST) */
-/* ========================================================= */
-
-/* Header (Flexbox: Vertical no Mobile) */
-header {
-    background-color: #fff;
-    padding: 15px 10px; /* Adicionei padding nas laterais */
-    border-bottom: 2px solid var(--cor-primaria);
-
-/* Ativa o Flexbox para o cabeçalho (útil para logo e nav) */
-    display: flex; 
-}
-
-/* Estilos para o menu principal em telas GRANDES */
-.menu-principal ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end; 
-    padding: 0;
-    margin: 0;
-}
-
-.menu-principal li {
-    margin-left: 20px; 
-}
-
-/* Adicione este ajuste de título para o mobile */
-header h1 {
-    font-size: 1.5em; /* Tamanho de título para mobile */
-    color: var(--cor-primaria);
-    margin-bottom: 10px; /* Espaçamento entre o título e a navegação */
-}
-
-/* O estilo para nav ul e nav ul li a que já colocamos continua válido para o mobile */
-
-/* Estilo para a navegação móvel (será ajustada para desktop depois) */
-nav ul {
-    list-style: none; /* Remove os pontos da lista */
-    padding: 0;
-}
-
-nav ul li {
-    padding: 5px 0;
-}
-
-nav ul li a {
-    text-decoration: none; /* Remove o sublinhado dos links */
-    color: var(--cor-texto);
-    font-weight: bold;
-    padding: 8px 0;
-    border-bottom: 1px dashed #eee; /* Linha sutil para separar os links no mobile */
-    display: block; /* Ocupa a largura total para facilitar o toque no mobile */
-}
+/* ======================================= */
+/* 3. LAYOUT GERAL (MOBILE FIRST BASE E COMPONENTES) */
+/* ======================================= */
 
 /* Conteúdo Principal */
 main {
     padding: 20px 15px; /* Padding interno para telas pequenas */
-    min-height: 80vh; /* Garante que o conteúdo ocupe a maior parte da tela */
+    min-height: 80vh; 
+}
+
+/* Header (Estilo base: Lado a Lado no Desktop) */
+header {
+    background-color: #fff;
+    padding: 15px 5%; 
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* Estilos do Menu (Desktop: Lado a Lado) */
+.menu-principal ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 25px; /* Espaço entre os links no desktop */
+}
+.menu-principal li a {
+    text-decoration: none; 
+    color: var(--cor-texto);
+    font-weight: bold;
+}
+
+/* Estilo da Seção de Projetos (Desktop: Lado a Lado) */
+#projetos {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    gap: 30px; 
+}
+
+/* Define a proporção de largura para Título e Cards no Desktop */
+#projetos > h2 {
+    flex-basis: 30%; 
+}
+#projetos article {
+    flex-basis: 65%;
+    /* Estilos Visuais do Card (Base) */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#projetos article:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+#projetos article img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 15px; 
 }
 
 /* Rodapé (Ajuste de Margem para cobrir 100% da largura da tela) */
@@ -136,54 +143,44 @@ footer {
     color: white;
     padding: 20px 15px;
     text-align: center;
-    border-top: 5px solid var(--cor-secundaria); /* Linha de destaque */
-    margin-left: -15px; /* Ajusta a margem do <body> */
-    margin-right: -15px; /* Ajusta a margem do <body> */
+    border-top: 5px solid var(--cor-secundaria); 
+    margin-left: -15px; /* Compensa o padding lateral do <body> */
+    margin-right: -15px; 
 }
 
-/* ========================================================= */
-/* 3. ESTILOS DE ERRO E ACESSIBILIDADE (WCAG 2.1 AA) */
-/* ========================================================= */
-
-/* Campos de Formulário (Animação/Transição no Foco) */
+/* Formulários - Estilo Mobile (Base) */
+fieldset {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 input[type="text"], input[type="email"], input[type="date"], select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:focus, select:focus {
+    border-color: var(--cor-primaria); 
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
+    outline: none; 
+}
+form button[type="submit"] {
+    width: 100%;
+    font-size: 1.2em;
 }
 
-/* Foco para Acessibilidade (Teclado) - WCAG AA */
-a:focus,
-button:focus {
-    outline: 2px solid var(--cor-secundaria); 
-    box-shadow: 0 0 5px var(--cor-primaria); 
-    outline-offset: 2px; 
-}
-
-/* 1. Estilo para a borda do campo INPUT que falhou na validação */
-.campo-erro {
-    border: 2px solid #cc0000 !important; /* Vermelho destacado */
-    box-shadow: 0 0 5px rgba(204, 0, 0, 0.5); 
-    transition: border-color 0.3s ease; 
-}
-
-/* 2. Estilo para a mensagem de erro (o <span>) */
-.mensagem-erro {
-    color: #cc0000; /* Cor vermelha para alto contraste (WCAG AA) */
-    font-size: 0.85em; 
-    margin-top: 4px;
-    display: block; 
-    min-height: 1.2em; /* Reserva espaço para evitar que o layout 'pule' */
-    font-weight: 600; 
-}
-
-/* ========================================================= */
-/* 4. COMPONENTES E ESTILOS REUTILIZÁVEIS */
-/* ========================================================= */
-
-/* Botões de Ação (Componentes e Animação/Transição) indicam os botões (Doar, Cadastrar) */
+/* Componentes Botão */
 button, .btn {
     background-color: var(--cor-secundaria);
     color: white;
@@ -192,189 +189,144 @@ button, .btn {
     cursor: pointer;
     border-radius: 5px;
     text-decoration: none;
-    display: inline-block; /* Importante para o link se comportar como botão */
-    transition: background-color 0.3s ease;
+    display: inline-block; 
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 button:hover, .btn:hover {
     background-color: #1e7e34; 
-    transform: translateY(-2px); /* Eleva o botão */
+    transform: translateY(-2px); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
 }
 
-/* Cartões de Projeto (Animação/Transição) */
-#projetos article {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin-bottom: 20px; /* Espaço entre os cartões no mobile */
-    /* Garante que o texto se ajuste ao cartão */
-    overflow: hidden; 
+
+/* ======================================= */
+/* 4. ACESSIBILIDADE E VALIDAÇÃO (WCAG AA) */
+/* ======================================= */
+
+/* Foco para Acessibilidade (Teclado) */
+a:focus, button:focus, input:focus {
+    outline: 2px solid var(--cor-secundaria); 
+    box-shadow: 0 0 5px var(--cor-primaria); 
+    outline-offset: 2px; 
 }
 
-#projetos article:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+/* Estilos de Erro */
+.campo-erro {
+    border: 2px solid #cc0000 !important;
+    box-shadow: 0 0 5px rgba(204, 0, 0, 0.5); 
 }
-
-/* Estilo para as imagens dentro dos projetos (requisito de mídias adaptáveis) */
-#projetos article img {
-    width: 100%; /* Ocupa a largura total do cartão no mobile */
-    height: auto;
-    border-radius: 4px;
-    margin-top: 15px; /* Margem superior para separar do texto */
-}
-
-input[type="text"], input[type="email"], input[type="date"], select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-input:focus, select:focus {
-    border-color: var(--cor-primaria); 
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
-    outline: none; 
-}
-
-/* Estilo para os agrupamentos lógicos (Fieldset) */
-fieldset {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-/* Garante que o rótulo (label) fique em uma linha própria */
-label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-/* Garante que o botão de submit ocupe a largura total no mobile */
-form button[type="submit"] {
-    width: 100%;
-    font-size: 1.2em;
+.mensagem-erro {
+    color: #cc0000;
+    font-size: 0.85em; 
+    margin-top: 4px;
+    display: block; 
+    min-height: 1.2em; 
+    font-weight: 600; 
 }
 
 
-/* ========================================================= */
-/* 5. RESPONSIVIDADE (MEDIA QUERIES) */
-/* ========================================================= */
+/* ======================================= */
+/* 5. RESPONSIVIDADE (MEDIA QUERIES)       */
+/* ======================================= */
 
-/* Estilos aplicados APENAS quando a tela tiver 768px ou mais (tablets e desktops) */
-@media (max-width: 600px) {
-    
-   header {
-    flex-direction: column;     /* No mobile, empilha os itens (h1 e nav) */
-    align-items: center;        /* Centraliza logo e nav */
-    text-align: center;          /* Centraliza o texto dentro dos itens */
-    
-    /* Regras que SÓ se aplicam a telas pequenas */
-
-    .menu-principal ul {
-        flex-direction: column; /* Empilha os itens no mobile */
-        width: 100%;
-    }
-    
-    .menu-principal li {
-        text-align: right; /* Alinha o texto do item à direita no mobile */
-        margin-left: 0; 
-        margin-bottom: 8px; 
-    }
-}
-
-}
-
-/* Estilos aplicados APENAS quando a tela tiver 768px ou mais (tablets e desktops) */
+/* A) TELAS GRANDES (A partir de 768px: Tablet e Desktop) */
 @media (min-width: 768px) {
-
-    /* Centraliza e limita a largura do conteúdo em telas grandes */
+    /* Centraliza e limita a largura do conteúdo principal */
     main {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 40px 0;
-}
-
-/* Header (Flexbox: Horizontal no Desktop), torna o cabeçalho horizontal em telas grandes*/
-    header {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 15px 40px;
-}
-
-/* Adicione este ajuste de título para o mobile */
-    header h1 {
-    margin-bottom: 0;
-    font-size: 1.8em; 
+        padding: 40px 0; 
     }
-
-/* Torna a lista de links horizontal */
-    nav ul {
-        display: flex;
-        gap: 25px; /* Adiciona espaçamento entre os links */
-        padding: 0; /* Remove padding desnecessário */
-    }
-
-    nav ul li {
-        padding: 0; /* Remove padding vertical */
-    }
-
-}
-
-/* Tipografia Desktop */
-    h1 {
-        font-size: 3em; 
-    }
-
-    h2 {
-        font-size: 2.2em;
-    }
-
-    /* Aplica o Grid Container à seção de projetos (Requisito: Layout Avançado) */
-    #projetos {
-        display: grid;
-        /* Define 3 colunas de tamanhos iguais, adaptáveis ao espaço */
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 30px; /* Espaçamento entre os cartões (linhas e colunas) */
-        margin-top: 30px;
-    }
-
-    /* Remove a margem inferior que é desnecessária quando o gap está ativo */
-    #projetos article {
-        margin-bottom: 0; 
-    }
-
     
-
-    /* ******************************************************** */
-    /* APLICANDO O GRID AO FIELDSET PARA FORMULÁRIO (Desktop)   */
-    /* ******************************************************** */
-
+    /* Ajustes Finos de Tipografia */
+    h1 { font-size: 3em; }
+    h2 { font-size: 2.2em; }
+    
+    /* Layout Avançado de Projetos (Grid) */
+    #projetos {
+        /* Sobrescreve o display:flex com Grid para um layout mais robusto */
+        display: grid;
+        grid-template-columns: 1fr repeat(2, 1fr); /* Título | Card | Card */
+        gap: 30px; 
+    }
+    /* Faz o Título da seção (h2) ocupar a primeira coluna do Grid */
+    #projetos > h2 {
+        grid-column: 1 / 2;
+        flex-basis: auto; /* Desliga o flex-basis */
+    }
+    /* Faz os dois cards (article) ocuparem as outras duas colunas */
+    #projetos article {
+        flex-basis: auto;
+    }
+    
+    /* Layout Avançado de Formulários (Grid) */
     fieldset {
-        /* Garante que o Fieldset use o Grid */
         display: grid; 
-        /* Define 2 colunas com espaçamento de 20px */
         grid-template-columns: 1fr 1fr; 
         gap: 20px; 
     }
-
-    /* Regra para garantir que itens que precisam da largura total
-       (Ex: Endereço completo, Observações) ocupem 2 colunas */
     fieldset div.full-width {
         grid-column: 1 / span 2; 
     }
-
-    /* Estilo para que o botão de submit ocupe 2 colunas e não 1 */
     form button[type="submit"] {
         width: auto;
         margin-top: 20px;
-        display: block;
     }
+    
+    /* Rodapé - Ajuste de Margem (Compensa o margin: 0 auto do main) */
+    footer {
+        /* Remove o ajuste de margem que só era necessário para o padding do body */
+        margin-left: 0; 
+        margin-right: 0; 
+    }
+}
 
+/* B) TELAS PEQUENAS (Até 600px: Celular) */
+@media (max-width: 600px) {
+    
+    /* AJUSTES DO HEADER (Empilha Logo e Menu) */
+    header {
+        flex-direction: column; 
+        align-items: center; 
+        padding: 15px 15px;
+    }
+    header h1 {
+        font-size: 1.5em; /* Título menor para mobile */
+        margin-bottom: 10px;
+    }
+    
+    /* AJUSTES DO MENU (Empilhamento e Alinhamento à Direita) */
+    .menu-principal ul {
+        flex-direction: column; 
+        width: 100%;
+        margin-top: 15px;
+        gap: 0; /* Remove o gap de desktop */
+    }
+    .menu-principal li {
+        text-align: right; 
+    }
+    .menu-principal li a {
+        padding: 8px 0;
+        border-bottom: 1px dashed #eee; 
+        display: block; 
+    }
+    
+    /* AJUSTES DA SEÇÃO PROJETOS (Empilha Título e Cards) */
+    #projetos {
+        flex-direction: column; 
+        align-items: center; 
+    }
+    #projetos > h2, 
+    #projetos > article {
+        width: 100%;
+        flex-basis: auto; 
+        margin-bottom: 20px; 
+        text-align: center; 
+    }
+    
+    /* Rodapé - Ajuste Final (Compensa o padding lateral do <body>) */
+    footer {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+}
