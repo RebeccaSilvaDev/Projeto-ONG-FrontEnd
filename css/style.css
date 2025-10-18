@@ -465,7 +465,7 @@ button:focus {
     margin-top: 20px;
     /* CORREÇÃO: inline-block para ocupar apenas o tamanho do texto do botão */
     display: inline-block;
-    grid-column: 1 / span 2; /* Faz o botão ocupar a largura total do Fieldset (2 colunas) */
+    grid-column: 1 / 2; /* Faz o botão ocupar a largura total do Fieldset (2 colunas) */
   }
 }
 
