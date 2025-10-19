@@ -362,6 +362,11 @@ button:focus {
     flex-direction: row; /* Coloca os links (li) lado a lado */
     gap: 15px; /* Espaçamento entre os links */
     width: auto;
+    align-items: center;
+  }
+
+  header h1 {
+    margin-bottom: 0; /* Remove a margem inferior que pode empurrar o menu */
   }
 
   nav ul li {
@@ -375,7 +380,7 @@ button:focus {
     /* Remove a linha pontilhada e garante que não ocupe 100% da largura */
     border-bottom: none;
     display: inline-block;
-    padding: 8px 0;
+    padding: 5px 0;
   }
 }
 
