@@ -347,41 +347,6 @@ button:focus {
     margin-left: 0;
     margin-right: 0;
   }
-
-  /* NOVO: Header Horizontal para Celulares Maiores e Tablets */
-  header {
-    flex-direction: row; /* Coloca h1 e nav lado a lado */
-    justify-content: space-between;
-    align-items: center;
-    text-align: left; /* Alinha o texto à esquerda (Logo) */
-  }
-
-  /* NOVO: Menu Horizontal para Celulares Maiores e Tablets */
-  nav ul {
-    display: flex;
-    flex-direction: row; /* Coloca os links (li) lado a lado */
-    gap: 15px; /* Espaçamento entre os links */
-    width: auto;
-    align-items: center;
-  }
-
-  header h1 {
-    margin-bottom: 0; /* Remove a margem inferior que pode empurrar o menu */
-  }
-
-  nav ul li {
-    /* Reset de alinhamento e padding vertical forçados no mobile */
-    padding: 0;
-    text-align: left;
-    margin-bottom: 0;
-  }
-
-  nav ul li a {
-    /* Remove a linha pontilhada e garante que não ocupe 100% da largura */
-    border-bottom: none;
-    display: inline-block;
-    padding: 5px 0;
-  }
 }
 
 /* A) BREAKPOINT 768px - Tablets e Desktops (Transição principal) */
@@ -458,32 +423,29 @@ button:focus {
     font-size: 2.2em;
   }
 
-  /* A seção principal de projetos não precisa mais de Grid */
+  /* AJUSTADO: Aplica o Grid Container à seção de projetos com layout 1/3 e 2/3 */
   #projetos {
-    /* Garante que o H2 volte a ter largura total */
-    display: block;
+    display: grid;
+    /* Define 3 colunas: Título (1.5fr), Cartão 1 (1fr), Cartão 2 (1fr) */
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 30px;
     margin-top: 30px;
   }
 
-  /* O Título H2 VAI TER LARGURA TOTAL, como você quer */
+  /* Faz o Título da Seção ocupar a primeira coluna e alinhar-se ao topo */
   #projetos h2 {
-    border-bottom: 2px solid #ccc; /* Linha de volta! */
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-    border-right: none; /* Remove a linha vertical que estava forçando o Grid */
+    grid-column: 1 / 2;
+    align-self: start;
   }
 
-  /* NOVO: Aplica o Flexbox (ou Grid) SOMENTE aos cards */
-  .cards-container {
-    display: flex; /* ou use display: grid; e grid-template-columns: 1fr 1fr; */
-    gap: 20px;
-    margin-top: 20px;
+  /* Posiciona os artigos (cartões) nas colunas 2 e 3 */
+  #projetos article:nth-of-type(1) {
+    /* Primeiro cartão */
+    grid-column: 2 / 3;
   }
-
-  /* Ajusta a largura dos cards para Flexbox */
-  #projetos article {
-    flex: 1; /* Faz os cards ocuparem o mesmo espaço */
-    margin-bottom: 0; /* Remove a margem extra de baixo */
+  #projetos article:nth-of-type(2) {
+    /* Segundo cartão */
+    grid-column: 3 / 4;
   }
 
   /* Formulário Grid para Desktop */
@@ -495,25 +457,15 @@ button:focus {
 
   fieldset div.full-width {
     grid-column: 1 / span 2;
+  }
+
+  /* CORRIGIDO: Botão de submit no desktop */
+  form button[type="submit"] {
+    width: auto;
     margin-top: 20px;
-  }
-
-  .full-width button[type="submit"] {
-    /* CORREÇÃO: Garante que o botão use a largura do seu conteúdo */
-    width: auto;
+    /* CORREÇÃO: inline-block para ocupar apenas o tamanho do texto do botão */
     display: inline-block;
-
-    padding: 15px 40px;
-
-    font-size: 1.1em;
-    font-weight: bold;
-
-    margin-top: 0;
-  }
-
-  .full-width button[type="submit"] {
-    width: auto;
-    display: inline-block;
+    grid-column: 1 / 2; /* Faz o botão ocupar a largura total do Fieldset (2 colunas) */
   }
 }
 
