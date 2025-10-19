@@ -107,9 +107,9 @@ header {
   padding: 15px 15px; /* Ajustado para 15px lateral para harmonizar com o body */
   border-bottom: 2px solid var(--cor-primaria);
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 header h1 {
@@ -121,12 +121,8 @@ header h1 {
 nav ul {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 15px;
+  flex-direction: column;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 nav ul li {
@@ -141,7 +137,7 @@ nav ul li a {
   color: var(--cor-texto);
   font-weight: bold;
   padding: 8px 0;
-  border-bottom: none;
+  border-bottom: 1px dashed #eee;
   display: block;
 }
 
@@ -351,6 +347,36 @@ button:focus {
     margin-left: 0;
     margin-right: 0;
   }
+
+  /* NOVO: Header Horizontal para Celulares Maiores e Tablets */
+  header {
+    flex-direction: row; /* Coloca h1 e nav lado a lado */
+    justify-content: space-between;
+    align-items: center;
+    text-align: left; /* Alinha o texto à esquerda (Logo) */
+  }
+
+  /* NOVO: Menu Horizontal para Celulares Maiores e Tablets */
+  nav ul {
+    display: flex;
+    flex-direction: row; /* Coloca os links (li) lado a lado */
+    gap: 15px; /* Espaçamento entre os links */
+    width: auto;
+  }
+
+  nav ul li {
+    /* Reset de alinhamento e padding vertical forçados no mobile */
+    padding: 0;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  nav ul li a {
+    /* Remove a linha pontilhada e garante que não ocupe 100% da largura */
+    border-bottom: none;
+    display: inline-block;
+    padding: 8px 0;
+  }
 }
 
 /* A) BREAKPOINT 768px - Tablets e Desktops (Transição principal) */
@@ -385,14 +411,27 @@ button:focus {
     padding: 0;
   }
 
- 
+  /* Header (Flexbox: Horizontal no Desktop) */
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    /* AJUSTADO: Alinha os itens (h1 e nav) verticalmente no centro */
+    align-items: center;
+    padding: 15px 40px;
+  }
 
   header h1 {
     margin-bottom: 0;
     font-size: 1.8em;
   }
 
- 
+  /* Torna a lista de links horizontal */
+  nav ul {
+    display: flex;
+    gap: 25px;
+    padding: 0;
+    flex-direction: row; /* Volta a ser horizontal */
+  }
 
   nav ul li {
     padding: 0;
