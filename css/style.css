@@ -385,27 +385,14 @@ button:focus {
     padding: 0;
   }
 
-  /* Header (Flexbox: Horizontal no Desktop) */
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    /* AJUSTADO: Alinha os itens (h1 e nav) verticalmente no centro */
-    align-items: center;
-    padding: 15px 40px;
-  }
+ 
 
   header h1 {
     margin-bottom: 0;
     font-size: 1.8em;
   }
 
-  /* Torna a lista de links horizontal */
-  nav ul {
-    display: flex;
-    gap: 25px;
-    padding: 0;
-    flex-direction: row; /* Volta a ser horizontal */
-  }
+ 
 
   nav ul li {
     padding: 0;
