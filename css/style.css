@@ -460,15 +460,30 @@ button:focus {
 
   fieldset div.full-width {
     grid-column: 1 / span 2;
+    margin-top: 20px;
   }
 
-  /* CORRIGIDO: Botão de submit no desktop */
-  form button[type="submit"] {
+  .full-width button[type="submit"] {
+    /* CORREÇÃO: Garante que o botão use a largura do seu conteúdo */
     width: auto;
-    margin-top: 20px;
-    /* CORREÇÃO: inline-block para ocupar apenas o tamanho do texto do botão */
     display: inline-block;
-    grid-column: 1 / 2; /* Faz o botão ocupar a largura total do Fieldset (2 colunas) */
+
+    padding: 15px 40px;
+
+    font-size: 1.1em;
+    font-weight: bold;
+
+    margin-top: 0;
+  }
+
+  /* Opcional: Se quiser o botão na primeira coluna e alinhado à esquerda, use: */
+  .full-width {
+    grid-column: 1 / span 2; /* Garante que o container ocupe as duas colunas */
+  }
+
+  .full-width button[type="submit"] {
+    width: auto;
+    display: inline-block;
   }
 }
 
