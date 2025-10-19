@@ -107,9 +107,9 @@ header {
   padding: 15px 15px; /* Ajustado para 15px lateral para harmonizar com o body */
   border-bottom: 2px solid var(--cor-primaria);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
 }
 
 header h1 {
@@ -121,8 +121,12 @@ header h1 {
 nav ul {
   list-style: none;
   padding: 0;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 15px;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 nav ul li {
@@ -137,7 +141,7 @@ nav ul li a {
   color: var(--cor-texto);
   font-weight: bold;
   padding: 8px 0;
-  border-bottom: 1px dashed #eee;
+  border-bottom: none;
   display: block;
 }
 
@@ -474,11 +478,6 @@ button:focus {
     font-weight: bold;
 
     margin-top: 0;
-  }
-
-  /* Opcional: Se quiser o botão na primeira coluna e alinhado à esquerda, use: */
-  .full-width {
-    grid-column: 1 / span 2; /* Garante que o container ocupe as duas colunas */
   }
 
   .full-width button[type="submit"] {
