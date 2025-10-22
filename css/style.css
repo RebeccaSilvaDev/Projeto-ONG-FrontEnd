@@ -2,23 +2,23 @@
 /* 1. SETUP: RESET, VARIÁVEIS CSS E ESTILOS GERAIS           */
 /* ========================================================= */
 
-/* Reset e Box-Sizing para facilitar o cálculo de layout */
+/* Reset Universal e Box-Sizing */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura total */
+  box-sizing: border-box; /* Essencial para que a borda e o padding não aumentem a largura total do elemento */
 }
 
-/* Variáveis para cores da ONG (Sistema de Design) */
+/* Definição de Variáveis CSS (Sistema de Design) */
 :root {
-  --cor-primaria: #007bff; /* Azul vibrante */
-  --cor-secundaria: #28a745; /* Verde para sucesso ou botões de doação */
-  --cor-fundo: #f8f9fa; /* Cinza claro */
-  --cor-texto: #343a40; /* Cinza escuro */
+  --cor-primaria: #007bff; /* Azul vibrante (principal para links e cabeçalhos) */
+  --cor-secundaria: #28a745; /* Verde (para CTAs e elementos de sucesso) */
+  --cor-fundo: #f8f9fa; /* Cinza claro (fundo da página) */
+  --cor-texto: #343a40; /* Cinza escuro (texto principal) */
   --font-principal: "Arial", sans-serif;
 
-  /* VARIÁVEIS ADICIONADAS PARA O MENU MOBILE */
-  --cor-fundo-menu-mobile: #343a40; /* Fundo escuro (mesmo do texto) */
+  /* VARIÁVEIS ADICIONADAS ESPECIFICAMENTE PARA O MENU MOBILE */
+  --cor-fundo-menu-mobile: #343a40; /* Fundo escuro */
   --cor-icones: #fff; /* Ícones brancos */
 }
 
@@ -30,26 +30,26 @@ body {
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
-  padding: 0; /* Garante padding lateral no mobile */
-  overflow-x: hidden;
+  padding: 0;
+  overflow-x: hidden; /* Garante que não haja barra de rolagem horizontal indesejada */
 }
 
 /* ---------------------------------------------------------- */
 /* REGRAS GLOBAIS E RESET                                     */
 /* ---------------------------------------------------------- */
 
-/* Garante que todas as imagens se ajustem à largura do dispositivo. */
+/* Garante que todas as imagens sejam responsivas (se ajustem à largura do dispositivo) */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Contêiner principal usado em todas as páginas para centralizar o conteúdo. */
+/* Contêiner principal para centralizar o conteúdo em larguras maiores */
 .container {
   width: 90%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto; /* Centraliza horizontalmente */
   padding: 20px 0;
 }
 
@@ -58,11 +58,11 @@ picture img {
   width: 100%;
 }
 
-/* --------------------------------------------------------- */
-/* 2. TIPOGRAFIA E LINKS */
-/* --------------------------------------------------------- */
+/* ========================================================= */
+/* 2. TIPOGRAFIA E LINKS                                     */
+/* ========================================================= */
 
-/* Estilo para todos os links e transições */
+/* Estilo para todos os links e efeito de transição suave */
 a {
   color: var(--cor-primaria);
   text-decoration: none;
@@ -103,53 +103,51 @@ p {
   margin-bottom: 15px;
 }
 
-/* NOVO: CORREÇÃO VISUAL PARA LISTAS (Remoção das bolinhas) */
+/* CORREÇÃO VISUAL PARA LISTAS: Remove os marcadores de todas as listas (reset) */
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* NOVO: AJUSTE FINO (Preserva o recuo apenas para a lista da Missão, se necessário) */
-/* Se a seção de Missão usa <ul> para os pontos */
+/* AJUSTE PARA LISTA DA MISSÃO: Garante o alinhamento correto do texto após remoção do marcador */
 #missao ul {
-  /* Mantenha o list-style: none herdado de cima, mas ajuste o alinhamento visual */
-  list-style: none;
+  list-style: none; /* Mantido, mas herdado de 'ul' */
   margin: 0;
   padding: 0;
 }
 
 #missao ul li {
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Corrigido o bug do recuo "torto" ao remover o text-indent forçado */
 }
 
-/* --------------------------------------------------------- */
-/* 3. LAYOUT E ESTRUTURA GERAL (MOBILE FIRST) */
-/* --------------------------------------------------------- */
+/* ========================================================= */
+/* 3. LAYOUT E ESTRUTURA GERAL (MOBILE FIRST)                */
+/* ========================================================= */
 
-/* Header (Flexbox: horizontal no Mobile) */
+/* Header (Configurado com Flexbox para Mobile) */
 header {
   background-color: #fff;
-  padding: 15px 15px; /* Ajustado para 15px lateral para harmonizar com o body */
+  padding: 15px 15px;
   border-bottom: 2px solid var(--cor-primaria);
   display: flex;
-  flex-direction: row; /* Garante que 'h1' e 'nav' fiquem lado a lado */
-  align-items: center; /* Centraliza verticalmente o título e a nav */
-  justify-content: space-between; /* Empurra o título para a esquerda e a nav para a direita */
-  overflow-x: hidden; /* Garante que o conteúdo do header não vaze */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: hidden;
 }
 
 header h1 {
-  font-size: 1.5em; /* Tamanho de título para mobile */
-  margin: 0; /* Ajustado para remover margem inferior que atrapalhava o alinhamento */
+  font-size: 1.5em;
+  margin: 0; /* Remove margens extras para alinhamento */
   margin-bottom: 10px;
 }
 
 /* -------------------------------------------------------------*/
-/* NOVO: ESTILOS DO MENU LATERAL MOBILE (Mobile First - Padrão) */
+/* ESTILOS DO MENU LATERAL MOBILE (Padrão de UI Responsiva)     */
 /* ------------------------------------------------------------ */
 
-/* Esconde o menu de desktop por padrão */
+/* Esconde o menu de desktop por padrão (Mobile-First) */
 .menu-principal {
   display: none;
 }
@@ -158,24 +156,24 @@ header h1 {
 .btn-abrir-menu {
   cursor: pointer;
   font-size: 30px;
-  color: var(--cor-primaria); /* Usa a cor principal para o ícone */
+  color: var(--cor-primaria);
   z-index: 10;
 }
 
-/* O Menu Lateral em si */
+/* O Menu Lateral em si (Escondido com largura zero e animado com transition) */
 .menu-mobile {
   background-color: var(--cor-fundo-menu-mobile);
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
-  width: 0%; /* ESCONDIDO: Largura zero */
+  width: 0%;
   z-index: 1000;
   overflow-x: hidden;
-  transition: width 0.5s ease-in-out; /* Animação */
+  transition: width 0.5s ease-in-out; /* Efeito de abertura suave */
 }
 
-/* Estado de Abertura (Adicionado via JavaScript) */
+/* Estado de Abertura (Ativado por JavaScript) */
 .menu-mobile.abrir-menu {
   width: 70%;
   min-width: 250px;
@@ -200,20 +198,20 @@ header h1 {
 }
 
 .menu-mobile nav ul li a {
-  color: var(--cor-icones); /* Links brancos */
+  color: var(--cor-icones);
   text-decoration: none;
   font-size: 1.1em;
   display: block;
   padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  font-weight: bold;
+  font-weight: bold; /* Negrito aplicado ao Mobile */
 }
 
 .menu-mobile nav ul li a:hover {
   color: var(--cor-secundaria);
 }
 
-/* O Overlay (Fundo escuro) */
+/* O Overlay (Fundo escuro semitransparente) */
 .overlay-menu {
   background-color: rgba(0, 0, 0, 0.8);
   height: 100%;
@@ -222,10 +220,10 @@ header h1 {
   top: 0;
   left: 0;
   z-index: 999;
-  display: none; /* ESCONDIDO por padrão */
+  display: none; /* Escondido por padrão, ativado via JS */
 }
 
-/* Conteúdo Principal */
+/* Conteúdo Principal (Centralizado e com 'cartão' de fundo branco) */
 main {
   padding: 20px 15px; /* Padding interno para telas pequenas */
   min-height: 80vh;
@@ -249,7 +247,7 @@ section:last-of-type {
   border-bottom: none;
 }
 
-/* Imagens Ilustrativas */
+/* Imagens Ilustrativas com proporção definida */
 #missao img,
 #projetos article img {
   max-width: 100%;
@@ -261,7 +259,7 @@ section:last-of-type {
   aspect-ratio: 16 / 9;
 }
 
-/* Footer (Ajuste de Margem para cobrir 100% da largura da tela no mobile) */
+/* Footer (Ajustado para cobrir a largura total da tela - 100vw) */
 footer {
   text-align: center;
   padding: 20px 15px;
@@ -278,7 +276,7 @@ footer {
 /* 4. COMPONENTES E ESTILOS REUTILIZÁVEIS                    */
 /* --------------------------------------------------------- */
 
-/* Botões de Ação */
+/* Botões de Ação com Transição (Feedback visual ao hover) */
 button,
 .btn {
   background-color: var(--cor-secundaria);
@@ -295,11 +293,11 @@ button,
 button:hover,
 .btn:hover {
   background-color: #1e7e34;
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Efeito de elevação sutil */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Cartões de Projeto */
+/* Cartões de Projeto com efeito de hover (micro-interação) */
 #projetos article {
   background-color: white;
   padding: 20px;
@@ -370,19 +368,20 @@ select {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Estilo para a lista de "O que Esperamos de Você" */
+/* ESTILOS ESPECÍFICOS DA PÁGINA CADASTRO (Chamada do Voluntário) */
+/*Garante que a lista de itens na chamada do voluntário tenha marcadores visíveis */
 #chamada-voluntario ul {
-  list-style: circle; /* Usa bolinhas vazias */
-  padding-left: 20px; /* Adiciona o recuo padrão de lista */
-  margin-top: 10px; /* Espaçamento acima da lista */
-  margin-bottom: 10px; /* Espaçamento abaixo da lista */
+  list-style: circle; /* Usa marcadores de círculo (bolinhas vazias) */
+  padding-left: 20px; /* Adiciona o recuo padrão para listas */
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-/* --------------------------------------------------------- */
+/* ========================================================= */
 /* 5. ESTILOS DE ERRO E ACESSIBILIDADE (WCAG 2.1 AA)         */
-/* --------------------------------------------------------- */
+/* ========================================================= */
 
-/* Foco para Acessibilidade (Teclado) - WCAG AA */
+/* Foco para Acessibilidade (Feedback visual ao usar o teclado - Tab) */
 input:focus,
 select:focus {
   border-color: var(--cor-primaria);
@@ -397,19 +396,21 @@ button:focus {
   outline-offset: 2px;
 }
 
+/* Campo com Erro (Borda vermelha para indicar falha na validação) */
 .campo-erro {
   border: 2px solid #cc0000 !important;
   box-shadow: 0 0 5px rgba(204, 0, 0, 0.5);
 }
 
+/* Mensagem de Erro (Texto vermelho para contraste com o campo) */
 .mensagem-erro {
   color: #cc0000;
-  font-size: 0.9em; /* AJUSTE PARA O TAMANHO MENOR (Escolhemos 0.9em como um bom equilíbrio) */
+  font-size: 0.9em; /* Tamanho de fonte reduzido para não ser muito invasivo */
   margin-top: 4px;
   display: block;
   min-height: 1.2em;
   font-weight: 600;
-  width: 100%; /* Mantém a largura de 100% */
+  width: 100%;
 }
 
 /* ========================================================= */
@@ -418,36 +419,34 @@ button:focus {
 
 /* B) BREAKPOINT 480px - Celulares Grandes em Landscape */
 @media (min-width: 480px) {
-  /* Ajustando o Footer para remover o ajuste de margem lateral forçado pelo body */
+  /* Ajustes menores para garantir o bom comportamento em telas horizontais pequenas */
   footer {
     margin-left: 0;
     margin-right: 0;
   }
 
-  /* NOVO: Header Horizontal para Celulares Maiores e Tablets */
-  /* O menu de desktop (.menu-principal) ainda está escondido, e o mobile (.menu-mobile) é usado */
   header {
-    flex-direction: row; /* Coloca h1 e nav lado a lado */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    text-align: left; /* Alinha o texto à esquerda (Logo) */
+    text-align: left;
   }
 
   header h1 {
     margin: 0;
     padding: 0;
-    line-height: 1; /* Garante que a altura da linha seja mínima */
-    align-self: center; /* Garante que o item se alinhe ao centro do container HEADER */
+    line-height: 1;
+    align-self: center;
   }
 }
 
 /* A) BREAKPOINT 768px - Tablets e Desktops (Transição principal) */
 @media (min-width: 768px) {
+  /* Otimização do Layout Principal */
   body {
     padding: 0;
   }
 
-  /* O main agora se centralizará perfeitamente na tela. */
   main {
     max-width: 1200px;
     margin: 0 auto;
@@ -455,40 +454,39 @@ button:focus {
   }
 
   footer {
-    /* Removemos o ajuste de margem negativo que era necessário antes */
     margin-left: 0;
     margin-right: 0;
-    padding: 20px 40px; /* Adiciona padding interno ao Footer */
+    padding: 20px 40px;
   }
 
   /* Header (Flexbox: Horizontal no Desktop) */
   header {
     flex-direction: row;
     justify-content: space-between;
-    /* AJUSTADO: Alinha os itens (h1 e nav) verticalmente no centro */
     align-items: center;
     padding: 15px 40px;
   }
 
-  /* NOVO: Esconde os elementos do menu mobile */
+  /* Oculta os elementos do Menu Mobile e mostra o Desktop */
   .btn-abrir-menu,
   .menu-mobile,
   .overlay-menu {
     display: none;
   }
 
-  /* NOVO: Mostra o menu de desktop */
+  /* Mostra o menu de navegação completo */
   .menu-principal {
     display: block;
     font-weight: bold;
   }
 
+  /* Estilos do Header e Menu Desktop */
   header h1 {
     margin-bottom: 0;
     font-size: 1.8em;
   }
 
-  /* Estilos do Menu Desktop */
+  /* Torna a lista de links horizontal */
   .menu-principal nav ul {
     display: flex;
     gap: 25px;
@@ -497,9 +495,9 @@ button:focus {
   }
 
   .menu-principal nav ul li a {
-    border-bottom: none;
+    border-bottom: none; /* Remove a linha do mobile */
     color: var(--cor-texto);
-    font-weight: bold;
+    font-weight: bold; /* Garante o negrito nos links */
   }
 
   /* Torna a lista de links horizontal */
@@ -521,10 +519,9 @@ button:focus {
     color: var(--cor-texto); /* Garante que a cor seja a do texto */
   }
 
-  /* Tipografia Desktop */
+  /* Tipografia Desktop (Aumento de tamanho para telas maiores) */
   h1 {
     font-size: 3em;
-    /* Ajuste Fino: Reduz a margem inferior do título principal */
     margin-bottom: 15px;
   }
 
@@ -532,38 +529,41 @@ button:focus {
     font-size: 2.2em;
   }
 
-  /* NOVO: Aplica o Flexbox (ou Grid) SOMENTE aos cards */
+  /* Layout Flexbox/Grid para Cartões de Projeto */
   .cards-container {
-    display: flex; /* ou use display: grid; e grid-template-columns: 1fr 1fr; */
+    display: flex;
     gap: 20px;
     margin-top: 20px;
   }
 
   /* Ajusta a largura dos cards para Flexbox */
   #projetos article {
-    flex: 1; /* Faz os cards ocuparem o mesmo espaço */
-    margin-bottom: 0; /* Remove a margem extra de baixo */
+    flex: 1; /* Distribui o espaço igualmente entre os cards */
+    margin-bottom: 0;
   }
 
-  /* Formulário Grid para Desktop */
+  /* Layout de Formulário em Grid para Desktop (Duas colunas) */
   fieldset {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
 
+  /* Permite que certos campos ocupem a largura total do Grid */
   fieldset div.full-width {
     grid-column: 1 / span 2;
     margin-top: 20px;
   }
 }
 
+/* Ajuste no tamanho do botão de Cadastro */
 button[type="submit"] {
   font-size: 1.1em;
 }
 
 /* C) BREAKPOINT 1200px - Telas Ultra-Grandes */
 @media (min-width: 1200px) {
+  /* Aumento da largura máxima para melhor aproveitamento em telas grandes */
   .container,
   main {
     max-width: 1400px;
