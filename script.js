@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.getElementById("cadastro-form");
 
   // ==================================================================
-  // NOVO: Captura dos Elementos do Menu Mobile
+  // Captura dos Elementos do Menu Mobile
   // O Menu é um componente essencial para a responsividade do projeto.
   // ==================================================================
   const btnAbrirMenu = document.getElementById("btn-menu");
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const menuLinks = document.querySelectorAll(".menu-mobile nav ul li a");
 
   // ====================================================================
-  // NOVO: Listeners do Menu Mobile
+  // Listeners do Menu Mobile
   // Configuração dos eventos de clique para abrir/fechar o menu lateral.
   // ====================================================================
   if (btnAbrirMenu) {
