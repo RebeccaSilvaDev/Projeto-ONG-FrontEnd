@@ -3,50 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Transformando Vidas | Início e Missão</title>
+    <title>Transformando Vidas</title>
   </head>
   <body>
     <header>
       <h1>Transformando Vidas</h1>
-      <nav class="menu-principal">
+
+      <div class="btn-abrir-menu" id="btn-menu">
+        <i class="bi bi-list"></i>
+      </div>
+
+      <nav class="menu-principal menu-desktop">
         <ul>
-          <li>
-            <a href="index.html">
-              <svg viewBox="0 0 24 24" class="icone-menu">
-                <path
-                  d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
-                />
-              </svg>
-              <span aria-current="page">Início</span>
-              Início
-            </a>
-          </li>
-          <li>
-            <a href="projetos.html">
-              <svg viewBox="0 0 24 24" class="icone-menu">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z" />
-              </svg>
-              <span aria-current="page">Início</span>
-              Projetos Sociais e Doações
-            </a>
-          </li>
-          <li>
-            <a href="cadastro.html">
-              <svg viewBox="0 0 24 24" class="icone-menu">
-                <path
-                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                />
-              </svg>
-              <span aria-current="page">Início</span>
-              Cadastre-se para Voluntariado
-            </a>
-          </li>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+          <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
         </ul>
       </nav>
+      <div class="menu-mobile" id="menu-mobile">
+        <div class="btn-fechar">
+          <i class="bi bi-x-lg"></i>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+            <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!--Menu de Navegação-->
     </header>
 
-    <main class id="container">
+    <div class="overlay-menu" id="overlay-menu"></div>
+
+    <main>
       <section id="missao">
         <h2>Nossa Missão</h2>
         <p>
@@ -77,6 +74,7 @@
             <b>autonomia</b>.
           </li>
         </ul>
+        <!--Conteúdo em Texto da Página-->
 
         <picture>
           <source srcset="image/missao.webp" type="image/webp" />
@@ -86,6 +84,7 @@
           />
         </picture>
       </section>
+      <!--Conteúdo em Imagem da Página-->
 
       <section id="contato">
         <h2>Informações de Contato</h2>
@@ -96,10 +95,13 @@
           Email: contato@ong.org
         </address>
       </section>
+      <!--Informações para Contato-->
     </main>
 
     <footer>
-      <p>&copy; 2025 Nome da ONG. Todos os direitos reservados.</p>
+      <p>&copy; 2025 Transformando Vidas. Todos os direitos reservados.</p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
