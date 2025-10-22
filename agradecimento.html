@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Transformando Vidas | Cadastro Concluído</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <h1>Transformando Vidas</h1>
-        <nav class="menu-principal">
-            <ul>
-                <li>
-                    <a href="index.html">
-                        <svg viewBox="0 0 24 24" class="icone-menu">
-                            <path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
-                        </svg>
-                        Início
-                    </a>
-                </li>
-                <li>
-                    <a href="projetos.html">
-                        <svg viewBox="0 0 24 24" class="icone-menu">
-                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/>
-                        </svg>
-                        Projetos Sociais e Doações
-                    </a>
-                </li>
-                <li>
-                    <a href="cadastro.html">
-                        <svg viewBox="0 0 24 24" class="icone-menu">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                        Cadastre-se para Voluntariado
-                    </a>
-                </li>
-            </ul>
+      <h1>Transformando Vidas</h1>
+
+      <div class="btn-abrir-menu" id="btn-menu">
+        <i class="bi bi-list"></i>
+      </div>
+
+      <nav class="menu-principal menu-desktop">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+          <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+        </ul>
+      </nav>
+      <div class="menu-mobile" id="menu-mobile">
+        <div class="btn-fechar">
+          <i class="bi bi-x-lg"></i>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+            <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+          </ul>
         </nav>
+      </div>
+      <!--Menu de Navegação-->
     </header>
 
-<main class="agradecimento">
-    <section class="sucesso-cadastro">
+    <div class="overlay-menu" id="overlay-menu"></div>
+
+    <main class="agradecimento">
+      <section class="sucesso-cadastro">
         <h2>🎉 Cadastro Concluído com Sucesso!</h2>
-        <p>Agradecemos imensamente por se juntar à missão da Transformando Vidas. Sua vontade de ajudar é o primeiro passo para transformar vidas.</p>
-        <p>Em breve, nossa equipe entrará em contato com você para as próximas etapas.</p>
-        
+        <p>
+          Agradecemos imensamente por se juntar à missão da Transformando Vidas.
+          Sua vontade de ajudar é o primeiro passo para transformar vidas.
+        </p>
+        <p>
+          Em breve, nossa equipe entrará em contato com você para as próximas
+          etapas.
+        </p>
+
         <div class="opcoes-retorno">
-            <a href="index.html" class="btn">Voltar para a Página Inicial</a>
-            <a href="projetos.html" class="btn">Conhecer Nossos Projetos</a>
+          <a href="index.html" class="btn">Voltar para a Página Inicial</a>
+          <a href="projetos.html" class="btn">Conhecer Nossos Projetos</a>
         </div>
-    </section>
-</main>
+      </section>
+    </main>
 
-<footer>
-    <p>&copy; 2025 Transformando Vidas. Todos os direitos reservados.</p>
-</footer>
+    <footer>
+      <p>&copy; 2025 Transformando Vidas. Todos os direitos reservados.</p>
+    </footer>
 
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
