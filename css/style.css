@@ -1,0 +1,913 @@
+/* ============================================================= */
+/* 1. SETUP: CONFIGURAÇÕES GERAIS E RESET (VARIÁVEIS E ESTILOS)  */
+/* ============================================================= */
+
+/**
+ * 1.1 RESET UNIVERSAL E BOX-SIZING
+ * Aplica um reset em margens e paddings padrão do navegador.
+ * Garante o modelo de caixa 'border-box' para facilitar o layout responsivo.
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* O 'border-box' evita que padding e bordas aumentem a largura total do elemento */
+}
+
+/**
+ * 1.2 DEFINIÇÃO DE VARIÁVEIS CSS (DESIGN TOKENS)
+ * Cria variáveis para cores, fontes e valores padronizados.
+ * Facilita a gestão de temas e garante consistência visual (Sistema de Design).
+ */
+/* Definição de Variáveis CSS (Sistema de Design) */
+:root {
+  /* 1. PALETA DE CORES (8 Cores) */
+  --color-primary: #007bff; /* Azul (Principal para identidade visual e interações) */
+  --color-primary-dark: #0056b3; /* Azul (Hover/Active) */
+  --color-secondary: #28a745; /* Verde (Ênfase para CTAs e estados de sucesso) */
+  --color-secondary-dark: #1e7e34; /* Verde (Hover/Active) */
+  --color-neutral-light: #f8f9fa; /* Cinza claro (Fundo da página principal) */
+  --color-neutral-medium: #343a40; /* Bordas/Linhas */
+  --color-neutral-dark: #343a40; /* Cinza escuro (Texto de corpo) */
+  --color-neutral-white: #ffffff; /* Branco para background */
+  --color-alert-danger: #dc3545; /* Alerta de Erro/Validação */
+  --color-alert-success: #28a745; /* Alerta de Sucesso */
+
+  /* 2. TIPOGRAFIA HIERÁRQUICA (5 Tamanhos) */
+  --font-family-base: "Arial", sans-serif;
+  --font-base: 1rem; /* 16px - Base */
+  --font-size-sm: 0.875rem; /* 14px - Small (Auxiliar) */
+  --font-size-lg: 1.25rem; /* 20px - Large (H3) */
+  --font-size-xl: 2rem; /* 32px - Extra Large (H2) */
+  --font-size-xxl: 3rem; /* 48px - Huge (H1) */
+
+  /* 3. SISTEMA DE ESPAÇAMENTO MODULAR (8x) */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+  --space-xl: 3rem; /* 48px */
+  --space-xxl: 4rem; /* 64px */
+
+  /* Variáveis de Componentes */
+  --border-radius: 0.5rem; /* 8px */
+  --transition-speed: 0.3s;
+
+  /* VARIÁVEIS ESPECÍFICAS PARA COMPONENTES MENU MOBILE */
+  --cor-fundo-menu-mobile: #343a40; /* Fundo escuro para a navegação off-canvas */
+  --cor-icones: #fff; /* Cor dos ícones e texto dentro do menu mobile escuro */
+}
+
+/**
+ * 1.3 ESTILO BASE (MOBILE-FIRST)
+ * Configurações iniciais do 'body' que definem a tipografia, cores de fundo e fluxo de conteúdo.
+ */
+/* Estilo Base (Mobile-First) - Adição do CSS Grid principal */
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-neutral-light);
+  color: var(--color-neutral-dark);
+  font-size: var(
+    --font-base
+  ); /* Tamanho base para acessibilidade (equivalente a 1em) */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Previne barras de rolagem horizontais indesejadas */
+
+  /* Estrutura da Página com Grid Principal */
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* ---------------------------------------------------------- */
+/* REGRAS GLOBAIS E UTILITÁRIAS                               */
+/* ---------------------------------------------------------- */
+
+/**
+ * Imagens Responsivas
+ * Garante que todas as imagens se ajustem à largura máxima de seu contêiner.
+ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Remove o espaço vertical extra padrão do 'inline' */
+  border-radius: var(--border-radius);
+}
+
+/**
+ * Contêiner de Centralização
+ * Componente de layout para limitar a largura do conteúdo e centralizá-lo na tela.
+ */
+.container {
+  width: 90%;
+  max-width: 1200px; /* Largura máxima para telas grandes */
+  margin: 0 auto; /* Centraliza horizontalmente o bloco */
+  padding: var(--space-sm) 0;
+}
+
+/**
+ * Imagem dentro de Elemento 'picture'
+ * Garante que a imagem dentro do elemento semântico <picture> ocupe 100% do espaço.
+ */
+picture img {
+  width: 100%;
+}
+
+/* ========================================================= */
+/* 2. TIPOGRAFIA E ELEMENTOS DE TEXTO                        */
+/* ========================================================= */
+
+/**
+ * Estilos de Links e Interatividade
+ * Define a cor padrão, remove a decoração (sublinhado) e adiciona transição suave.
+ */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease; /* Transição para efeito de hover suave */
+}
+
+a:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+/**
+ * Estilos de Títulos (Hierarquia Semântica)
+ * Define a tipografia, peso da fonte e espaçamento vertical para H1, H2 e H3.
+ */
+h1 {
+  font-size: var(--font-size-xxl); /* Em unidades 'em' para escalabilidade */
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-neutral-dark);
+  border-bottom: 2px solid var(--color-neutral-medium); /* Linha divisória para separar seções */
+  padding-bottom: var(--space-xs);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-secondary);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: var(--space-sm); /* Espaçamento entre parágrafos */
+}
+
+/**
+ * Reset de Listas Não Ordenadas
+ * Remove os marcadores e paddings padrão de todas as listas.
+ */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Ajustes Específicos para a Lista da Seção "Missão"
+ * Adiciona espaçamento vertical para melhor legibilidade da lista.
+ */
+#missao ul {
+  list-style: none; /* Mantido, mas herdado de 'ul' */
+  margin: 0;
+  padding: 0;
+}
+
+#missao ul li {
+  margin-bottom: 10px; /* Correção para o bug do recuo "torto" ao remover o text-indent forçado */
+}
+
+/* Estiliza os parágrafos para o layout desejado */
+#missao p {
+  /* Garante espaçamento adequado entre os blocos */
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-md);
+  padding: 0; /* Zera qualquer padding de parágrafo herdado */
+  line-height: 1.7; /* Mantém a legibilidade */
+}
+
+/* Garante o Negrito e o espaçamento correto após o título */
+#missao p strong {
+  font-weight: 700 !important; /* Força o negrito */
+  color: var(--color-neutral-dark) !important;
+  margin-right: 0.5rem !important; /* Espaço entre o título e o texto */
+}
+
+/* Garante que o bloco de conteúdo não crie recuo extra */
+.bloco-missao {
+  margin-top: var(--space-sm);
+  padding: 0;
+}
+
+/* ========================================================= */
+/* 3. LAYOUT DA PÁGINA (HEADER, MAIN, FOOTER)                */
+/* ========================================================= */
+
+/**
+ * 3.1 HEADER E NAVEGAÇÃO
+ * Utiliza Flexbox para o layout Mobile-First: Logo e Botão Hambúrguer.
+ */
+header {
+  grid-area: header;
+
+  background-color: var(--color-neutral-white);
+  padding: var(--space-sm) var(--space-sm);
+  border-bottom: 2px solid var(--color-primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Alinhamento vertical centralizado */
+  justify-content: space-between; /* Distribui logo e botão de menu */
+  overflow-x: hidden;
+}
+
+header h1 {
+  font-size: 1.5em;
+  margin: 0; /* Remove margens extras para alinhamento */
+}
+
+/* -------------------------------------------------------------*/
+/* COMPONENTE: MENU LATERAL MOBILE (Off-Canvas)                 */
+/* ------------------------------------------------------------ */
+
+/* Esconde o menu de navegação completo (Desktop) por padrão */
+.menu-principal {
+  display: none;
+}
+
+/* Botão para Abrir Menu (Hambúrguer) */
+.btn-abrir-menu {
+  cursor: pointer;
+  font-size: var(--space-lg);
+  color: var(--color-primary);
+  z-index: 10;
+}
+
+/* O Menu Lateral (Off-Canvas) em si */
+.menu-mobile {
+  background-color: var(--cor-fundo-menu-mobile);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0%; /* Escondido por padrão */
+  z-index: 1000;
+  overflow-x: hidden;
+  transition: width var(--transition-speed) ease-in-out; /* Animação de abertura/fechamento suave */
+}
+
+/* Estado Ativo: Largura total quando aberto (ativado por JavaScript) */
+.menu-mobile.abrir-menu {
+  width: 70%;
+  min-width: 250px;
+}
+
+/* Botão de Fechar ('X') */
+.menu-mobile .btn-fechar {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--cor-icones);
+  text-align: right;
+  cursor: pointer;
+  font-size: var(--space-lg);
+}
+
+/* Estilização dos Links no Menu Lateral (Vertical com Flexbox) */
+.menu-mobile nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: var(--space-md) var(--space-lg);
+  gap: var(--space-sm);
+}
+
+.menu-mobile nav ul li a {
+  color: var(--cor-icones);
+  text-decoration: none;
+  font-size: var(--font-base);
+  display: block;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: bold; /* Negrito aplicado ao Mobile */
+}
+
+.menu-mobile nav ul li a:hover {
+  color: var(--color-secondary);
+}
+
+/* Overlay (Fundo semitransparente que cobre a tela durante a abertura do menu) */
+.overlay-menu {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none; /* Ativado via JS junto com a abertura do menu */
+}
+
+/**
+ * 3.2 CONTEÚDO PRINCIPAL (MAIN)
+ * Define a área de conteúdo central com estilo de "cartão" (fundo branco, sombra).
+ */
+main {
+  grid-area: main;
+
+  padding: var(--space-sm) var(--space-xs); /* Padding interno para telas pequenas */
+  min-height: 80vh; /* Garante que o corpo tenha pelo menos 80% da altura da tela */
+  max-width: 1200px; /* O valor de 900px foi aumentado */
+  margin: var(--space-sm) auto;
+  background-color: var(--color-neutral-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra suave para efeito de elevação */
+}
+
+/* Estilos de Seções Internas */
+section {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-neutral-light); /* Linha de separação entre seções */
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-xs);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+/* Imagens Ilustrativas em Seções (Aplica proporção definida - 16:9) */
+#missao img,
+#projetos article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: var(--space-md) auto;
+  border-radius: var(--border-radius);
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorção */
+  aspect-ratio: 16 / 9; /* Define a proporção para manter o layout */
+}
+
+/**
+ * 3.3 FOOTER
+ * Rodapé de largura total (100vw) com cores de alto contraste.
+ */
+footer {
+  grid-area: footer;
+
+  text-align: center;
+  padding: var(--space-sm) var(--space-xs);
+  background-color: var(--color-neutral-dark);
+  color: var(--color-neutral-white);
+  margin-top: var(--space-md);
+  border-top: 5px solid var(--color-secondary);
+}
+
+/* ESTILOS ESPECÍFICOS DA PÁGINA CADASTRO (Chamada do Voluntário) */
+/*Garante que a lista de itens na chamada do voluntário tenha marcadores visíveis */
+#chamada-voluntario ul {
+  list-style: circle; /* Usa marcadores de círculo (bolinhas vazias) */
+  padding-left: var(--space-md); /* Adiciona o recuo padrão para listas */
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+/* Regra para a página de Projetos/Index (onde o ID é #voluntariado) */
+#voluntariado ul {
+  list-style: disc;
+  padding-left: var(--space-md);
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+/* --------------------------------------------------------- */
+/* 4. COMPONENTES REUTILIZÁVEIS                              */
+/* --------------------------------------------------------- */
+
+/**
+ * 4.1 BOTÕES DE AÇÃO (.btn e button)
+ * Estilo padrão para botões com feedback visual (hover/transição).
+ */
+button,
+.btn {
+  background-color: var(--color-secondary);
+  color: var(--color-neutral-white);
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--color-secondary-dark);
+  transform: translateY(-2px); /* Efeito de elevação sutil ao interagir */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:focus,
+.btn:focus {
+  /* Foco acessível no botão */
+  outline: 2px solid var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:active,
+.btn:active {
+  transform: translateY(0); /* Retorna ao estado normal */
+  box-shadow: none;
+  background-color: var(--color-secondary-dark);
+}
+
+button:disabled,
+.btn:disabled {
+  background-color: var(
+    --color-neutral-medium
+  ); /* Cor neutra para desabilitado */
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/**
+ * 4.2 CARTÕES DE PROJETO
+ * Componente de cartão com elevação (box-shadow) e micro-interação ao hover.
+ */
+#projetos article {
+  background-color: var(--color-neutral-white);
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: var(--space-md);
+  overflow: hidden;
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+}
+
+#projetos article:hover {
+  transform: translateY(-5px); /* Move o cartão ligeiramente para cima */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte para destaque */
+}
+
+/* Imagens Ilustrativas do cartões */
+#projetos article img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: var(--space-sm);
+}
+
+/* >> COMPONENTE: BADGE/TAG    */
+.badge {
+  display: inline-block;
+  padding: calc(var(--space-xs) / 2) var(--space-xs);
+  font-size: var(--font-size-sm);
+  line-height: 1;
+  text-align: center;
+  border-radius: 10rem;
+  background-color: var(--color-primary);
+  color: white;
+  margin-left: var(--space-xs);
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+/* Variações de Badge (Exemplo) */
+.badge-success {
+  background-color: var(--color-alert-success);
+}
+.badge-danger {
+  background-color: var(--color-alert-danger);
+}
+.badge-secondary {
+  background-color: var(--color-secondary);
+}
+/* << FIM NOVO COMPONENTE */
+
+/* >> COMPONENTE: ALERT/TOAST (Feedback Visual) */
+.alert {
+  padding: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  font-weight: bold;
+}
+
+.alert-danger {
+  color: var(--color-neutral-white);
+  background-color: var(--color-alert-danger);
+  border-color: var(--color-alert-danger);
+}
+
+.alert-success {
+  color: var(--color-neutral-white);
+  background-color: var(--color-alert-success);
+  border-color: var(--color-alert-success);
+}
+/* << FIM NOVO COMPONENTE */
+
+/**
+ * 4.3 ESTILOS DE FORMULÁRIO (BASE)
+ * Estrutura e estilo base para os elementos de input.
+ */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+fieldset {
+  border: 1px solid var(--color-neutral-medium);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border-radius: var(--border-radius);
+  background-color: var(--color-neutral-white);
+}
+
+legend {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--color-primary);
+  padding: 0 10px;
+  margin-left: -10px;
+  margin-bottom: var(--space-xs);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: var(--space-xs);
+  margin-bottom: calc(var(--space-xs) / 2);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: var(--space-xs);
+  border: 1px solid var(--color-neutral-medium);
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: calc(var(--space-xs) / 2);
+  /* Ajuste Fino para espaçamento entre campos */
+  margin-bottom: var(--space-md);
+  transition: border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+}
+
+/* ========================================================= */
+/* 5. ACESSIBILIDADE E FEEDBACK VISUAL                       */
+/* (Foco em WCAG 2.1 AA para estados de erro e interativos)  */
+/* ========================================================= */
+
+/**
+ * Foco para Acessibilidade (Teclado)
+ * Define um estilo de foco altamente visível para usuários que navegam por teclado (via Tab).
+ */
+input:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none; /* Remove o outline padrão do navegador */
+}
+
+a:focus,
+button:focus {
+  outline: 2px solid var(--color-secondary);
+  box-shadow: 0 0 5px var(--color-primary);
+  outline-offset: 2px;
+}
+
+/**
+ * Estilos de Validação (Feedback de Erro)
+ */
+
+/* Campo com Erro (Alerta visual para indicar falha na validação) */
+.campo-erro {
+  border: 2px solid var(--color-alert-danger) !important;
+  box-shadow: 0 0 5px rgba(204, 0, 0, 0.5);
+}
+
+/* Mensagem de Erro (Texto de alerta) */
+.mensagem-erro {
+  color: var(--color-alert-danger);
+  font-size: 0.9em; /* Tamanho de fonte reduzido para não ser muito invasivo */
+  margin-top: 4px;
+  display: block;
+  min-height: 1.2em; /* Garante que o layout não "salte" quando o erro aparece */
+  font-weight: 600;
+  width: 100%;
+}
+
+/* ========================================================= */
+/* 6. RESPONSIVIDADE (MEDIA QUERIES)                         */
+/* (Aplica ajustes de layout para telas maiores)             */
+/* ========================================================= */
+
+/* ---------------------------------------------------------- */
+/* BREAKPOINT: 375px (Smartphones Padrão/iPhone Retrato)      */
+/* ---------------------------------------------------------- */
+@media (min-width: 375px) {
+  /* Ajusta o padding horizontal do header para telas um pouco maiores */
+  header {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+
+  /* Aumenta a largura do menu off-canvas para aproveitar melhor a tela */
+  .menu-mobile.abrir-menu {
+    width: 80%; /* Aumenta de 70% para 80% da tela */
+  }
+
+  /* Reduz o padding do main, otimizando o espaço para o conteúdo */
+  main {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+}
+
+/* ---------------------------------------------------------- */
+/* BREAKPOINT: 480px (Celulares Grandes/Landscape)            */
+/* ---------------------------------------------------------- */
+@media (min-width: 480px) {
+  /* Ajustes menores para garantir o bom comportamento em telas horizontais pequenas */
+  footer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  header h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    align-self: center;
+  }
+}
+
+/* -------------------------------------------------------------  */
+/* BREAKPOINT: 768px (Tablets e Desktops) - Transição Principal   */
+/* -------------------------------------------------------------  */
+@media (min-width: 768px) {
+  /* Otimização do Layout Principal (Aumenta o padding e a largura) */
+  main {
+    max-width: 1200px;
+    margin: var(--space-lg) auto; /* Espaçamento maior em telas grandes */
+    padding: var(--space-lg) var(--space-lg); /* >> NOVO DS */
+  }
+
+  /* NAVEGAÇÃO: Oculta Mobile e Exibe Desktop */
+  .btn-abrir-menu,
+  .menu-mobile,
+  .overlay-menu {
+    display: none; /* Esconde todos os elementos do menu mobile */
+  }
+
+  /* Mostra o menu de navegação completo */
+  .menu-principal {
+    display: block; /* Exibe a navegação completa para desktop */
+    font-weight: bold;
+  }
+
+  /* Estilos do Header e Menu Desktop */
+  header {
+    padding: var(--space-sm) var(--space-lg);
+  }
+
+  /* Estilos do Menu Desktop */
+  .menu-principal nav ul {
+    display: flex;
+    gap: var(--space-md);
+    padding: 0;
+    flex-direction: row; /* Torna a lista de links horizontal */
+  }
+
+  .menu-principal nav ul li a {
+    border-bottom: none; /* Remove a linha divisória do mobile */
+    color: var(--color-neutral-dark);
+    font-weight: bold; /* Garante o negrito nos links */
+  }
+
+  .submenu {
+    display: none; /* Esconde por padrão */
+    position: absolute;
+    top: 100%; /* Posiciona logo abaixo do link principal */
+    left: 0;
+    min-width: 200px;
+    background-color: var(--color-neutral-white);
+    border: 1px solid var(--color-neutral-medium);
+    z-index: 50;
+    padding: var(--space-xs) 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .submenu li a {
+    padding: var(--space-xs) var(--space-sm);
+    display: block;
+    color: var(--color-neutral-dark);
+  }
+
+  .submenu li a:hover {
+    background-color: var(--color-neutral-light);
+  }
+
+  /* Mostrar o submenu ao passar o mouse */
+  .menu-principal nav ul li:hover > .submenu {
+    display: block;
+  }
+  /* << FIM Submenu Dropdown */
+
+  /* Layout Flexbox/Grid para Cartões de Projeto */
+  /* Container que hospeda o sistema de 12 colunas */
+  .grid-12-container,
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12 colunas */
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  /* Classes para o Sistema de 12 Colunas (Mobile/Tablet/Desktop) */
+  /* Mobile/Tablet (768px+): 2 colunas */
+  .col-md-6 {
+    grid-column: span 6;
+  } /* 2 cards por linha (12/6=2) */
+
+  /* Estilos do Header e Menu Desktop */
+  header h1 {
+    margin-bottom: 0;
+    font-size: var(--font-size-lg);
+  }
+
+  /* Tipografia Desktop (Aumento de tamanho para telas maiores) */
+  h1 {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--space-sm);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Layout de Cartões de Projeto (Flexbox/Grid) */
+  .cards-container {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: var(--space-md);
+  }
+
+  /* Ajusta a largura dos cards para Flexbox (distribui o espaço) */
+  #projetos article {
+    margin-bottom: 0;
+  }
+
+  /* Layout de Formulário (Grid de Duas Colunas para Desktop) */
+  fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  /* Campo de Largura Total (Span 2) */
+  fieldset div.full-width {
+    grid-column: 1 / span 2; /* Faz o elemento ocupar as duas colunas */
+    margin-top: var(--space-md);
+  }
+}
+
+/* Ajuste no tamanho do botão de Cadastro */
+button[type="submit"] {
+  font-size: 1.1em;
+}
+
+/* ------------------------------------------------------------------------- */
+/* **ATENÇÃO:** O bloco abaixo REAFIRMA os estilos de layout do menu.        */
+/* É uma repetição de regras que garantem a formatação horizontal (desktop)  */
+/* ------------------------------------------------------------------------- */
+
+/* Torna a lista de links horizontal */
+/* Estilos do Menu Desktop */
+nav ul {
+  display: flex;
+  gap: var(--space-md);
+  padding: 0;
+  flex-direction: row; /* Alinha na horizontal */
+}
+
+nav ul li {
+  padding: 0;
+  text-align: left; /* Remove o alinhamento à direita do mobile */
+}
+
+nav ul li a {
+  border-bottom: none; /* Remove a linha pontilhada do mobile */
+  color: var(--color-neutral-dark); /* Garante que a cor seja a do texto */
+}
+
+/* ---------------------------------------------------------- */
+/* BREAKPOINT: 992px (Desktops Médios)                        */
+/* ---------------------------------------------------------- */
+/*(Otimiza para 3 colunas em cards) */
+@media (min-width: 992px) {
+  /* Tipografia maior */
+  h1 {
+    font-size: var(--font-size-xxl);
+  }
+}
+
+/* Desktop Médio: 3 colunas em cards */
+.col-lg-4 {
+  grid-column: span 4;
+} /* 3 cards por linha (12/4=3) */
+
+/* Garante que o container principal ocupe 100% da largura em telas grandes */
+.container {
+  max-width: 1400px;
+}
+
+/* ---------------------------------------------------------- */
+/* BREAKPOINT: 1200px (Telas Ultra-Grandes)                   */
+/* ---------------------------------------------------------- */
+@media (min-width: 1200px) {
+  /* Aumento da largura máxima para melhor aproveitamento em telas grandes (Otimiza para 4 colunas em cards/layout) */
+  /* Desktop Grande: 4 colunas em cards */
+  .col-xl-3 {
+    grid-column: span 3;
+  } /* 4 cards por linha (12/3=4) */
+
+  /* Aumento da largura máxima para melhor aproveitamento em telas grandes */
+  .container,
+  main {
+    max-width: 1400px;
+  }
+
+  h1 {
+    font-size: 3.5rem; /* Ajustado para rem */
+  }
+}
+
+/* -------------------------------------------------------------  */
+/* BREAKPOINT: 1024px (Laptops e Desktops Intermediários)        */
+/* -------------------------------------------------------------  */
+@media (min-width: 1024px) {
+  /* Aumenta o espaçamento do main para aproveitar melhor a tela */
+  main {
+    padding: var(--space-xl) var(--space-xxl);
+  }
+
+  /* Aumenta a fonte do cabeçalho principal */
+  h1 {
+    font-size: var(--font-size-xxl);
+  }
+
+  /* Sistema de 12 Colunas (Otimização para 3 colunas em telas menores que 1200px) */
+  .col-md-4 {
+    /* Seletor para garantir que cards ocupem 1/3 da linha (4/12) */
+    grid-column: span 4;
+  }
+}
+
+/* ======== AJUSTE DOS BOTÕES EM AGRADECIMENTO PARA MOBILE ======== */
+@media (max-width: 600px) {
+  .opcoes-retorno {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    gap: 10px; /* distância entre os botões */
+    align-items: left; /* mantém alinhado no centro */
+  }
+
+  .opcoes-retorno a {
+    width: 70%; /* deixa proporcional à tela do celular */
+  }
+}

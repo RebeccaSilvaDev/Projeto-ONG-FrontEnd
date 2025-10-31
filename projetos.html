@@ -3,25 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
     <title>Projetos e Doações</title>
   </head>
   <body>
     <header>
       <h1>Transformando Vidas</h1>
 
-      <nav>
+      <div class="btn-abrir-menu" id="btn-menu">
+        <i class="bi bi-list"></i>
+      </div>
+
+      <nav class="menu-principal menu-desktop">
         <ul>
           <li><a href="index.html">Início</a></li>
           <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
           <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
         </ul>
       </nav>
+      <div class="menu-mobile" id="menu-mobile">
+        <div class="btn-fechar">
+          <i class="bi bi-x-lg"></i>
+        </div>
 
+        <nav>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+            <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+          </ul>
+        </nav>
+      </div>
       <!--Menu de Navegação-->
     </header>
 
+    <div class="overlay-menu" id="overlay-menu"></div>
+
     <main>
-      <h1>Nossos Projetos e Como Você Pode Ajudar</h1>
+      <h2>Nossos Projetos e Como Você Pode Ajudar</h2>
       <p>
         Nós da <b>Transformando Vidas</b> somos dedicados a construir um futuro
         mais justo e equitativo, atuando na linha de frente para apoiar
@@ -41,9 +65,12 @@
       <section id="projetos">
         <h2>Projetos Atuais de Impacto</h2>
 
-        <div>
+        <div class="cards-container">
           <article>
-            <h3>Projeto Alimentação Solidária</h3>
+            <h3>
+              Projeto Alimentação Solidária
+              <span class="badge">Prioridade Alta</span>
+            </h3>
             <p>
               Focado na distribuição de refeições para famílias em situação de
               vulnerabilidade na região central. Nossa meta é 5.000 refeições
@@ -66,7 +93,10 @@
           </article>
 
           <article>
-            <h3>Programa de Educação Digital</h3>
+            <h3>
+              Programa de Educação Digital
+              <span class="badge">Concluído</span>
+            </h3>
             <p>
               Oferecemos cursos básicos de informática e programação para jovens
               de 16 a 24 anos, preparando-os para o mercado de trabalho.
@@ -115,7 +145,6 @@
             <a href="#">Relatório Anual</a>.
           </p>
         </aside>
-        <!--Direcionamento ao Relatório Anual-->
 
         <h3>Opções de Doação</h3>
         <p>
