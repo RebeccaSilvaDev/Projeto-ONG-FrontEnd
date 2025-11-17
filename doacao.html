@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Doações</title>
+  </head>
+  <body>
+    <header>
+      <h1>Transformando Vidas</h1>
+
+      <div class="btn-abrir-menu" id="btn-menu">
+        <i class="bi bi-list"></i>
+      </div>
+
+      <nav class="menu-principal menu-desktop">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+          <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+          <li><a href="blog-mídia.html">Nosso Blog & Mídia</a></li>
+        </ul>
+      </nav>
+      <div class="menu-mobile" id="menu-mobile">
+        <div class="btn-fechar">
+          <i class="bi bi-x-lg"></i>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+            <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+            <li><a href="blog-mídia.html">Nosso Blog & Mídia</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="overlay-menu" id="overlay-menu"></div>
+    <!--Menu de Navegação em Desktop e Celular-->
+
+    <main>
+      <section id="formulario-doacao" class="container-principal">
+        <h1>Sua Contribuição Faz a Diferença</h1>
+
+        <p class="introducao">
+          Escolha o valor e o método de pagamento para apoiar nossos projetos de
+          educação e alimentação. Toda doação é segura e transparente.
+        </p>
+
+        <form
+          class="form-doacao"
+          id="formulario-doacao"
+          action="agradecimento.html"
+          method="POST"
+        >
+          <div class="bloco-informacoes">
+            <div class="secao-doacao">
+
+              <h2>1. Escolha o Valor da Doação</h2>
+
+              <div class="opcoes-valor-sugerido">
+                <div class="bloco-sugestao" data-valor="25.00">
+
+                  <p class="valor-sugerido">R$ 25,00</p>
+                  <p class="impacto-sugerido">
+                    Ajuda a distribuir 1 refeição nutritiva para uma família.
+                  </p>
+
+                  <button
+                    type="button"
+                    class="btn-doar-sugestao"
+                    data-value="25"
+                  >
+                    R$ 25,00
+                  </button>
+                </div>
+
+                <div class="bloco-sugestao" data-valor="50.00">
+                  <p class="valor-sugerido">R$ 50,00</p>
+                  <p class="impacto-sugerido">
+                    Garante um kit básico de higiene para uma família.
+                  </p>
+
+                  <button
+                    type="button"
+                    class="btn-doar-sugestao"
+                    data-value="50"
+                  >
+                    R$ 50,00
+                  </button>
+                </div>
+
+                <div class="bloco-sugestao" data-valor="100.00">
+                  <p class="valor-sugerido">R$ 100,00</p>
+                  <p class="impacto-sugerido">
+                    Financia 1 hora de aula de capacitação digital.
+                  </p>
+
+                  <button
+                    type="button"
+                    class="btn-doar-sugestao"
+                    data-value="100"
+                  >
+                    R$ 100,00
+                  </button>
+                </div>
+
+                <div
+                  class="bloco-sugestao personalizado"
+                  data-valor="personalizado"
+                >
+                  <p class="valor-sugerido">Outro Valor</p>
+                  <p class="impacto-sugerido">
+                    Sua doação faz a diferença em qualquer quantia.
+                  </p>
+                </div>
+
+                <div class="campo-valor-manual">
+                  <label for="valor-personalizado">Outro Valor (R$):</label>
+                  <input
+                    type="number"
+                    id="valor-doacao"
+                    name="valor-doacao"
+                    step="0.01"
+                    placeholder="0.00"                   
+                    value=""
+                  />
+                  <small>O valor mínimo para doação é R$ 5,00.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Sugestão de Valores para Doação-->
+
+          <div class="bloco-informacoes">
+            <div class="opcoes-pagamento">
+              <h2>2. Selecione o Método de Pagamento</h2>
+
+              <div class="opcoes-pagamento">
+                <label>
+                  <input
+                    type="radio"
+                    name="metodo-pagamento"
+                    value="pix"
+                    
+                  />
+                  PIX
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="metodo-pagamento"
+                    value="cartao-debito"
+                  />
+                  Cartão de Débito
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="metodo-pagamento"
+                    value="cartao-credito"
+                  />
+                  Cartão de Crédito
+                </label>
+
+                <label>
+                  <input type="radio" name="metodo-pagamento" value="boleto" />
+                  Boleto Bancário
+                </label>
+              </div>
+
+              <div
+                id="detalhes-cartao"
+                class="detalhes-pagamento esconder-pagamento"
+              >
+                <h3>Dados do Cartão</h3>
+                <div class="bandeiras-cartao">
+                  <picture>
+                    <source
+                      srcset="assets/image/visa.logo.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="assets/image/visa.logo.png"
+                      alt="Bandeira Visa"
+                      class="bandeira-icon"
+                    />
+                  </picture>
+
+                  <picture>
+                    <source
+                      srcset="assets/image/elo.logo.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="assets/image/elo.logo.png"
+                      alt="Bandeira Elo"
+                      class="bandeira-icon"
+                    />
+                  </picture>
+
+                  <picture>
+                    <source
+                      srcset="assets/image/nubank.logo.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="assets/image/nubank.logo.png"
+                      alt="Bandeira Nubank"
+                      class="bandeira-icon"
+                    />
+                  </picture>
+
+                  <picture>
+                    <source
+                      srcset="assets/image/hipercard.logo.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="assets/image/hipercard.logo.png"
+                      alt="Bandeira Hipercard"
+                      class="bandeira-icon"
+                    />
+                  </picture>
+
+                  <picture>
+                    <source
+                      srcset="assets/image/mastercard.logo.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="assets/image/mastercard.logo.png"
+                      alt="Bandeira Mastercard"
+                      class="bandeira-icon"
+                    />
+                  </picture>
+
+                  <picture>
+                    <source
+                      srcset="assets/image/americanexpress.logo.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="assets/image/americanexpress.logo.png"
+                      alt="Bandeira American Express"
+                      class="bandeira-icon"
+                    />
+                  </picture>
+
+                  <picture>
+                    <source
+                      srcset="assets/image/bancodobrasil.logo.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="assets/image/bancodobrasil.logo.png"
+                      alt="Bandeira Banco do Brasil"
+                      class="bandeira-icon"
+                    />
+                  </picture>
+                </div>
+
+                <div class="campo">
+                  
+                    <input
+                      type="text"
+                      id="numero-cartao"
+                      name="numero-cartao"
+                      placeholder="Número do Cartão"
+                      pattern="\d{4} \d{4} \d{4} \d{4}"
+                      title="Formato: XXXX XXXX XXXX XXXX"
+                      autocomplete="cc-number"                    
+                      aria-label="Número do Cartão de Crédito ou Débito"
+                    />
+                    <span id="numero-cartao-erro" class="mensagem-erro"></span>
+                
+                    <input
+                      type="text"
+                      id="nome-cartao"
+                      name="nome-cartao"
+                      placeholder="Nome Impresso no Cartão"
+                      autocomplete="cc-name"                     
+                      aria-label="Nome Impresso no Cartão"
+                    />
+                    <span id="nome-cartao-erro" class="mensagem-erro"></span>                 
+
+                  <div class="data-cvv">
+                    <div class="campo">
+                      <label for="validade-cartao" class="sr-only">Validade (MM/AA)</label>
+                      <input
+                        type="text"
+                        id="validade-cartao"
+                        name="validade-cartao"
+                        placeholder="MM/AA"
+                        pattern="(0[1-9]|1[0-2])\/\d{2}"
+                        title="Formato: MM/AA"
+                        autocomplete="cc-exp"                        
+                      />
+                      <span
+                        id="validade-cartao-erro"
+                        class="mensagem-erro"
+                      ></span>                     
+                    </div>
+
+                    <div class="campo">
+                      <label for="cvv-cartao" class="sr-only">Código de Segurança (CVV)</label>
+                      <input
+                        type="text"
+                        id="cvv-cartao"
+                        placeholder="CVV"
+                        pattern="\d{3,4}"
+                        title="3 ou 4 dígitos"
+                        autocomplete="off"                       
+                      />
+                      <span id="cvv-cartao-erro" class="mensagem-erro"></span>
+                    </div>
+                  </div>
+
+                  <div id="secao-parcelas" class="secao-parcelas">
+                    <label for="parcelas">Número de Parcelas:</label>
+
+                    <select id="parcelas" name="parcelas">
+                      <option value="" disabled selected>Selecione...</option>
+                    </select>
+                    <p
+                      id="valor-parcela-exibicao"
+                      class="valor-parcela-exibicao"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+              <!--Cartões de Crédito e Débito-->
+
+              <div
+                id="detalhes-pix"
+                class="detalhes-pagamento esconder-pagamento"
+              >
+                <h3>Pagamento via PIX</h3>
+                <p>
+                  Escaneie o código QR ou use o código Copia e Cola no seu
+                  aplicativo bancário.
+                </p>
+
+                <p>Este QR Code é válido por 30 minutos.</p>
+
+                <div class="bloco-qrcode-pix-demo">
+                  <picture>
+                    <source srcset="assets/image/bloco-qrcode-pix-demo.webp" />
+                    <img
+                      scr="assets/image/bloco-qrcode-pix-demo.png"
+                      alt="QR Code demonstrativo para pagamento PIX"
+                      class="qrcode-img"
+                    />
+                  </picture>
+
+                  <h4>Código PIX (Copia e Cola):</h4>
+                  <input
+                    type="text"
+                    id="codigo-pix"
+                    value="00020126330014BR.GOV.BCB.PIX..."
+                  />
+
+                  <button type="button" class="btn" onclick="copiarCodigoPix()">
+                    Copiar
+                  </button>
+                </div>
+              </div>
+              <!--Código Qr-code e Chave Pix-->
+
+              <div
+                id="detalhes-boleto"
+                class="detalhes-pagamento esconder-pagamento"
+              >
+                <h3>Boleto Bancário</h3>
+                <p>
+                  O boleto será gerado ao clicar em 'Finalizar Doação'. Você
+                  terá 3 dias úteis para realizar o pagamento em qualquer banco
+                  ou lotérica.
+                </p>
+                <p>
+                  Lembre-se: Doações via boleto são confirmadas em até 72 horas.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--Boleto Bancário-->
+
+          <div class="bloco-informacoes">
+            <div class="secao-doacao">
+              <h2>3. Informações de Contato</h2>
+
+              <label for="email-doador">Seu E-mail (Para recibo):</label>
+              <input
+                type="email"
+                id="email-doador"
+                name="email-doador"
+                placeholder="Seu E-mail (Para recibo)"
+                autocomplete="email"               
+              />
+              <span id="email-doador-erro" class="mensagem-erro"></span>
+              
+              <label for="nome-doador">Seu Nome:</label>
+
+              <label>
+              <input
+                type="text"
+                id="nome-doador"
+                name="nome-doador"
+                placeholder="Seu Nome"
+                autocomplete="name"               
+              />
+              <span id="nome-doador-erro" class="mensagem-erro"></span>
+            </div>
+          </div>
+          <!--Dados para obter Recido-->
+
+          <div class="bloco-acao-final">
+            <button type="submit" class="btn-finalizar">
+              <i class="bi bi-heart-fill"></i>
+              Finalizar Doação
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer id="main-footer">
+      <div class="container footer-grid">
+        <div class="footer-col footer-info">
+          <h4>Transformando Vidas</h4>
+          <p>
+            Conectando corações e recursos para gerar mudanças duradouras nas
+            comunidades carentes.
+          </p>
+          <p class="endereco">
+            Rua dos Heróis, 123 - Centro<br />São Paulo, SP
+          </p>
+          <p class="telefone">Tel: (00) 99999-8888</p>
+        </div>
+
+        <div class="footer-col footer-links">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos & Doações</a></li>
+            <li><a href="blog.html">Blog & Notícias</a></li>
+            <li><a href="relatorio-anual.html">Transparência</a></li>
+            <li><a href="imprensa.html">Área de Imprensa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-social">
+          <h4>Fique Conectado</h4>
+          <div class="social-icons">
+            <a href="#" target="_blank" aria-label="Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="YouTube"
+              ><i class="bi bi-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>
+            &copy; 2025 Transformando Vidas. Todos os direitos reservados. |
+            <a href="politica.html">Política de Privacidade</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="js/interatividade.js"></script>
+    <script src="js/validacao.js"></script>
+    <!--Linkagem com JS-->
+  </body>
+</html>

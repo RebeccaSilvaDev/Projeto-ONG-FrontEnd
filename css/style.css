@@ -1,6 +1,6 @@
-/* ============================================================= */
-/* 1. SETUP: CONFIGURAÇÕES GERAIS E RESET (VARIÁVEIS E ESTILOS)  */
-/* ============================================================= */
+/* ================================================================== */
+/* 1. SETUP: CONFIGURAÇÕES GERAIS E RESET (VARIÁVEIS E ESTILOS BASE)  */
+/* ================================================================== */
 
 /**
  * 1.1 RESET UNIVERSAL E BOX-SIZING
@@ -20,68 +20,117 @@
  */
 /* Definição de Variáveis CSS (Sistema de Design) */
 :root {
-  /* 1. PALETA DE CORES (8 Cores) */
-  --color-primary: #007bff; /* Azul (Principal para identidade visual e interações) */
-  --color-primary-dark: #0056b3; /* Azul (Hover/Active) */
-  --color-secondary: #28a745; /* Verde (Ênfase para CTAs e estados de sucesso) */
-  --color-secondary-dark: #1e7e34; /* Verde (Hover/Active) */
-  --color-neutral-light: #f8f9fa; /* Cinza claro (Fundo da página principal) */
-  --color-neutral-medium: #343a40; /* Bordas/Linhas */
-  --color-neutral-dark: #343a40; /* Cinza escuro (Texto de corpo) */
-  --color-neutral-white: #ffffff; /* Branco para background */
-  --color-alert-danger: #dc3545; /* Alerta de Erro/Validação */
-  --color-alert-success: #28a745; /* Alerta de Sucesso */
+  /* 1. PALETA DE CORES */
+  --color-primary: #007bff; /* Azul: Principal para identidade visual e elementos de destaque */
+  --color-primary-dark: #0056b3; /* Azul Escuro: Usado para estados (Hover/Active) */
 
-  /* 2. TIPOGRAFIA HIERÁRQUICA (5 Tamanhos) */
+  --color-secondary: #28a745; /* Verde: Ênfase para CTAs (Call to Actions) e estados de sucesso */
+  --color-secondary-dark: #1e7e34; /* Verde Escuro: Usado para estados de Hover/Active */
+
+  /* CORES NEUTRAS (Fundo, Texto e Bordas) */
+  --color-neutral-white: #ffffff; /* Branco Puro */
+  --color-neutral-light: #f8f9fa; /* Cinza claro: Fundo sutil de página ou componentes */
+  --color-neutral-medium: #6c757d; /* Cinza médio: Texto de corpo secundário, bordas suaves */
+  --color-neutral-dark: #343a40; /* Cinza escuro: Cor principal do texto de corpo e títulos */
+  --color-neutral-gray: #333; /* Cor cinza padrão mais neutra para detalhes */
+
+  /* CORES DE SUPORTE (Fundo/Borda) */
+  --color-background-card-subtle: #f9f9f9; /* Fundo sutil de cartões detalhes de internos */
+  --color-border-subtle: rgba(0, 0, 0, 0.1);
+  /* color-border-subtle - Borda fina e discreta (1px com baixa opacidade) */
+  --color-border-dashed: #ccc; /* Cor da linha pontilhada */
+  --opacity-low: 0.9; /* Opacidade padrão para elementos secundários */
+
+  /* CORES DE ALERTA E FEEDBACK (UX)*/
+  --color-alert-danger: #cc0000; /* Vermelho: Erro Validação negativa ou perigo*/
+  --color-alert-success: #28a745; /* Verde: Sucesso ou confirmação*/
+  --color--alert-medium: #ffc107; /* Amarelo: Situação de risco Médio ou Aviso */
+
+  /* CORES ESPECÍFICAS DE COMPONENTES (Ex: Barras de Progresso) */
+  --color-bar-arrecadacao: #007bff; /* Azul: Meta Arrecadação */
+  --color-bar-impacto: #f39c12; /* Laranja: Meta de entrega/impacto social */
+  --color-bar-voluntariado: #9b59b6; /* Roxo: Meta de recrutamento de pessoas/voluntario) */
+
+  /* 2. TIPOGRAFIA HIERÁRQUICA */
   --font-family-base: "Arial", sans-serif;
-  --font-base: 1rem; /* 16px - Base */
-  --font-size-sm: 0.875rem; /* 14px - Small (Auxiliar) */
-  --font-size-lg: 1.25rem; /* 20px - Large (H3) */
-  --font-size-xl: 2rem; /* 32px - Extra Large (H2) */
-  --font-size-xxl: 3rem; /* 48px - Huge (H1) */
+  --font-base: 1rem; /* 16px: Tamanho base do corpo do texto (para acessibilidade e escalabilidade) */
+  --font-size-sm: 0.875rem; /* 14px: Small Textos auxiliares e metadados */
+  --font-size-md: 1.1em; /* /* 17.6px (Aprox.): Médio (Usado no botões e alguns titulos internos) */
+  --font-size-lg: 1.25rem; /* 20px: Large (Geralmente em H3) */
+  --font-size-xl: 2rem; /* 32px: Extra Large (Geralmente em H2) */
+  --font-size-xxl: 3rem; /* 48px: Huge (Geralmente em H1) */
+  --font-size-kpi: 1.8em; /* Tamanho de fonte para indicadores de desempenho e valores em destaque */
+  --font-weight-bold: bold;
 
   /* 3. SISTEMA DE ESPAÇAMENTO MODULAR (8x) */
-  --space-xs: 0.5rem; /* 8px */
-  --space-sm: 1rem; /* 16px */
-  --space-md: 1.5rem; /* 24px */
-  --space-lg: 2rem; /* 32px */
-  --space-xl: 3rem; /* 48px */
-  --space-xxl: 4rem; /* 64px */
+  --space-xxs: 0.25rem; /* 4px: xtra Extra Small (Margens Mínimas) */
+  --space-xs: 0.5rem; /* 8px: Extra Small */
+  --space-sm: 1rem; /* 16px: Padrão para padding e margens internas */
+  --space-md: 1.5rem; /* 24px: Médio */
+  --space-lg: 2rem; /* 32px: Grande (Separação de seções) */
+  --space-xl: 3rem; /* 48px: Extra Grande */
+  --space-xxl: 4rem; /* 64px: Máximo */
 
-  /* Variáveis de Componentes */
-  --border-radius: 0.5rem; /* 8px */
-  --transition-speed: 0.3s;
+  --space-3xxl: 50px; /* Grande espaçamento vertical para separar grandes seções */
+
+  /* TOKENS DE ESPAÇAMENTO CUSTOMIZADO (Fora da escala padrão) */
+  --space-xxs-custom: 5px; /* 5px: Para ajustes finos (ex: padding de QR Code) */
+  --space-xxx: 0.625rem; /* 10px: Gap entre elementos de formulário */
+
+  --font-size-sm-custom: 0.9em; /* Para textos secundários/notas que precisam de ajuste */
+  --font-size-sm: 0.85em; /* Padrão para textos pequenos, tags e metadados */
+  --font-size-kpi: 2.2em; /* 35.2px (Aprox.): (Usado no valor do KPI) */
+
+  /* RAIOS DE BORDA ESPECÍFICOS */
+  --border-radius: 0.5rem; /* 8px: Raio de borda padrão para componentes (cards, botões) */
+  --border-radius-sm: 0.25rem; /* 4px: Raio de borda pequeno (inputs, detalhes) */
+  --border-radius-xs: 5px; /* 5px: Ajuste fino para bordas internas */
+
+  --border-width-lg: 4px; /* 4px - Borda de Destaque (Cargo/Foto Membro) */
+  --border-width-md: 3px; /* 3px - Borda da Linha do Tempo e Ícones */
+  --border-width-sm: 2px; /* 2px - Borda de Títulos/Sugestões de Doação */
+  --border-width-xs: 1px; /* 1px - Borda Fina Padrão (Cards/Inputs) */
+
+  /* VARIÁVEIS DE TRANSIÇÃO */
+  --transition-speed: 0.3s ease; /* Padrão, mas agora com 'ease' fixo */
+  --transition-speed-in-out: 0.3s ease-in-out;
+
+  --transition-speed-fast: 0.2s ease; /* Transição rápida para botões e sugestões de valor */
+  --transition-speed-fast-in-out: 0.2s ease-in-out;
+
+  --transition-speed-slow: 0.4s ease; /* Transição da barra de progresso */
 
   /* VARIÁVEIS ESPECÍFICAS PARA COMPONENTES MENU MOBILE */
   --cor-fundo-menu-mobile: #343a40; /* Fundo escuro para a navegação off-canvas */
   --cor-icones: #fff; /* Cor dos ícones e texto dentro do menu mobile escuro */
 }
 
+/* -------------------------------------------------------------------------------------------------------- */
+
 /**
  * 1.3 ESTILO BASE (MOBILE-FIRST)
- * Configurações iniciais do 'body' que definem a tipografia, cores de fundo e fluxo de conteúdo.
- */
-/* Estilo Base (Mobile-First) - Adição do CSS Grid principal */
+ * Configurações iniciais do 'body' que definem a tipografia, cores de fundo e layout principal.
+ * Usa **CSS Grid** para criar uma estrutura de "sticky footer" (rodapé fixo na base da tela), garantindo que o main ocupe o espaço restante*/
 body {
   font-family: var(--font-family-base);
   background-color: var(--color-neutral-light);
   color: var(--color-neutral-dark);
-  font-size: var(
-    --font-base
-  ); /* Tamanho base para acessibilidade (equivalente a 1em) */
-  line-height: 1.6;
+  font-size: var(--font-base);
+  /* font-size: Tamanho base de 16px para melhor acessibilidade */
+  line-height: 1.6; /* Altura de linha padrão para boa legibilidade */
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Previne barras de rolagem horizontais indesejadas */
+  overflow-x: hidden; /* Essencial: Previne barras de rolagem horizontais indesejadas */
 
-  /* Estrutura da Página com Grid Principal */
+  /* Estrutura da Página com Grid Principal (Sticky Footer) */
   display: grid;
   grid-template-areas:
     "header"
     "main"
     "footer";
+  /* Define o header e footer com altura automática (auto) e o main ocupando o espaço restante (1fr) */
   grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+  min-height: 100vh; /* Garante que o corpo ocupe, no mínimo, a altura total da viewport */
 }
 
 /* ---------------------------------------------------------- */
@@ -90,12 +139,12 @@ body {
 
 /**
  * Imagens Responsivas
- * Garante que todas as imagens se ajustem à largura máxima de seu contêiner.
+ * Garante que todas as imagens (`<img>`) se ajustem à largura máxima de seu contêiner.
  */
 img {
   max-width: 100%;
   height: auto;
-  display: block; /* Remove o espaço vertical extra padrão do 'inline' */
+  display: block; /* Garante que a imagem seja um bloco (para remover o espaço vertical extra) */
   border-radius: var(--border-radius);
 }
 
@@ -105,18 +154,33 @@ img {
  */
 .container {
   width: 90%;
-  max-width: 1200px; /* Largura máxima para telas grandes */
+  max-width: 1200px; /* Limite superior para telas muito grandes */
   margin: 0 auto; /* Centraliza horizontalmente o bloco */
   padding: var(--space-sm) 0;
 }
 
 /**
- * Imagem dentro de Elemento 'picture'
- * Garante que a imagem dentro do elemento semântico <picture> ocupe 100% do espaço.
+ * Ajuste de Imagem dentro de Elemento <picture>
+ * Garante que a imagem contida em um elemento semântico <picture> ocupe 100% do espaço.
  */
 picture img {
   width: 100%;
 }
+
+/**
+ * Ajuste para Gráficos Canvas
+/* Garante que elementos <canvas> (usados por Chart.js, por exemplo) sejam responsivos.
+ */
+canvas {
+  max-width: 100%;
+  /* Define a altura como automática para respeitar a proporção do gráfico */
+  height: auto !important;
+}
+
+/* ⚠️ ATENÇÃO: Estilo de Debug ⚠️ (Geralmente removido em produção) */
+/** {
+  outline: 1px solid red !important;
+}*
 
 /* ========================================================= */
 /* 2. TIPOGRAFIA E ELEMENTOS DE TEXTO                        */
@@ -124,12 +188,12 @@ picture img {
 
 /**
  * Estilos de Links e Interatividade
- * Define a cor padrão, remove a decoração (sublinhado) e adiciona transição suave.
+ * Define a cor primaria padrão, remove o sublinhado e adiciona transição suave.
  */
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.3s ease; /* Transição para efeito de hover suave */
+  transition: color var(--transition-speed);
 }
 
 a:hover {
@@ -139,7 +203,7 @@ a:hover {
 
 /**
  * Estilos de Títulos (Hierarquia Semântica)
- * Define a tipografia, peso da fonte e espaçamento vertical para H1, H2 e H3.
+ * Define a tipografia, peso da fonte e espaçamento vertical para H1, H2 e H3, seguindo os Design Tokens.
  */
 h1 {
   font-size: var(--font-size-xxl); /* Em unidades 'em' para escalabilidade */
@@ -151,7 +215,8 @@ h1 {
 h2 {
   font-size: var(--font-size-xl);
   color: var(--color-neutral-dark);
-  border-bottom: 2px solid var(--color-neutral-medium); /* Linha divisória para separar seções */
+  /* Linha divisória para separar seções com um estilo discreto */
+  border-bottom: var(--border-width-sm) solid var(--color-neutral-medium);
   padding-bottom: var(--space-xs);
   margin-top: var(--space-lg);
   margin-bottom: var(--space-sm);
@@ -166,12 +231,12 @@ h3 {
 }
 
 p {
-  margin-bottom: var(--space-sm); /* Espaçamento entre parágrafos */
+  margin-bottom: var(--space-sm); /* Espaçamento padrão entre parágrafos */
 }
 
 /**
  * Reset de Listas Não Ordenadas
- * Remove os marcadores e paddings padrão de todas as listas.
+ * Remove os marcadores e paddings padrão do navegador para todas as listas.
  */
 ul {
   list-style: none;
@@ -179,9 +244,12 @@ ul {
   padding: 0;
 }
 
+/* -------------------------------------------------------------*/
+/* ESTILOS ESPECÍFICOS: SEÇÃO "MISSÃO" (Ajustes de Legibilidade)*/
+/* -------------------------------------------------------------*/
+
 /**
- * Ajustes Específicos para a Lista da Seção "Missão"
- * Adiciona espaçamento vertical para melhor legibilidade da lista.
+ Garante o espaçamento vertical entre os itens da lista para melhorar a legibilidade da Seção "Missão".
  */
 #missao ul {
   list-style: none; /* Mantido, mas herdado de 'ul' */
@@ -190,26 +258,27 @@ ul {
 }
 
 #missao ul li {
-  margin-bottom: 10px; /* Correção para o bug do recuo "torto" ao remover o text-indent forçado */
+  margin-bottom: var(--space-xxx);
+  /* REFATORADO margin-bottom de 10px: Espaçamento entre os itens da lista da missão */
 }
 
-/* Estiliza os parágrafos para o layout desejado */
+/* Estiliza os parágrafos para a seção, definindo altura de linha e espaçamento. */
 #missao p {
-  /* Garante espaçamento adequado entre os blocos */
   margin-top: var(--space-xs);
   margin-bottom: var(--space-md);
-  padding: 0; /* Zera qualquer padding de parágrafo herdado */
-  line-height: 1.7; /* Mantém a legibilidade */
+  padding: 0;
+  line-height: 1.7; /* Altura de linha aumentada para maior conforto na leitura */
 }
 
-/* Garante o Negrito e o espaçamento correto após o título */
+/* Garante o negrito e o espaçamento correto para o título texto de destaque do parágrafo. */
 #missao p strong {
   font-weight: 700 !important; /* Força o negrito */
   color: var(--color-neutral-dark) !important;
-  margin-right: 0.5rem !important; /* Espaço entre o título e o texto */
+  margin-right: var(--space-xs) !important;
+  /* margin-right: Espaço entre o título e o texto */
 }
 
-/* Garante que o bloco de conteúdo não crie recuo extra */
+/* Garante que o bloco de conteúdo interno não crie recuo extra */
 .bloco-missao {
   margin-top: var(--space-sm);
   padding: 0;
@@ -221,31 +290,32 @@ ul {
 
 /**
  * 3.1 HEADER E NAVEGAÇÃO
- * Utiliza Flexbox para o layout Mobile-First: Logo e Botão Hambúrguer.
+ * Estrutura o cabeçalho usando 'Flexbox' para o layout Mobile-First: Logo e Botão Hambúrguer.
  */
 header {
-  grid-area: header;
+  grid-area: header; /* Define a área no CSS Grid */
 
   background-color: var(--color-neutral-white);
   padding: var(--space-sm) var(--space-sm);
-  border-bottom: 2px solid var(--color-primary);
+  border-bottom: var(--border-width-sm) solid var(--color-primary); /* Borda de destaque */
   display: flex;
   flex-direction: row;
   align-items: center; /* Alinhamento vertical centralizado */
-  justify-content: space-between; /* Distribui logo e botão de menu */
+  justify-content: space-between; /* Distribui logo e botão de menu nas extremidades */
   overflow-x: hidden;
 }
 
 header h1 {
-  font-size: 1.5em;
-  margin: 0; /* Remove margens extras para alinhamento */
+  font-size: var(--font-base);
+  /* font-size: Ajusta o tamanho da logo de texto para o mobile */
+  margin: 0; /* Ajusta o tamanho da logo de texto para o mobile */
 }
 
 /* -------------------------------------------------------------*/
 /* COMPONENTE: MENU LATERAL MOBILE (Off-Canvas)                 */
 /* ------------------------------------------------------------ */
 
-/* Esconde o menu de navegação completo (Desktop) por padrão */
+/* Esconde o menu de navegação completo (Versão Desktop) por padrão */
 .menu-principal {
   display: none;
 }
@@ -262,16 +332,17 @@ header h1 {
 .menu-mobile {
   background-color: var(--cor-fundo-menu-mobile);
   height: 100vh;
-  position: fixed;
+  position: fixed; /* Fixa o menu na viewport */
   top: 0;
   right: 0;
-  width: 0%; /* Escondido por padrão */
+  width: 0%; /* Escondido por padrão: largura zero */
   z-index: 1000;
   overflow-x: hidden;
-  transition: width var(--transition-speed) ease-in-out; /* Animação de abertura/fechamento suave */
+  /* Animação suave de abertura/fechamento controlada pela propriedade 'width' via JavaScript */
+  transition: width var(--transition-speed) ease-in-out;
 }
 
-/* Estado Ativo: Largura total quando aberto (ativado por JavaScript) */
+/* Estado Ativo: Largura total do menu quando aberto (ativado por JavaScript) */
 .menu-mobile.abrir-menu {
   width: 70%;
   min-width: 250px;
@@ -301,7 +372,7 @@ header h1 {
   font-size: var(--font-base);
   display: block;
   padding: var(--space-xs) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: var(--border-width-xs) solid rgba(255, 255, 255, 0.1); /* Separador discreto */
   font-weight: bold; /* Negrito aplicado ao Mobile */
 }
 
@@ -318,40 +389,44 @@ header h1 {
   top: 0;
   left: 0;
   z-index: 999;
-  display: none; /* Ativado via JS junto com a abertura do menu */
+  display: none; /* Ativado via JS para bloquear interação com o resto da página */
 }
+
+/*  ------  FIM DO COMPONENTE PARA MENU LATERAL  ------  */
 
 /**
  * 3.2 CONTEÚDO PRINCIPAL (MAIN)
- * Define a área de conteúdo central com estilo de "cartão" (fundo branco, sombra).
+ * Define a área de conteúdo central com estilo de "cartão" (fundo branco, sombra sutil) e limites de largura.
  */
 main {
-  grid-area: main;
+  grid-area: main; /* Define a área no CSS Grid (ocupa o 1fr) */
 
   padding: var(--space-sm) var(--space-xs); /* Padding interno para telas pequenas */
   min-height: 80vh; /* Garante que o corpo tenha pelo menos 80% da altura da tela */
-  max-width: 1200px; /* O valor de 900px foi aumentado */
-  margin: var(--space-sm) auto;
+  /* Garante um tamanho mínimo para visualização em telas pequenas */
+  max-width: 1200px;
+  margin: var(--space-sm) auto; /* Centraliza o bloco principal */
   background-color: var(--color-neutral-white);
   border-radius: var(--border-radius);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra suave para efeito de elevação */
+  box-shadow: 0 0 var(--space-xxx) rgba(0, 0, 0, 0.05); /* Sombra suave para efeito de elevação (card) */
 }
 
 /* Estilos de Seções Internas */
 section {
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--color-neutral-light); /* Linha de separação entre seções */
+  border-bottom: var(--border-width-xs) solid var(--color-neutral-light); /* Linha de separação entre seções */
   width: 100%;
   box-sizing: border-box;
   padding: var(--space-xs);
 }
 
+/* Remove o separador da última seção para evitar linhas desnecessárias no rodapé. */
 section:last-of-type {
   border-bottom: none;
 }
 
-/* Imagens Ilustrativas em Seções (Aplica proporção definida - 16:9) */
+/* Imagens Ilustrativas em Seções (Aplica proporção e Object-Fit que é definida em 16:9) */
 #missao img,
 #projetos article img {
   max-width: 100%;
@@ -359,8 +434,8 @@ section:last-of-type {
   display: block;
   margin: var(--space-md) auto;
   border-radius: var(--border-radius);
-  object-fit: cover; /* Garante que a imagem cubra a área sem distorção */
-  aspect-ratio: 16 / 9; /* Define a proporção para manter o layout */
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer, cortando o excesso. */
+  aspect-ratio: 16 / 9; /* Define a proporção 16:9 para manter o layout visualmente coeso. */
 }
 
 /**
@@ -375,10 +450,10 @@ footer {
   background-color: var(--color-neutral-dark);
   color: var(--color-neutral-white);
   margin-top: var(--space-md);
-  border-top: 5px solid var(--color-secondary);
+  border-top: var(--space-xxs-custom) solid var(--color-secondary); /* Borda de destaque superior */
 }
 
-/* ESTILOS ESPECÍFICOS DA PÁGINA CADASTRO (Chamada do Voluntário) */
+/* ESTILOS ESPECÍFICOS PARA LISTAS DE CADASTRO/VOLUNTARIADO */
 /*Garante que a lista de itens na chamada do voluntário tenha marcadores visíveis */
 #chamada-voluntario ul {
   list-style: circle; /* Usa marcadores de círculo (bolinhas vazias) */
@@ -401,7 +476,7 @@ footer {
 
 /**
  * 4.1 BOTÕES DE AÇÃO (.btn e button)
- * Estilo padrão para botões com feedback visual (hover/transição).
+ * Estilo padrão para botões (CTA) com transições e feedback visual (hover/focus).
  */
 button,
 .btn {
@@ -413,6 +488,7 @@ button,
   border-radius: var(--border-radius);
   text-decoration: none;
   display: inline-block;
+  /* Transições para o fundo e o efeito de elevação */
   transition: background-color var(--transition-speed) ease,
     transform var(--transition-speed) ease;
 }
@@ -421,29 +497,28 @@ button:hover,
 .btn:hover {
   background-color: var(--color-secondary-dark);
   transform: translateY(-2px); /* Efeito de elevação sutil ao interagir */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.15); /* Sombra para simular elevação */
 }
 
 button:focus,
 .btn:focus {
-  /* Foco acessível no botão */
-  outline: 2px solid var(--color-primary);
-  box-shadow: 0 0 5px var(--color-primary);
-  outline-offset: 2px;
+  /* Estilo de Foco acessível no botão (outline) */
+  outline: var(--border-width-sm) solid var(--color-primary);
+  box-shadow: 0 0 var(--space-xxs-custom) var(--color-primary);
+  outline-offset: var(--border-width-sm);
 }
 
 button:active,
 .btn:active {
-  transform: translateY(0); /* Retorna ao estado normal */
+  transform: translateY(0); /* Retorna ao estado normal (efeito de "clique") */
   box-shadow: none;
   background-color: var(--color-secondary-dark);
 }
 
 button:disabled,
 .btn:disabled {
-  background-color: var(
-    --color-neutral-medium
-  ); /* Cor neutra para desabilitado */
+  background-color: var(--color-neutral-medium);
+  /* background: Cor neutra para o estado desabilitado */
   cursor: not-allowed;
   opacity: 0.6;
   transform: none;
@@ -458,59 +533,72 @@ button:disabled,
   background-color: var(--color-neutral-white);
   padding: var(--space-md);
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.1); /* REFATORADO: 8px */
   margin-bottom: var(--space-md);
   overflow: hidden;
-  transition: transform var(--transition-speed) ease,
-    box-shadow var(--transition-speed) ease;
+  /* Transições para o efeito de elevação e sombra */
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
 }
 
 #projetos article:hover {
   transform: translateY(-5px); /* Move o cartão ligeiramente para cima */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte para destaque */
+  box-shadow: 0 var(--space-xxx) var(--space-md) rgba(0, 0, 0, 0.2); /* Sombra mais forte para destaque */
 }
 
-/* Imagens Ilustrativas do cartões */
+/* Imagens Ilustrativas dentro dos cartões */
 #projetos article img {
   width: 100%;
   height: auto;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   margin-top: var(--space-sm);
 }
 
-/* >> COMPONENTE: BADGE/TAG    */
+/* >> COMPONENTE: BADGE/TAG (Rótulo de Status ou Categorização) */
 .badge {
   display: inline-block;
   padding: calc(var(--space-xs) / 2) var(--space-xs);
   font-size: var(--font-size-sm);
   line-height: 1;
   text-align: center;
-  border-radius: 10rem;
+  border-radius: 10rem; /* 10rem Mantido: Garante o formato de pílula (borda muito arredondada) */
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-neutral-white);
   margin-left: var(--space-xs);
   font-weight: bold;
   vertical-align: middle;
 }
 
-/* Variações de Badge (Exemplo) */
-.badge-success {
+/* Variações de Badge (Semântica de Cores) */
+
+/* Processo concluído / Sucesso (Verde) */
+#projetos .badge-concluido {
   background-color: var(--color-alert-success);
 }
-.badge-danger {
+
+/* Prioridade Alta / Perigo (Vermelho) */
+#projetos .badge.prioridade-alta {
   background-color: var(--color-alert-danger);
 }
-.badge-secondary {
-  background-color: var(--color-secondary);
+
+/* Em Andamento / Cor primária padrão (Azul) */
+#projetos .badge.em-adamento {
+  background-color: var(--color-primary);
 }
+
+/* Prioridade Média / Aviso (Amarelo) */
+#projetos .badge.prioridade-media {
+  background-color: var(--color--alert-medium);
+}
+
 /* << FIM NOVO COMPONENTE */
 
-/* >> COMPONENTE: ALERT/TOAST (Feedback Visual) */
+/* >> COMPONENTE: ALERT/TOAST (Feedback Visual e Status) */
 .alert {
   padding: var(--space-sm);
   margin-bottom: var(--space-sm);
   border-radius: var(--border-radius);
-  border: 1px solid transparent;
+  border: var(--border-width-xs) solid transparent; /* REFATORADO: 1px */
   font-weight: bold;
 }
 
@@ -529,16 +617,17 @@ button:disabled,
 
 /**
  * 4.3 ESTILOS DE FORMULÁRIO (BASE)
- * Estrutura e estilo base para os elementos de input.
+ * Estrutura e estilo base para os elementos de input e agrupamento (fieldset).
  */
 form {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  /* gap: Espaçamento entre os grupos de formulário (fieldset) */
 }
 
 fieldset {
-  border: 1px solid var(--color-neutral-medium);
+  border: var(--border-width-xs) solid var(--color-neutral-medium); /* REFATORADO: 1px */
   padding: var(--space-md);
   margin-bottom: var(--space-lg);
   border-radius: var(--border-radius);
@@ -546,11 +635,14 @@ fieldset {
 }
 
 legend {
-  font-size: 1.2em;
+  font-size: var(
+    --font-size-lg
+  ); /* font-size - 1.2em REFATORADO: (que é aproximadamente 1.25rem/20px) */
   font-weight: bold;
   color: var(--color-primary);
-  padding: 0 10px;
-  margin-left: -10px;
+  padding: 0 var(--space-xxx);
+  /* Ajuste para que o "legend" se sobreponha à borda do fieldset */
+  margin-left: calc(-1 * var(--space-xxx));
   margin-bottom: var(--space-xs);
 }
 
@@ -566,16 +658,1716 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 select {
-  width: 100%;
+  width: 100%; /* Garante a largura total no mobile-first */
   padding: var(--space-xs);
-  border: 1px solid var(--color-neutral-medium);
-  border-radius: 4px;
-  box-sizing: border-box;
+  border: var(--border-width-xs) solid var(--color-neutral-medium);
+  border-radius: var(--border-radius-sm); /* REFATORADO: 4px */
+  box-sizing: border-box; /* Essencial para que o padding não estoure a largura */
   margin-top: calc(var(--space-xs) / 2);
   /* Ajuste Fino para espaçamento entre campos */
   margin-bottom: var(--space-md);
-  transition: border-color var(--transition-speed) ease,
-    box-shadow var(--transition-speed) ease;
+  /* Transições para feedback de foco ou validação */
+  transition: border-color var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+/* ====================================================================================== */
+/* 5. ESTILOS ESPECÍFICOS PARA TODAS AS PÁGINAS WEB (Estrutura e Conteúdo)                */
+/* ====================================================================================== */
+
+/* ------------------------------------------------------ */
+/* ESTILOS ESPECÍFICOS PARA VISÃO E VALORES (Início)      */
+/* ------------------------------------------------------ */
+
+#visao-e-valores,
+#estrutura-organizacional {
+  padding: var(--space-xl) 0;
+  margin-bottom: var(--space-lg);
+  border-bottom: var(--border-width-xs) solid var(--color-neutral-light);
+}
+
+/* --- Layout dos Valores (Grid Responsivo Desktop) --- */
+.bloco-valores {
+  margin-top: var(--space-md);
+}
+
+.bloco-valores ul {
+  /* Define um layout de grid: Cria colunas que se ajustam automaticamente (`auto-fit`).
+  * Cada coluna terá no mínimo 250px e no máximo 1 fração (`1fr`) do espaço. */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  /* gap: Espaço entre os blocos (tanto vertical quanto horizontal) */
+  list-style: none; /* Remove os marcadores de lista padrão */
+  padding: 0;
+}
+
+.bloco-valores li {
+  background-color: var(--color-neutral-light);
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition-speed);
+}
+
+.bloco-valores li:hover {
+  transform: translateY(-5px); /* Efeito de elevação sutil */
+  box-shadow: 0 var(--space-xs) var(--space-sm) rgba(0, 0, 0, 0.1); /* Sombra mais forte ao mover */
+}
+
+.bloco-valores li strong {
+  color: var(--color-neutral-dark);
+  display: block;
+  margin-bottom: calc(var(--space-xs) / 2);
+}
+
+/* --- Layout da Estrutura Organizacional (Flexbox Responsivo) --- */
+.bloco-estrutura {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.cargo-estrutura {
+  /* Flex Grow: 1, Flex Shrink: 1, Base Size: 200px.
+  * Garante que os blocos dividam o espaço igualmente, mas não fiquem menores que 200px */
+  flex: 1 1 200px;
+  padding: var(--space-sm);
+  border-left: var(--border-width-lg) solid var(--color-primary); /* Destaque lateral primário */
+  /* border-left - Destaque lateral */
+  background-color: var(--color-neutral-light);
+  border-radius: calc(var(--border-radius) / 2);
+}
+
+.cargo-estrutura:hover {
+  transform: translateY(-5px); /* Efeito de elevação sutil */
+  box-shadow: 0 4px var(--space-xxx) rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS PARA SEÇÃO DE LÍDERES (Início)      */
+/* ------------------------------------------------------- */
+
+#equipe {
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+  background-color: var(--color-neutral-light);
+  /* background: Fundo levemente diferente para destaque */
+}
+
+.equipe-cards {
+  /* Layout de Grid: Cria colunas responsivas, com no mínimo 280px */
+  display: grid;
+  /* Cria colunas responsivas: 3 colunas no desktop, que se ajustam */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.membro-card {
+  background-color: var(--color-neutral-white);
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px var(--space-xxx) rgba(0, 0, 0, 0.08); /* REFATORADO: 10px */
+  transition: transform var(--transition-speed);
+}
+
+.membro-card:hover {
+  transform: translateY(-5px); /* Efeito de elevação sutil */
+}
+
+.membro-foto {
+  width: 150px; /* Tamanho fixo para a foto */
+  height: 150px;
+  object-fit: cover; /* Garante que a foto preencha o círculo sem distorcer */
+  border-radius: 50%; /* Transforma a foto em círculo */
+  border: var(--border-width-lg) solid var(--color-primary); /* Borda de destaque da marca */
+  margin-bottom: var(--space-sm);
+
+  /* Centraliza a imagem e mantém a margem inferior */
+  display: block; /* 1. Torna a imagem um bloco */
+  margin: 0 auto var(--space-sm) auto; /* 2. Centraliza e mantém a margem inferior */
+}
+
+.membro-card h3 {
+  margin-bottom: calc(var(--space-xs) / 2);
+  color: var(--color-neutral-dark);
+}
+
+.membro-card h4 {
+  color: var(--color-primary); /* Cor primária para o cargo */
+  font-size: var(--font-base);
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+}
+
+/* --------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS PARA HISTÓRICO E CONQUISTAS (Início)  */
+/* --------------------------------------------------------- */
+
+#historico-e-conquistas {
+  padding: var(--space-lg) var(--space-lg);
+  margin-bottom: var(--space-lg);
+  border-bottom: var(--border-width-xs) solid var(--color-neutral-light);
+  text-align: left;
+}
+
+/* --- Linha do Tempo --- */
+.linha-do-tempo {
+  max-width: none;
+  margin: 0 auto var(--space-xl) auto;
+}
+
+.timeline-list {
+  list-style: none;
+  padding-left: var(--space-md);
+  border-left: var(--border-width-md) solid var(--color-primary); /* Linha vertical principal */
+}
+
+.timeline-list li {
+  position: relative;
+  padding: 0 0 var(--space-lg) var(--space-md); /* Espaçamento interno */
+}
+
+/* O Pseudo-elemento ::before cria o "ponto" na linha do tempo. */
+.timeline-list li::before {
+  content: "";
+  position: absolute;
+  left: calc(-15px / 2); /* Mantido em 15px para simetria do ponto */
+  /* left: Centraliza o ponto na linha vertical (ajuste fino) */
+  top: 0;
+  width: 15px; /* Mantido em 15px */
+  height: 15px; /* Mantido em 15px */
+  background: var(--color-primary);
+  border-radius: 50%;
+  border: var(--border-width-md) solid var(--color-neutral-white);
+}
+
+/* --- LAYOUT E ESTILO DE CONQUISTAS (CARDS) --- */
+
+/* 1. Container Pai */
+.conquistas-destaque {
+  display: block;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* 2. Container para as 3 colunas (Grid Flexível para 3 cards) */
+.conquistas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg); /* Espaço uniforme entre os cards */
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* 3. Título principal das conquistas */
+.conquistas-destaque h3 {
+  width: 100%;
+  text-align: left;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* 4. Estilo BASE para TODOS os cards de conquista */
+.bloco-conquista,
+.bloco-conquista-destaque-linha {
+  background-color: var(--color-neutral-white);
+  border-radius: var(--border-radius);
+  border: var(--border-width-xs) solid rgba(0, 0, 0, 0.1); /* Borda fina e sutil */
+  box-shadow: 0 4px var(--space-xxx) rgba(0, 0, 0, 0.05); /* Sombra suave para elevação */
+  padding: var(--space-md);
+  text-align: center;
+  transition: all var(--transition-speed);
+}
+
+/* 5. Estilo específico para as 3 caixas de coluna (Flex-basis para 33.33% com ajuste de gap) */
+.bloco-conquista {
+  flex: 1 1 calc(33.33% - var(--space-md)); /* REFATORADO: -20px (Aproximado para 24px/space-md) */
+  min-width: 250px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+/* 6. Título interno (H4) - Estilo visual */
+.bloco-conquista h4,
+.bloco-conquista-destaque-linha h4 {
+  color: var(--color-neutral-gray); /* Cor padrão mais neutra, #333 */
+  /* color - Cor padrão mais neutra, a cor secundária será no HOVER */
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-base); /* Tamanho base (16px) */
+  font-weight: 700;
+  transition: color var(--transition-speed); /* Adiciona transição para a cor do texto */
+}
+
+/* 7. Estilo para o bloco de destaque (linha única/Borda mais forte) */
+.bloco-conquista-destaque-linha {
+  width: 100%;
+  margin-top: var(--space-lg);
+  border: var(--border-width-sm) solid transparent; /* Inicia com borda transparente (2px) */
+  /* Transição longa para a cor da borda, usada para animação via JS */
+  transition: all var(--transition-speed) ease-out, border-color 60s ease-out;
+}
+/* CLASSE QUE SERÁ ADICIONADA PELO JAVASCRIPT para animar a borda */
+.animate-border {
+  /* Estado final (borda azul ativa) */
+  border-color: var(--color-primary) !important;
+  /* border-color: Ativa a borda primária (destaque) */
+}
+
+/* 8. Efeito de HOVER (Levantar e Sombra + Mudança Cor do Título) */
+.bloco-conquista:hover,
+.bloco-conquista-destaque-linha:hover {
+  transform: translateY(-5px); /* Efeito de elevação */
+  box-shadow: 0 var(--space-xs) var(--space-sm) rgba(0, 0, 0, 0.15); /* Sombra mais visível */
+}
+
+/* Cor do título no hover para os blocos de coluna */
+.bloco-conquista:hover h4,
+.bloco-conquista-destaque-linha:hover h4 {
+  color: var(--color-secondary); /* Destaque secundário na cor do título */
+}
+
+/* --------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS PARA IMAGEM EM NOSSA MISSÃO (Início) */
+/* ----------------------------------------------------------*/
+
+/* Estilo para o contêiner da imagem e legenda (figure) */
+.imagem-missao {
+  /* Centraliza o bloco da figura */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px; /* Limita o tamanho máximo do bloco */
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-lg); /* Espaçamento total do bloco */
+}
+
+/* Estilo para a imagem dentro do figure */
+.imagem-principal-index {
+  /* Regras que voltamos a usar para deixar a imagem grande */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilo para a legenda (figcaption) */
+.legenda-index {
+  text-align: left;
+  font-size: var(--font-size-sm-custom);
+  color: var(--color-neutral-medium);
+  margin-top: var(--space-sm); /* Espaçamento entre a imagem e a legenda */
+}
+
+/* ------------------------------------------------------------------------------ */
+/* ESTILOS ESPECÍFICOS PARA AS KPIs DA SEÇÃO DE INDICADORES DE IMPACTO (Projetos) */
+/* ------------------------------------------------------------------------------ */
+
+#indicadores-impacto {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-neutral-white);
+}
+
+.kpis-container {
+  display: grid;
+  /* Define 4 colunas em telas grandes, ajustando-se automaticamente ao espaço. */
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md); /* Centraliza o grid dentro do container */
+  width: 100%;
+  max-width: 1200px; /* Ajusta para o tamanho máximo do container */
+  margin: 0 auto;
+}
+
+/* Estilo individual para cada bloco de KPI */
+.kpi {
+  background-color: var(--color-neutral-light);
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  border: var(--border-width-xs) solid var(--color-neutral-light); /* Adiciona a borda cinza clara nos cards */
+  box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.05); /* Sombra sutil para profundidade */
+  display: flex;
+  align-items: center; /* Alinha o ícone e o texto verticalmente para uma exibição compacta */
+}
+
+.kpi .descricao {
+  /* Estiliza o texto descritivo do KPI */
+  font-size: var(--font-size-sm);
+  /* font-size com tamanho de fonte pequeno, vindo de uma variável */
+  color: var(--color-neutral-medium);
+  /* color - Cor de texto cinza para menor destaque */
+  margin: 0; /* Remove margens padrão */
+}
+
+.kpi .icone {
+  /* Estiliza o ícone ou emoji que acompanha o valor do KPI */
+  font-size: var(--font-size-md);
+  /* REFATORADO font-size 1.5em: Tamanho médio para o ícone */
+  /* font-size com Tamanho pequeno para o ícone/emoji */
+
+  margin-right: var(--space-sm);
+  /* margin-right: Espaçamento à direita para separar do texto */
+  color: var(--color-primary); /* Usa a cor primária para o ícone */
+  line-height: 1; /* Garante que a altura da linha seja mínima, auxiliando no alinhamento vertical */
+}
+
+.kpi .texto {
+  /* Contêiner para o valor e a descrição do KPI, permitindo empilhamento */
+  display: flex; /* Organiza valor e descrição verticalmente */
+  flex-direction: column;
+  /* flex-direction para centralizar o texto dentro da coluna: */
+  text-align: center; /* Centraliza o texto (valor e descrição) horizontalmente */
+}
+
+.kpi .valor.destaque {
+  /* Estilo específico para o valor do KPI que precisa de destaque positivo (ex: cor verde) */
+  color: var(--color-secondary);
+  /* color - Aplica a cor secundária apenas ao valor com a classe 'destaque' (geralmente um verde/sucesso) */
+}
+
+.kpi .valor {
+  /* Estiliza o número ou montante principal do KPI (o valor animado) */
+  font-size: var(--font-size-kpi);
+  /* REFATORADO font-size 2.2em: Tamanho de fonte grande para o valor */
+  font-weight: 700; /* Negrito forte para destaque */
+  color: var(--color-primary);
+  /* color - Cor primariária para forte destaque do valor */
+  line-height: 1.1; /* Altura da linha ajustada para compactar o elemento */
+}
+
+/* ---------------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS PARA METAS POR PROJETO (Projetos)            */
+/* ---------------------------------------------------------------- */
+
+/* Contêiner para a seção de Metas por Projeto, geralmente logo abaixo de um dashboard principal */
+.projeto-metas-dashboard {
+  margin-top: var(--space-md); /* Espaçamento superior */
+  padding-top: var(--space-sm);
+  /* Padding-top de espaçamento interno superior para afastar do divisor */
+  border-top: var(--border-width-sm) solid var(--color-neutral-light); /* Adiciona uma linha divisória suave no topo */
+}
+
+/* Item individual da meta */
+.meta-item {
+  /* Contêiner de cada meta (título, barra de progresso e detalhes) */
+  margin-bottom: var(--space-md);
+  /* margin-bottom: Espaçamento entre cada barra de progresso/meta */
+}
+
+.meta-titulo {
+  /* Título de cada meta individual */
+  font-size: var(--font-base); /* Tamanho de fonte padrão */
+  margin-bottom: calc(var(--space-xs) / 2);
+  /* margin-bottom: Pequeno espaçamento abaixo do título */
+  color: var(--color-neutral-dark); /* Cor de texto escuro */
+  font-weight: 600; /* Destaque leve para o título da meta */
+}
+
+.barra-progresso {
+  /* Contêiner da barra de progresso (a parte de fundo não preenchida) */
+  background-color: var(--color-neutral-light);
+  /* background - Cor de fundo clara para a barra */
+  border-radius: var(--border-radius); /* Borda arredondada */
+  height: 15px; /* Mantido em 15px para altura da barra */
+  overflow: hidden; /* Garante que o preenchimento não ultrapasse o contêiner */
+  margin-bottom: var(--space-xxs-custom);
+  /* REFATORADO margin-bottom 5px: Espaçamento inferior pequeno */
+}
+
+.progresso-preenchido {
+  /* A parte preenchida que indica o progresso dentro da .barra-progresso */
+  height: 100%; /* Ocupa a altura total da barra */
+  transition: width var(--transition-speed-slow); /* REFATORADO 0.4s ease: Anima a mudança da largura (progresso) de forma suave */
+  /* Estilo base, a cor é definida pelas classes específicas abaixo */
+}
+
+/* CLASSES DE CORES ESPECÍFICAS (Progressos por categoria) */
+
+.progresso-arrecadacao {
+  /* Cor de preenchimento para metas de arrecadação */
+  background-color: var(--color-bar-arrecadacao);
+  /* Geralmente um azul primário ou similar */
+}
+
+.progresso-impacto {
+  /* Cor de preenchimento para metas de impacto */
+  background-color: var(--color-bar-impacto);
+  /* Geralmente um laranja ou cor de alerta/ênfase */
+}
+
+.progresso-voluntariado {
+  /* Cor de preenchimento para metas de voluntariado */
+  background-color: var(--color-bar-voluntariado);
+  /* Geralmente um roxo ou cor distintiva */
+}
+
+.detalhe-progresso {
+  /* Estilo para os números/detalhes de texto abaixo da barra de progresso */
+  font-size: var(--font-size-sm); /* Fonte pequena */
+  color: var(--color-neutral-medium); /* Cor de texto cinza para detalhes */
+  margin-bottom: 0; /* Remove o espaço inferior para melhor agrupamento (próxima meta) */
+}
+
+/* Estilo para caixas de relatórios/notícias de projetos */
+.projeto-report-box {
+  /* Contêiner de um card de relatório ou notícia de projeto */
+  background-color: var(--color-neutral-light);
+  /* background - Cor de fundo clara/cinza suave */
+  padding: var(--space-md); /* Espaçamento interno */
+  margin-bottom: var(--space-sm); /* Espaçamento entre os cards */
+  border-radius: var(--border-radius); /* Borda arredondada */
+  border-left: var(--space-xxs-custom) solid var(--color-secondary); /* Barra lateral esquerda para destaque visual (cor secundária) */
+  /* REFATORADO border-left de 5px: Barra lateral para visual */
+}
+
+.projeto-report-box h3 {
+  /* Título interno do card de relatório */
+  color: var(--color-neutral-dark); /* Cor de texto escuro padrão */
+  margin-top: 0; /* Remove margem superior padrão */
+  font-size: var(--font-size-md); /* Tamanho de fonte médio */
+}
+
+.projeto-report-box p {
+  /* Parágrafos dentro do card de relatório */
+  margin: calc(var(--space-xs) / 2) 0; /* Pequeno espaçamento superior e inferior */
+  font-size: var(--font-size-sm); /* Fonte pequena */
+  line-height: 1.5; /* Altura de linha confortável para leitura */
+}
+
+.projeto-report-box:hover {
+  /* Efeito de interação (hover) para o card de relatório */
+  transform: translateY(-5px); /* Move o card ligeiramente para cima */
+  box-shadow: 0 4px var(--space-xxx) rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave para o efeito de elevação */
+  /* REFATORADO 12px: Adiciona uma sombra suave para o efeito de elevação */
+  transition: all var(--transition-speed); /* Suaviza a transição de todas as propriedades (movimento e sombra) */
+}
+
+.status-conquista {
+  /* Estilo para o texto de status quando uma meta é atingida/conquistada */
+  font-weight: 600; /* Semi-negrito */
+  color: var(--color-success); /* Cor verde para indicar sucesso/conquista */
+  margin-top: var(--space-xs); /* Espaçamento superior */
+}
+
+/* --------------------------------------------------------------------- */
+/* ESTILO ESPECÍFICOS PARA METAS E PROGRESSO DE ARRECADAÇÃO (Projetos)   */
+/* --------------------------------------------------------------------- */
+
+.meta-arrecadacao {
+  /* Contêiner para a seção de meta de arrecadação (pode ser repetido no projeto) */
+  margin-top: var(--space-md); /* Espaçamento superior */
+  padding-top: var(--space-sm); /* Espaçamento interno superior */
+  border-top: var(--border-width-xs) solid var(--color-neutral-light); /* REFATORADO 1px: Linha divisória fina e suave */
+}
+
+.meta-arrecadacao h4 {
+  /* Título da seção de meta de arrecadação */
+  font-size: var(--font-base); /* Tamanho de fonte padrão */
+  margin-bottom: calc(var(--space-xs) / 2); /* Pequeno espaçamento inferior */
+  color: var(--color-neutral-dark); /* Cor de texto escuro */
+}
+
+.barra-progresso {
+  /* (Repetido de cima, mas redefinido para garantir que o estilo seja aplicado) */
+  background-color: var(--color-neutral-light); /* Cor de fundo da barra */
+  border-radius: var(--border-radius); /* Borda arredondada */
+  height: 15px; /* Altura padrão mantida */
+  overflow: hidden; /* Garante que o preenchimento não saia da borda */
+  margin-bottom: calc(var(--space-xs) / 2); /* Espaçamento inferior */
+}
+
+.progresso-preenchido {
+  /* (Repetido de cima, mas redefinido para garantir que o estilo seja aplicado) */
+  height: 100%;
+  transition: width var(--transition-speed-slow); /* REFATORADO 0.4s ease: Animação suave para a largura (progresso) */
+}
+
+.detalhe-progresso {
+  /* (Repetido de cima, mas redefinido para garantir que o estilo seja aplicado) */
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-medium);
+  margin-bottom: var(--space-sm);
+  /* Margin-bottom: Espaçamento inferior para afastar da próxima seção */
+}
+
+/* -------------------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS PARA IMAGEM DO VOLUNTARIADO (Cadastro)           */
+/* -------------------------------------------------------------------- */
+
+/* 1. Estilizando o contêiner FIGURE (Centralização e Limite) */
+.imagem-voluntariado {
+  /* Contêiner <figure> da imagem de voluntariado */
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* Centraliza o bloco da figura horizontalmente */
+
+  max-width: 1200px; /* Limite de largura para desktop, mantendo o layout contido */
+
+  /* Espaçamento acima e abaixo do bloco completo (Imagem + Legenda) */
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* 2. Estilizando a Imagem em si (Largura e Borda) */
+/* A imagem <img> dentro do <figure> */
+img.voluntariado-img {
+  width: 100%; /* Ocupa 100% da largura do contêiner FIGURE */
+  height: auto; /* Mantém a proporção */
+  display: block;
+
+  /* Remove margens automáticas, pois o FIGURE já está centralizando o bloco */
+  margin: 0;
+}
+
+/* 3. Estilizando a Legenda (Figcaption) */
+.legenda-cadastro {
+  /* A legenda (<figcaption>) da imagem */
+  text-align: left; /* Alinhamento à esquerda para a legenda */
+  width: 100%;
+  margin-top: var(--space-sm); /* Espaçamento entre a imagem e a legenda */
+
+  font-size: var(--font-size-sm-custom);
+  /* font-size: Tamanho de fonte pequeno customizado */
+  color: var(--color-neutral-medium); /* Cor de texto cinza (Neutro) */
+  padding: 0; /* Remove padding lateral que poderia causar desalinhamento */
+}
+
+/* ----- BOTÃO DE ENVIO ----- */
+
+.submit {
+  /* Estilo geral do botão de envio */
+  padding: 15px; /* 15px Mantido */
+  font-size: 1.2em; /* 1.2em Mantido para tamanho de fonte do texto do botão */
+  background-color: var(--color-secondary);
+  /* background: Cor de fundo secundária (geralmente verde/sucesso) */
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed); /* REFATORADO 0.3s ease: Transições suaves para cor e movimento */
+}
+
+.submit:hover {
+  /* Efeito de interação (hover) para o botão de envio */
+  background-color: var(--color-secondary-dark);
+  /* background - Cor de fundo mais escura no hover */
+  transform: translateY(-2px);
+  /* transform - Move o botão ligeiramente para cima no hover */
+}
+
+/* --------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS O FORMULÁRIO DE DOAÇÃO          */
+/* --------------------------------------------------- */
+
+#formulario-doacao {
+  /* Contêiner principal do formulário de doação */
+  max-width: 100%; /* Ocupa a largura total do elemento <main> */
+  margin: var(--space-md) 0 0 0; /* REFATORADO margin de 30px: Margem superior e zero nas laterais/inferior */
+  /* margin- Remove a margem horizontal automática se houver */
+  /* Note: o <main> já tem max-width: 1200px e está centralizado, então isso funcionará */
+}
+
+#formulario-doacao .mensagem-erro {
+  /* Mensagens de erro dentro do formulário */
+  margin-top: var(--space-xxs); /* REFATORADO: 4px */
+  margin-bottom: var(--space-md) !important;
+  /* REFATORADO margin-bottom de 15px: Espaçamento inferior importante para separar do próximo campo */
+}
+
+.form-doacao {
+  /* Contêiner flexível para os blocos/seções do formulário */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  /* REFATORADO gap de 25px: Espaçamento entre os blocos (seções do formulário) */
+}
+
+.form-doacao h2,
+.secao-doacao h2 {
+  /* Títulos de seção do formulário de doação */
+  font-size: var(--font-size-md);
+  /* REFATORADO font-size de 1.5em: Tamanho de fonte médio */
+  color: var(--color-primary); /* Cor principal para destaque da seção */
+  border-bottom: var(--border-width-sm) solid var(--color-primary); /* REFATORADO 2px: Linha divisória colorida no fundo */
+  padding-bottom: var(--space-xxx);
+  /* REFATORADO padding-bottom de 10px: Espaçamento entre o título e a linha */
+  margin-bottom: var(--space-md);
+  /* REFATORADO margin-bottom de 20px: Espaçamento abaixo da linha divisória */
+}
+
+/* Garante que os inputs dentro do bloco de informações de contato ocupem sua própria linha e que o erro apareça embaixo */
+.bloco-informacoes input {
+  margin-bottom: 0px !important; /* Remove o espaçamento inferior para que a mensagem de erro fique logo abaixo */
+}
+
+/* Torna o bloco um container flexível com alinhamento de itens no início */
+.bloco-informacoes {
+  /* Contêiner para informações de contato, organizando campos e erros verticalmente */
+  display: flex;
+  flex-direction: column;
+  /* Adiciona gap de 15px: se quiser espaçamento maior entre os campos e seus erros (Opcional) */
+}
+
+/* Ajusta a margem superior da mensagem de erro dentro deste bloco */
+.bloco-informacoes .mensagem-erro {
+  /* Espaçamento abaixo da mensagem de erro para separar do próximo campo de input */
+  margin-bottom: var(--space-md);
+  /* REFATORADO margin-bottom de 15px: Adiciona o espaçamento abaixo do erro para separar do próximo campo */
+}
+
+.bloco-escolha,
+.bloco-informacoes {
+  /* Estilo base para os blocos/cards de informações e escolha do formulário de doação */
+  background-color: var(
+    --color-background-card-subtle
+  ); /* Fundo sutil para o card */
+  /* backgroud-color REFATORADO: #fcfcfc -> sutil */
+  padding: var(--space-md); /* REFATORADO 25px: Espaçamento interno */
+  border-radius: var(--border-radius); /* REFATORADO: 8px: Borda arredondada */
+  box-shadow: 0 var(--border-width-sm) var(--space-xxs-custom)
+    rgba(0, 0, 0, 0.05); /* REFATORADO 2px e 5px:  Sombra suave para profundidade */
+  border: var(--border-width-xs) solid var(--color-neutral-dark); /* REFATORADO 1px: Borda fina e escura */
+}
+
+/* Regra adicionada no style.css, junto aos outros estilos da doação */
+.bloco-acao-final {
+  /* Contêiner para o botão de ação final (como 'Doar' ou 'Finalizar') */
+  display: flex; /* Transforma o contêiner em um Flex container */
+  justify-content: flex-start; /* Alinha o conteúdo (botão) à esquerda */
+  margin-top: var(--space-md);
+  /* REFATORADO margin-top de 20px: /* Espaço superior */
+}
+
+.opcoes-valor-sugerido {
+  /* Contêiner para os botões de sugestão de valor de doação */
+  display: flex;
+  gap: var(--space-md);
+  /* REFATORADO gap de 15px: Espaçamento entre os botões de sugestão */
+  margin-bottom: var(--space-lg);
+  /* REFATORADO margin-bottom de 30px: Espaçamento inferior para afastar do próximo bloco */
+  flex-wrap: wrap; /* Garante que os botões quebrem a linha em telas menores, aplicando responsividade. */
+}
+
+.bloco-sugestao {
+  /* Estilo base para cada card de sugestão de valor */
+  flex: 1; /* Distribui o espaço igualmente entre os blocos */
+  min-width: 150px; /* Largura mínima para evitar que fiquem muito estreitos */
+  border: var(--border-width-sm) solid var(--color-neutral-light); /* REFATORADO 2px: Borda sutil */
+  border-radius: var(--border-radius); /* REFATORADO 8px: Borda arredondada */
+  padding: var(--space-md); /* REFATORADO 15px: Espaçamento interno */
+  cursor: pointer; /* Indica que o elemento é clicável */
+  transition: all var(--transition-speed-fast-in-out); /* REFATORADO 0.2s ease-in-out: Transição suave para efeitos de hover e seleção */
+  text-align: center;
+  background-color: var(--color-background-card-subtle); /* Fundo sutil */
+  /* background-color REFATORADO: #f9f9f9 */
+}
+
+.bloco-sugestao:hover {
+  /* Efeito de interação (hover) */
+  border-color: var(--color-primary-dark); /* Borda fica mais escura */
+  box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.05); /* REFATORADO 8px: Sombra suave */
+}
+
+.bloco-sugestao.selecionado {
+  /* Estilo para o card de sugestão que está ativo/selecionado */
+  border-color: var(--color-primary); /* Borda com a cor primária */
+  background-color: var(--color-neutral-light);
+  /* background-color REFATORADO: fundo leve com a cor primary, trás um fundo leve para destacar */
+}
+
+.btn-doar-sugestao {
+  /* Estilo base para o botão de selecionar o valor de doação */
+  background-color: var(--color-success); /* Cor de fundo de sucesso (verde) */
+  color: var(--color-neutral-dark); /* Cor do texto */
+  border: var(--border-width-xs) solid var(--color-border-dashed); /* Borda fina e tracejada */
+  padding: var(--space-xxx) var(--space-md); /* REFATORADO 10px e 15px: /* Espaçamento interno */
+  font-size: var(--font-base); /* REFATORADO 1em: Tamanho de fonte padrão */
+  border-radius: var(--border-radius-xs);
+  /* REFATORADO  border-radius de 5px: Borda levemente arredondada */
+  cursor: pointer;
+  transition: all var(--transition-speed-fast); /* REFATORADO 0.2s ease: Transição rápida para efeitos */
+}
+
+.btn-doar-sugestao:hover {
+  /* Efeito de interação (hover) para o botão de sugestão */
+  background-color: var(--color-neutral-light); /* Fundo mais claro */
+  border-color: var(--color-primary); /* Borda com a cor principal */
+}
+
+.btn-doar-sugestao.active {
+  /* Classe para o botão de valor que está ativo/selecionado */
+  /* Classe para o valor selecionado */
+  background-color: var(--color-primary); /* Fundo com a cor principal */
+  color: var(--color-neutral-white); /* Texto branco */
+  border-color: var(--color-primary);
+}
+
+.valor-sugerido {
+  /* O texto do valor monetário dentro do card de sugestão */
+  font-size: var(--font-size-md);
+  /* REFATORADO font-size de 1.5em: Tamanho médio/grande para o valor */
+  font-weight: var(--font-weight-bold); /* Negrito */
+  color: var(--color-primary); /* Cor principal para destaque */
+  margin-bottom: var(--space-xxs-custom);
+  /* REFATORADO margin-bottom de 5px: Espaçamento inferior pequeno */
+}
+
+.impacto-sugerido {
+  /* O texto de impacto social dentro do card de sugestão */
+  font-size: var(--font-size-sm-custom); /* Fonte pequena customizada */
+  color: var(--color-neutral-medium); /* Cor de texto cinza */
+}
+
+/* Estilo para a caixa de input manual */
+.campo-valor-manual {
+  /* Contêiner do campo de input para valor customizado */
+  max-width: 300px; /* Limita a largura para melhor usabilidade em desktop */
+}
+
+.campo-valor-manual label {
+  /* Label do campo de valor customizado */
+  display: block;
+  margin-bottom: var(--space-xxs-custom);
+  /* REFATORADO margin-bottom de 5px: Espaçamento inferior pequeno */
+  font-weight: var(--font-weight-bold); /* Negrito */
+}
+
+/* Opções de Pagamento (Radio Buttons) */
+.opcoes-pagamento label {
+  /* Labels das opções de pagamento (cartão, pix, boleto) */
+  display: block; /* Cada opção em uma nova linha */
+  margin-bottom: var(--space-xxx);
+  /* REFATORADO margin-bottom de 10px: Espaçamento inferior entre as opções */
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.opcoes-pagamento input[type="radio"] {
+  margin-right: var(--space-xs);
+  /* REFATORADO margin-right de 8px: Espaçamento à direita para separar do texto */
+  vertical-align: middle; /* Alinha o radio button com o texto do label */
+}
+
+/* Detalhes do Cartão */
+#detalhes-cartao {
+  /* Bloco de formulário para inserção dos dados do cartão */
+  padding: var(--space-md); /* REFATORADO 15px: Espaçamento interno */
+  background-color: var(--color-background-card-subtle); /* Fundo sutil */
+  /* backgorund-color REFATORADO: #f9f9f9 */
+  border: var(--border-width-xs) dashed var(--color-border-dashed);
+  /* REFATORADO: border de 1px e dashed #ccc: Borda tracejada para indicar que é um campo opcional/temporário */
+  border-radius: var(--border-radius-xs);
+  /* REFATORADO border-radius de 5px: Borda levemente arredondada */
+  margin-top: var(--space-md); /* REFATORADO 15px: Espaço superior */
+}
+
+#detalhes-cartao h3 {
+  /* Título interno da seção de detalhes do cartão */
+  font-size: var(--font-base);
+  /* REFATORADO font-size de 1.2em -> 1em (16px): Tamanho de fonte padrão */
+  color: var(--color-neutral-dark); /* Cor de texto escuro */
+  margin-bottom: var(--space-md); /* REFATORADO 15px: Espaçamento inferior */
+  border-bottom: none; /* Remove a borda inferior que pode ser herdada de h3 global */
+  padding-bottom: 0;
+}
+
+.bandeiras-cartao {
+  /* Contêiner para as imagens das bandeiras de cartão */
+  display: flex;
+  gap: var(--space-md);
+  /* REFATORADO gap de 15px: Espaçamento entre as bandeiras */
+  margin-bottom: var(--space-md);
+  /* REFATORADO margin-bottom de 15px: Espaçamento inferior */
+  align-items: center; /* Garante que as bandeiras estejam alinhadas ao centro */
+  flex-wrap: wrap; /* Permite que as bandeiras quebrem a linha no mobile */
+}
+
+/* ESTILO PARA AS IMAGENS DAS BANDEIRAS */
+.bandeira-icon {
+  /* Estilo individual para a imagem da bandeira (visa, master, etc.) */
+  height: 25px; /* Mantido em 25px altura fixa*/
+  /* height - Altura ideal para uma linha de ícones/bandeiras */
+  width: auto;
+  object-fit: contain; /* Garante que a imagem se ajuste sem ser cortada ou distorcida */
+  opacity: var(--opacity-low);
+  /* REFATORADO opacity de 0.9: Opacidade reduzida para um visual mais suave/neutro */
+  /* opacity - Deixa-as um pouco mais suaves */
+}
+
+/* Inputs de Cartão */
+#detalhes-cartao input[type="text"],
+#detalhes-cartao input[type="email"],
+#detalhes-cartao input[type="number"] {
+  width: 100%;
+  margin-bottom: var(--space-xxx);
+  /* REFATORADO margin-bottom de 10px: Espaçamento inferior entre os campos */
+  /* margin-bottom - Espaçamento entre os campos */
+}
+
+.data-cvv {
+  /* Contêiner flexível para os campos de data de validade e CVV (lado a lado) */
+  display: flex;
+  gap: 20px; /* Espaçamento entre os campos, mantido em 20px */
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 20px; /* Mantido em 20px */
+}
+
+.data-cvv .campo {
+  /* Contêiner individual para cada campo (Data ou CVV) dentro do bloco */
+  flex: 1 1 calc(50% - var(--space-xxx)); /* REFATORADO flex de 10px: /* Ocupa metade da largura, subtraindo o gap */
+  display: flex;
+  flex-direction: column;
+}
+
+.data-cvv input {
+  /* Inputs dentro do bloco de Data/CVV */
+  width: 100%;
+}
+
+.mensagem-erro {
+  /* Estilo da mensagem de erro de validação */
+  color: var(--color-alert-danger); /* Cor de alerta (vermelho) */
+  font-size: var(--font-size-sm-custom); /* Fonte pequena customizada */
+  margin-top: var(--space-xxs);
+  /* REFATORADO margin-top 4px: Pequeno espaçamento superior */
+  display: none; /* oculta a mensagem de erro até ser ativada via JS */
+}
+
+.mensagem-erro.ativo {
+  /* Classe ativada via JS para exibir a mensagem de erro */
+  display: block;
+}
+
+/* Estilo base para todos os blocos de detalhes de pagamento (Cartão, PIX, Boleto) */
+.detalhes-pagamento {
+  /* Contêiner que engloba os detalhes de cada método de pagamento (Pix, Boleto, etc.) */
+  /* Substitui os estilos inline que você tinha, como o margin-top */
+  margin-top: var(--space-md); /* REFATORADO margin-top 20px: Espaço superior */
+  padding: var(--space-md); /* REFATORADO padding 15px: Espaçamento interno */
+  background-color: var(--color-background-card-subtle);
+  /* REFATORADO background #f9f9f9: Fundo sutil para o bloco */
+  border: var(--border-width-xs) dashed var(--color-border-dashed);
+  /* REFATORADO border de 1px e dashed #ccc: Borda tracejada (indicando que o bloco aparece sob demanda) */
+  border-radius: var(--border-radius-xs);
+  /* REFATORADO border de 5px: Borda levemente arredondada */
+}
+
+/* CLASSE DE UTILIDADE: Usada para esconder o bloco por padrão e quando não estiver selecionado */
+.esconder-pagamento {
+  /* Classe de utilidade para ocultar o bloco de detalhes de pagamento via JS */
+  display: none !important;
+}
+
+.btn-finalizar {
+  /* Estilo do botão final de submissão (Doar/Finalizar) */
+  padding: 15px; /* Espaçamento interno de 15px Mantido */
+  font-size: 1.2em; /* Tamanho de fonte grande de 1.2em Mantido */
+  background-color: var(--color-secondary);
+  /* background - Cor de fundo secundária (geralmente verde) */
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed); /* REFATORADO 0.3s ease: /* Transições suaves */
+}
+
+.btn-finalizar:hover {
+  /* Efeito de interação (hover) */
+  background-color: var(--color-secondary-dark);
+  /* Fundo mais escuro no hover */
+  transform: translateY(-2px); /* Move o botão ligeiramente para cima */
+}
+
+.bloco-qrcode-demo {
+  /* Contêiner para a demonstração do QR Code (PIX) */
+  text-align: center; /* Centraliza a imagem do QR Code */
+  padding: var(--space-md) 0; /* REFATORADO padding de 20px: Espaçamento vertical */
+  margin-bottom: var(--space-md);
+  /* REFATORADO margin-bottom de 20px: Espaçamento inferior */
+}
+
+.qrcode-img {
+  /* Define um tamanho máximo para que não seja gigante no desktop */
+  max-width: 180px; /* Limita o tamanho máximo em desktop */
+  height: auto;
+  /* Adiciona uma borda sutil para destacá-lo */
+  border: var(--border-width-xs) solid var(--color-border-dashed);
+  /* REFATORADO border de 1px e dashed #ccc: Borda fina e tracejada */
+  padding: var(--space-xxs-custom);
+  /* REFATORADO padding de 5px: Espaçamento interno */
+}
+
+/* ---------------------------------------------------- */
+/* ESTILO ESPECÍFICO PARA FEEDBACK DO BOTÃO COPIAR PIX  */
+/* ---------------------------------------------------- */
+
+.bloco-qrcode-pix-demo .qrcode-img {
+  /* Espaçamento inferior para afastar o QR Code da próxima seção (como um h4) */
+  margin-bottom: var(--space-md); /* REFATORADO: 20px -> var(--space-md) */
+  /* margin-bottom - Afasta o QR Code da próxima seção (o h4) */
+}
+
+#detalhes-pix #codigo-pix {
+  /* Estilo para a área de exibição do código PIX copia-e-cola */
+  /* O valor de 20px deve ser visível para separar o botão */
+  margin-bottom: var(--space-md);
+  /* REFATORADO margin-bottom 20px: Espaçamento inferior para separar do botão de copiar */
+}
+
+/* Grante que o botão tenha margem superior */
+#detalhes-pix .btn {
+  /* Espaço acima do botão (Copia PIX) */
+  margin-top: var(--space-md); /* REFATORADO: 15px -> var(--space-md) */
+  /* margin-top - Adiciona um pequeno respiro acima do botão */
+}
+
+.btn-copiado {
+  /* Efeito de feedback visual para o botão 'Copiar PIX' após ser clicado */
+  background-color: var(--color-secondary) !important;
+  /* background - fundo com cor secundária (verde) */
+  filter: brightness(1.2); /* Um verde um pouco mais brilhante */
+  color: var(--color-neutral-white) !important; /* Texto branco */
+  border-color: var(--color-secondary) !important;
+  transform: scale(1.05); /* Pequeno aumento de tamanho */
+  box-shadow: 0 0 var(--space-xxx) rgba(40, 167, 69, 0.5); /* REFATORADO box-shadow de 10px: Sombra verde sutil */
+  transition: all var(--transition-speed-fast); /* REFATORADO 0.2s ease: Transição rápida para o feedback */
+}
+
+/* ---------------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS PARA A PÁGINA DO RELATÓRIO ANUAL             */
+/* ---------------------------------------------------------------- */
+
+/* Estilo geral para as seções de destaque do relatório */
+.sumario-executivo,
+.resumo-financeiro,
+.impacto-qualitativo,
+.documentos-legais {
+  /* Estilo base para todos os blocos de seção do relatório anual */
+  margin-top: var(--space-lg);
+  /* REFATORADO margin-top de 40px: Espaçamento superior entre as seções */
+  padding: var(--space-md);
+  /* REFATORADO padding de 20px: Espaçamento interno */
+  border-radius: var(--border-radius);
+  /* REFATORADO border-radius de 8px: Borda arredondada  */
+  box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.05); /* REFATORADO box-shadow de 8px: Sombra suave para os blocos */
+}
+
+/* --------------------------------- */
+/* 1. Sumário Executivo              */
+/* --------------------------------- */
+.sumario-executivo {
+  /* Nota: Usamos var(--cor-primaria) ao invés de #007bff para manter a consistência com suas variáveis */
+  background-color: var(--color-neutral-light);
+  /* REFATORADO backgorund #f7f7f7 - Fundo cinza muito claro */
+  border-left: var(--space-xxs-custom) solid var(--color-primary);
+  /* REFATORADO border-left de 5px: Barra lateral esquerda de destaque com a cor primária */
+}
+
+.sumario-executivo h2 {
+  /* Título da seção */
+  color: var(--color-secondary);
+  /* Cor secundária (verde/destaque) para o título */
+  margin-bottom: var(--space-md);
+  /* REFATORADO margin-bottom de 15px: Espaçamento inferior */
+}
+
+.sumario-executivo .introducao {
+  /* Parágrafo de introdução/citação */
+  font-style: italic; /* Texto em itálico */
+  color: var(--color-neutral-medium); /* Cor de texto cinza */
+  margin-bottom: var(--space-md);
+  /* REFATORADO margin - bottom de 20px: Espaçamento inferior */
+}
+
+.sumario-executivo .assinatura {
+  /* Nome e cargo de quem assina o sumário */
+  margin-top: var(--space-md);
+  /* REFATORADO margin-top de 20px: Espaçamento superior */
+  text-align: right; /* Alinhamento à direita */
+  font-size: var(--font-size-sm-custom); /* Fonte pequena customizada */
+  color: var(--color-neutral-dark); /* Cor de texto escuro */
+}
+
+/* ------------------------------------- */
+/* 2. Resumo Financeiro (KPIs e Gráfico) */
+/* ------------------------------------- */
+
+.resumo-financeiro {
+  /* Seção de KPIs e Gráfico Financeiro */
+  background-color: var(--color-neutral-white); /* Fundo branco */
+  border: var(--border-width-xs) solid var(---color-border-subtle);
+  /* REFATORADO: border de 1px e #e0e0e0: Borda fina e sutil */
+}
+
+.kpis-container {
+  /* Contêiner flexível para agrupar os KPIs */
+  display: flex; /* Distribui os KPIs com espaço ao redor */
+  justify-content: space-around; /* Permite que os KPIs quebrem a linha no mobile */
+  flex-wrap: wrap;
+  margin: var(--space-md) 0; /* REFATORADO margin de 20px: Margem superior e inferior */
+  gap: var(--space-md); /* REFATORADO gap de 20px: Espaçamento entre os KPIs */
+}
+
+.kpi {
+  /* Estilo base para cada KPI dentro do resumo financeiro */
+  text-align: center;
+  padding: var(--space-md);
+  /* REFATORADO padding de 15px: Espaçamento interno */
+  border: var(--border-width-xs) solid var(--color-border-subtle);
+  /* REFATORADO border de 1px e solid #ddd: Borda fina e sutil */
+  border-radius: var(--border-radius-sm);
+  /* REFATORADO border-radius de 6px: Borda levemente arredondada */
+  flex: 1; /* Permite que o KPI ocupe o espaço disponível */
+  min-width: 180px; /* Largura mínima para cada KPI */
+  transition: transform var(--transition-speed); /* REFATORADO 0.3s: Transição suave para o hover */
+  flex-direction: column;
+}
+
+.kpi:hover {
+  /* Efeito de interação (hover) para o KPI */
+  transform: translateY(-5px);
+  /* REFATORADO 5px: Move o KPI ligeiramente para cima */
+}
+
+.kpi h4 {
+  /* Título/descrição do KPI no resumo financeiro */
+  font-size: var(--font-size-sm-custom); /* Fonte pequena customizada */
+  color: var(--color-neutral-medium-dark); /* Cor de texto cinza/escuro */
+  margin-bottom: var(--space-xxs-custom);
+  /* REFATORADO margin-bottom de 5px: Pequeno espaçamento inferior */
+}
+
+.kpi .valor {
+  /* O valor monetário/numérico do KPI no resumo financeiro */
+  font-size: var(--font-size-kpi); /* Tamanho de fonte grande */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold); /* Negrito */
+  color: var(--color-neutral-dark);
+  /* color - Cor de texto escuro para forte destaque do valor */
+}
+
+.grafico-container {
+  /* Contêiner para o gráfico financeiro */
+  max-width: 800px;
+  margin: var(--space-md) auto var(--space-lg) auto; /* Margens para centralizar o bloco e espaçamento */
+  /* REFATORADO margin de 20px e 40px: Margens para centralizar o bloco e espaçamento */
+  padding: var(--space-md);
+  /* REFATORADO padding de 15px: /* Espaçamento interno */
+  border: var(--border-width-xs) solid var(--color-neutral-light); /* REFATORADO border de 1px e #f0f0f0: /* Borda fina e suave */
+  border-radius: var(--border-radius-sm);
+  /* REFATORADO border-radius de 6px: Borda levemente arredondada */
+}
+
+/* Contêiner para dispor os dois artigos lado a lado (Funciona em Mobile e Desktop) */
+.detalhes-agrupados {
+  /* Contêiner flexível para os blocos de aplicação detalhada/detalhes financeiros */
+  display: flex;
+  flex-direction: row; /* Padrão Mobile: Deixa lado a lado*/
+  flex-wrap: wrap;
+  padding: var(--space-md) 0; /* REFATORADO padding de 20px: Espaçamento vertical */
+  border-top: var(--border-width-xs) dashed var(--color-border-dashed);
+  /* REFATORADO border de 1px e dashed #ccc: Linha divisória tracejada */
+  gap: var(--space-md);
+  /* Espaçamento entre os artigos (no Mobile, fica entre as linhas) */
+  margin-top: var(--space-md);
+}
+
+/* 1. Estilo para os Artigos Individuais */
+.relatorio-bloco.aplicacao-detalhada,
+.relatorio-bloco.detalhes-financeiros {
+  /* Estilo base para os blocos de detalhes internos (ex: aplicação de recursos) */
+  /* Força o item a ocupar 100% da largura, garantindo o empilhamento no mobile */
+  flex: 0 0 100%; /* Ocupa 100% da largura, garantindo o empilhamento */
+  /* flex-grow: 0 (não cresce), flex-shrink: 0 (não diminui), flex-basis: 100% */
+
+  /* Regras de Visualização (mantidas do seu Grid anterior) */
+  background-color: var(--color-neutral-light); /* Fundo cinza suave */
+  padding: var(--space-md); /* Espaçamento interno */
+  border-radius: var(--border-radius-xs);
+  /* REFATORADO border-radius de 4px: Borda levemente arredondada */
+
+  /* Regra para hover */
+  transition: all var(--transition-speed-in-out);
+
+  /* Garante que ocupem a largura total no mobile */
+  width: 100%;
+}
+
+/* Regra de Hover (aplicada a ambos) */
+.relatorio-bloco.aplicacao-detalhada:hover,
+.relatorio-bloco.detalhes-financeiros:hover {
+  /* Efeito de interação (hover) para os blocos de detalhes */
+  transform: translateY(-5px); /* Move o bloco para cima */
+  box-shadow: 0 4px var(--space-xxx) rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* 1. Títulos (H3) */
+.relatorio-bloco.aplicacao-detalhada h3,
+.relatorio-bloco.detalhes-financeiros h3 {
+  /* Títulos internos (h3) dos blocos de detalhes */
+  margin-bottom: var(--space-md);
+  margin-top: var(--space-md);
+  color: var(--color-alert-success); /* Cor verde para destaque do título */
+
+  /* ADIÇÃO DA LINHA INFERIOR (Border-Bottom) */
+  border-bottom: var(--border-width-sm) solid var(--color-neutral-medium);
+  /* REFATORADO border bottom de 2px e solid #343a40: Linha divisória suave no fundo */
+  padding-bottom: var(--space-xxs-custom);
+  /* REFATORADO padding-bottom 5px: Espaçamento entre o texto e a linha */
+}
+
+/* ------------------------------------ */
+/* 3. Impacto Qualitativo (Depoimentos) */
+/* ------------------------------------ */
+.impacto-qualitativo {
+  /* Seção de depoimentos/impacto qualitativo */
+  background-color: var(--color-background-card-subtle); /* Fundo sutil */
+  /* REFATORADO: background-color - #fcfcfc */
+}
+
+.depoimentos-container {
+  /* Contêiner flexível para os cards de depoimento */
+  display: flex;
+  gap: var(--space-md);
+  /* REFATORADO gap de 20px: Espaçamento entre os depoimentos */
+  flex-wrap: wrap; /* Permite que os depoimentos quebrem a linha */
+}
+
+.depoimento {
+  /* Estilo para cada card de depoimento individual */
+  flex: 1; /* Permite que ocupe o espaço disponível */
+  min-width: 300px; /* Largura mínima para o card */
+  background-color: var(--color-neutral-white); /* Fundo branco */
+  padding: var(--space-md);
+  /* REFATORADO bpadding 25px (Aproximado): Espaçamento interno */
+  border-radius: var(--border-radius);
+  /* REFATORADO border-radius 8px: Borda arredondada */
+  border: var(--border-width-xs) solid var(--color-border-subtle);
+  /* REFATORADO border 1px e solid #ddd: Borda fina e sutil */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  transition: all var(--transition-speed-in-out); /* Transição suave para o hover */
+}
+
+.depoimento:hover {
+  /* Efeito de interação (hover) */
+  transform: translateY(-5px); /* Move o depoimento 5 pixels para cima */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Aumenta e espalha a sombra, reforçando o efeito de elevação.*/
+}
+
+.depoimento p {
+  /* O texto principal do depoimento */
+  font-size: var(--font-base); /* REFATORADO font-size de 1em: Fonte padrão  */
+  line-height: 1.6; /* Altura de linha confortável */
+  font-style: italic; /* Texto em itálico */
+  color: var(--color-neutral-dark); /* Cor de texto escuro */
+}
+
+.depoimento .autor {
+  /* Nome/cargo do autor do depoimento */
+  margin-top: var(--space-xxx);
+  /* REFATORADO margin-top de 10px: Espaçamento superior */
+  font-size: var(--font-size-sm-custom); /* Fonte pequena customizada */
+  color: var(--color-primary); /* Cor principal para destaque do autor */
+  font-weight: var(--font-weight-bold); /* Negrito */
+  text-align: right; /* Alinhamento à direita */
+  font-style: normal;
+}
+
+/* --------------------------------- */
+/* 4. Documentos Legais */
+/* --------------------------------- */
+.documentos-legais {
+  /* Seção para links de documentos legais (estatuto, balanço, etc.) */
+  background-color: var(--color-neutral-light); /* Fundo cinza suave */
+  border: none;
+  margin-bottom: var(--space-lg);
+  /* REFATORADO margin -bottom de 40px: Espaçamento inferior grande */
+}
+
+.documentos-legais ul {
+  /* Lista de documentos */
+  list-style: none; /* Remove marcadores da lista */
+  padding: 0;
+}
+
+.documentos-legais li {
+  /* Item individual da lista */
+  margin-bottom: var(--space-xxx);
+  /* REFATORADO margin-bottom 10px: Espaçamento entre os itens */
+}
+
+.documentos-legais a {
+  /* Link para o documento */
+  display: inline-flex; /* Permite alinhar o ícone e o texto */
+  align-items: center; /* Alinha o ícone e o texto verticalmente */
+  text-decoration: none;
+  color: var(--color-neutral-dark); /* Cor de texto escuro */
+  font-weight: var(--font-weight-bold); /* Negrito */
+  padding: var(--space-xs) 0; /* REFATORADO padding 8px: Espaçamento vertical */
+  transition: color var(--transition-speed-fast); /* REFATORADO 0.2s: Transição suave de cor */
+}
+
+.documentos-legais a:hover {
+  /* Efeito de interação (hover) */
+  color: var(--color-primary); /* Cor principal no hover */
+  text-decoration: underline; /* Sublinha o texto */
+}
+
+.documentos-legais i {
+  /* Ícone do documento (ex: PDF icon) */
+  font-size: var(--font-size-md);
+  /* REFATORADO font-size de 1.4em: Tamanho de fonte médio/grande */
+  margin-right: var(--space-xxx);
+  /* REFATORADO margin-right de 10px: Espaçamento à direita para separar do texto*/
+  color: var(--color-secondary);
+  /* Usa a cor secundária (verde) para os ícones */
+  /* color - Usa a cor secundária (verde) para ícones de documentos */
+}
+
+.documentos-legais .aviso-legal {
+  /* Texto de aviso ou rodapé da seção */
+  margin-top: var(--space-md);
+  /* REFATORADO margin-top 20px: Espaçamento superior */
+  font-size: var(--font-size-sm); /* Fonte pequena */
+  color: var(--color-neutral-medium); /* Cor de texto cinza */
+  border-top: var(--border-width-xs) solid var(--color-neutral-light);
+  /* REFATORADO border 1px e solid #dcdcdc: Linha divisória fina e suave no topo */
+  padding-top: var(--space-xxx);
+  /* REFATORADO padding top 10px: Espaçamento entre a linha e o texto */
+}
+
+/* ------------------------------------------------------------------- */
+/* ESTILOS PARA FORMULÁRIO DE CADASTRO DE PROJETOS (Gestão de Projeto) */
+/* ------------------------------------------------------------------- */
+
+#formulario-projeto-gestao fieldset {
+  /* Estilo para os agrupamentos de campos (fieldset) */
+  margin-bottom: var(--space-md);
+  padding: var(--space-md);
+  border: var(--border-width-xs) solid var(--color-neutral-medium); /* Borda fina e cinza */
+  border-radius: var(--border-radius);
+}
+
+/* Garante que os inputs, selects e textareas ocupem a largura de seus contêineres */
+#formulario-projeto-gestao input[type="text"],
+#formulario-projeto-gestao input[type="number"],
+#formulario-projeto-gestao select,
+#formulario-projeto-gestao textarea {
+  /* Estilo geral para os campos de input do formulário de gestão */
+  width: 100%; /* Ocupa 100% da largura do contêiner flexível */
+  padding: var(--space-xxx);
+  border: var(--border-width-xs) solid var(--color-neutral-medium); /* Borda fina e cinza */
+  border-radius: var(--border-radius);
+  margin-top: var(--space-xxs-custom); /* Pequeno espaçamento superior */
+  box-sizing: border-box; /* Garante que padding e borda sejam incluídos na largura */
+}
+
+/* Estilo para cada grupo de label + campo */
+.form-group {
+  /* Contêiner para o par Label e Input/Select (Layout lado a lado em desktop) */
+  display: flex; /* Habilita Flexbox para alinhar itens lado a lado */
+  align-items: center; /* Alinha verticalmente o label no campo e no centro */
+  margin-bottom: var(--space-md); /* Espaço entre os grupos */
+  flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas pequenas */
+  gap: var(--space-xxx); /* Espaço entre o label e o input/select */
+}
+
+.form-group label {
+  /* Estilo para o label do campo */
+  flex-basis: 30%; /* Tenta fazer o label ocupar 30% da largura do grupo */
+  min-width: 120px; /* Garante que o label tenha uma largura mínima */
+  text-align: right; /* Alinha o texto do label à direita (próximo ao input) */
+  padding-right: var(--space-xxx); /* Espaço entre o label e o input */
+  font-weight: 600; /* Mantido */
+  color: var(--color-neutral-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  /* Inputs do formulário dentro do grupo */
+  flex-basis: 65%; /* O campo ocupa maior parte do restante do espaço */
+  flex-grow: 1; /* Permite que o campo cresça para preencher o espaço */
+  margin-top: 0; /* Remove margem superior herdada */
+}
+
+/* Estilos para campos de largura total (como textarea) */
+.form-group.full-width {
+  /* Modificador para campos que precisam ocupar toda a largura (ex: descrição longa) */
+  flex-direction: column; /* Empilha label e input verticalmente */
+  align-items: flex-start; /* Alinha tudo à esquerda */
+}
+
+.form-group.full-width label {
+  /* Label do campo de largura total */
+  text-align: left; /* Título do campo vai para a esquerda */
+  width: 100%; /* Label ocupa toda a largura */
+  padding-right: 0;
+  margin-bottom: var(--space-xxs-custom); /* Espaço entre label e textarea */
+}
+
+/* Estilo para small tags (dicas) */
+.form-group small {
+  /* Texto de dica (small tag) abaixo do campo */
+  flex-basis: 100%; /* Ocupa uma linha inteira */
+  text-align: right; /* Alinha à direita */
+  padding-right: var(--space-xxx);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-medium);
+}
+
+#formulario-projeto-gestao textarea {
+  /* Estilo específico para o campo textarea */
+  /* Impede o redimensionamento horizontal e vertical */
+  resize: none;
+}
+
+.btn-finalizar {
+  /* Ajusta o botão final para não ocupar 100% da largura e alinhar à esquerda */
+  width: auto;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* -------------------------------------------------------- */
+/* ESTILOS PARA PÁGINA DE CONTATO E MAPA                    */
+/* -------------------------------------------------------- */
+
+#contato-principal {
+  /* Seção principal da página de contato */
+  padding: var(--space-xl) 0; /* Espaçamento vertical grande */
+  background-color: var(--color-neutral-white); /* Fundo branco */
+}
+
+.subtitulo-contato {
+  /* Subtítulo ou frase de introdução da página de contato */
+  font-size: var(--font-base);
+  color: var(--color-neutral-dark);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+/* Layout com Grid para o Formulário e Info/Mapa */
+.contato-grid {
+  /* Contêiner flexível que agrupa o formulário e as informações/mapa */
+  display: flex;
+  flex-direction: column; /* FORÇA O EMPILHAMENTO NO MOBILE */
+  gap: var(--space-xl); /* Espaçamento entre as duas colunas */
+  text-align: left;
+}
+
+/* Garante que as colunas ocupem 100% do espaço da célula */
+.contato-formulario,
+.contato-info-mapa {
+  /* Colunas de formulário e informações */
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Mantém a correção de vazamento horizontal*/
+}
+
+/* Estilo do Formulário */
+.contato-formulario h3 {
+  /* Título da seção do formulário */
+  color: var(--color-secondary); /* Cor secundária (verde/destaque) */
+  margin-bottom: var(--space-md);
+  border-bottom: var(--border-width-sm) solid var(--color-neutral-medium); /* Linha divisória suave */
+}
+
+.formulario-padrao {
+  /* Contêiner flexível para os campos do formulário */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm); /* Espaçamento entre os campos */
+}
+
+.formulario-padrao input,
+.formulario-padrao textarea,
+.formulario-padrao select {
+  /* Estilo geral para todos os inputs do formulário de contato */
+  padding: var(--space-sm);
+  border: var(--border-width-xs) solid var(--color-neutral-medium); /* Borda fina e cinza */
+  border-radius: var(--border-radius);
+  font-size: var(--font-base);
+  width: 100%;
+  box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+.formulario-padrao textarea {
+  /* Campo de área de texto */
+  resize: vertical; /* Permite redimensionar apenas verticalmente */
+}
+
+.formulario-padrao .btn-primary {
+  /* Botão de envio (submissão) */
+  margin-top: var(--space-sm);
+  width: auto; /* Botão se ajusta ao conteúdo em desktop */
+  align-self: flex-start; /* Alinha o botão à esquerda */
+}
+
+/* Estilo da Coluna de Informações e Mapa */
+.contato-info-mapa h3 {
+  /* Título da seção de informações/mapa */
+  color: var(--color-primary); /* Cor principal para o título */
+  margin-bottom: var(--space-md);
+  border-bottom: var(--border-width-sm) solid var(--color-neutral-medium); /* Linha divisória suave */
+}
+
+.info-detalhes p {
+  /* Parágrafos de informações de contato (telefone, email, endereço) */
+  font-size: var(--font-base);
+  color: var(--color-neutral-dark);
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: flex-start; /* Alinha o ícone e o texto ao topo */
+  gap: var(--space-xxx); /* Espaçamento entre o ícone e o texto */
+}
+
+.info-detalhes i {
+  /* Ícones de contato (telefone, envelope, mapa) */
+  color: var(--color-primary); /* Cor principal para os ícones */
+  font-size: var(--font-size-lg); /* Tamanho de fonte grande para o ícone */
+}
+
+/* Garante quebra de linha em URLs/emails longos */
+.info-detalhes p,
+.info-detalhes a {
+  /* Força a quebra de palavras longas (ex: e-mails) para evitar estouro horizontal */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.mapa-container {
+  /* Contêiner que envolve o mapa incorporado */
+  margin-top: var(--space-lg);
+  height: 300px; /* Altura fixa para o mapa */
+  border: var(--border-width-xs) solid var(--color-neutral-medium); /* Borda fina e cinza */
+  border-radius: var(--border-radius);
+  overflow: hidden !important; /* Esconde qualquer conteúdo que vaze (mapa) */
+}
+
+.mapa-container iframe {
+  /* Estilo para o iframe do mapa (ex: Google Maps) */
+  width: 100%;
+  height: 100%;
+  max-width: 100%; /* Limita o tamanho máximo */
+  border: 0;
+  display: block; /* Garante que se comporte como um bloco */
+}
+
+/* --------------------------------------------------------- */
+/* ESTILO PARA DESTAQUE DO BLOG & NOTÍCIAS (4 Cards)         */
+/* --------------------------------------------------------- */
+
+.destaque-blog {
+  /* Configuração do container principal da seção de destaque */
+  padding: var(--space-3xxl);
+  text-align: center; /* Centraliza o título e o container dos cards */
+}
+
+.destaque-blog h3 {
+  /* Estilização do título principal da seção (h3) */
+  font-size: 2em; /* Mantido em 'em' para escalabilidade */
+  margin-bottom: var(--space-xxx);
+  color: var(--color-neutral-gray);
+}
+
+.blog-cards-grid {
+  /* Container Grid para os cards do blog (Mobile-First: 1 Coluna) */
+  display: grid;
+  /* Força o Grid a ter APENAS UMA COLUNA para dispositivos móveis */
+  grid-template-columns: 1fr;
+
+  gap: var(--space-md); /* Espaçamento entre os cards */
+  /* Limita a largura do grid na vertical e centraliza */
+  /* Manter max-width para desktop, mas a coluna será única */
+  max-width: 800px;
+  margin: var(--space-lg) auto;
+}
+
+/* ESTILO DO CARD INDIVIDUAL (Link Clicável) */
+.blog-card {
+  /* Define o layout interno do card como Flexbox, empilhando elementos */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background-color: var(--color-neutral-white);
+  border-radius: var(--border-radius);
+  /* Aplica sombreamento para efeito de profundidade */
+  box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Garante que a imagem e a borda fiquem arredondadas */
+  text-decoration: none; /* Remove sublinhado do link */
+  color: var(--color-neutral-dark);
+  /* Transições suaves para o efeito de hover */
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.card-imagem {
+  /* Estilo da imagem de destaque do card */
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+.card-conteudo {
+  /* Container para o texto interno do card */
+  padding: var(--space-md);
+  flex-grow: 1; /* Permite que o conteúdo se expanda para ocupar o espaço restante */
+}
+
+.blog-card:hover {
+  /* Efeito de elevação ao passar o mouse para indicar interatividade */
+  transform: translateY(-8px); /* Elevação maior para destaque */
+  box-shadow: 0 var(--space-xs) var(--space-md) rgba(0, 0, 0, 0.15);
+}
+
+.blog-card h4 {
+  /* Estilização do título do artigo no card */
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-xxs-custom);
+  margin-bottom: var(--space-xxx);
+}
+
+/* Estilo da TAG (Ex: Projetos, Transparência) */
+.card-tag {
+  /* Elemento visual para categorização do artigo */
+  display: inline-block;
+  background-color: var(--color-secondary); /* Cor verde */
+  color: var(--color-neutral-white);
+  font-size: ar(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-xxs) var(--space-xs);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--space-xxx);
+  text-transform: uppercase;
+}
+
+.card-data {
+  /* Estilo da data de publicação */
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-medium);
+  margin-top: var(--space-md);
+}
+
+.ver-mais-link {
+  /* Container para o link "Ver Mais" */
+  margin-top: var(--space-lg);
+}
+
+.ver-mais-link a {
+  /* Estilização do link de navegação secundário */
+  color: var(--color-primary);
+  font-weight: 600; /* Mantido */
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+/* -------------------------------------------------------------------------------- */
+/* ESTILOS PARA SEÇÃO NEWSLETTER PARA ENGAJAMENTO (Estilo Nicepage - Dois Campos)   */
+/* -------------------------------------------------------------------------------- */
+
+#newsletter-area {
+  /* Container externo para a seção newsletter */
+  background-color: transparent; /* A cor de fundo será no .newsletter-card-dark */
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.newsletter-card-dark {
+  /* O "card" de fundo escuro que contém o formulário e texto */
+  background-color: var(--color-primary-dark); /* Azul escuro do exemplo */
+  color: var(--color-neutral-white); /* Texto branco */
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 var(--space-xxx) var(--space-lg) rgba(0, 0, 0, 0.1);
+  max-width: 900px; /* Limita a largura máxima do card */
+  margin: 0 auto; /* Centraliza o card na tela */
+  text-align: center; /* Centraliza o texto */
+}
+
+.newsletter-card-dark h3 {
+  /* Estilo do título dentro do card */
+  color: var(--color-neutral-white); /* Título branco */
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-sm);
+  border-bottom: none;
+}
+
+.newsletter-card-dark p {
+  /* Estilo do parágrafo de descrição */
+  font-size: var(--font-base);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  max-width: 700px; /* Limita a largura do parágrafo */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Formulário com dois inputs e botão */
+.newsletter-form-two-fields {
+  /* Layout do formulário: Flexbox empilhado em Mobile */
+  display: flex;
+  flex-direction: column; /* Padrão Mobile: inputs e botão empilhados */
+  gap: var(--space-sm);
+  max-width: 700px; /* Limita a largura do formulário */
+  margin: 0 auto; /* Centraliza o formulário */
+}
+
+.newsletter-form-two-fields input[type="text"],
+.newsletter-form-two-fields input[type="email"] {
+  /* Estilização dos campos de input do formulário */
+  padding: var(--space-sm);
+  border-radius: var(--border-radius);
+  border: none; /* Sem borda, como no exemplo */
+  font-size: var(--font-base);
+  color: var(--color-neutral-dark); /* Texto digitado escuro */
+  background-color: var(--color-neutral-white); /* Fundo branco dos inputs */
+  flex-grow: 1; /* Permite que os inputs ocupem espaço quando o layout for horizontal (Desktop) */
+}
+
+/* Estilo para o botão "Enviar" claro */
+.btn-light {
+  /* Botão com fundo claro (inversão de cor) */
+  background-color: var(--color-neutral-white); /* Fundo branco */
+  color: var(--color-primary-dark); /* Texto azul escuro */
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  transition: background-color var(--transition-speed),
+    color var(--transition-speed);
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0; /* Impede que o botão encolha no layout flex */
+  width: 100%; /* Ocupa 100% no mobile (empilhado) */
+}
+
+.btn-light:hover {
+  /* Efeito de hover para feedback visual (muda para cor secundária) */
+  background-color: var(--color-secondary);
+  /* background-color - Tem efeito hover, pode ser um verde */
+  color: var(--color-neutral-white);
+}
+
+/* -------------------------------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS DOS BOTÕES EM AGRADECIMENTO PARA (DESKTOP/TELAS GRANDES)     */
+/* -------------------------------------------------------------------------------- */
+
+.opcoes-retorno {
+  /* Container para o alinhamento horizontal dos botões de retorno (Padrão Desktop/Tablet) */
+  display: flex; /* Mantém os botões lado a lado */
+  justify-content: flex-start; /* Alinha o grupo de botões à esquerda */
+  gap: 20px; /* Mantido: Distância entre os botões no desktop (aumentamos para melhor UX) */
+  margin-top: 30px; /* Mantido: Espaço do texto acima */
+}
+
+.opcoes-retorno a {
+  /* Remove a largura forçada para desktop, deixando o botão se (ajustar ao conteúdo) */
+  width: auto;
+  /* Garante que o texto fique centralizado nos botões */
+  text-align: center;
 }
 
 /* ========================================================= */
@@ -589,16 +2381,20 @@ select {
  */
 input:focus,
 select:focus {
+  /* Estilo de foco para campos de formulário */
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-  outline: none; /* Remove o outline padrão do navegador */
+  /* Box-shadow para destaque do foco (ajustado para ser menos invasivo) */
+  box-shadow: 0 0 0 var(--border-width-md) rgba(0, 123, 255, 0.25);
+  outline: none; /* Remove o outline padrão do navegador (substituído pelo box-shadow) */
 }
 
 a:focus,
 button:focus {
-  outline: 2px solid var(--color-secondary);
-  box-shadow: 0 0 5px var(--color-primary);
-  outline-offset: 2px;
+  /* Estilo de foco para links e botões */
+  outline: var(--border-width-sm) solid var(--color-secondary);
+  box-shadow: 0 0 var(--space-xxs-custom) var(--color-primary);
+  outline-offset: var(--border-width-sm);
+  /* Garante que o outline não se sobreponha à borda */
 }
 
 /**
@@ -607,19 +2403,32 @@ button:focus {
 
 /* Campo com Erro (Alerta visual para indicar falha na validação) */
 .campo-erro {
-  border: 2px solid var(--color-alert-danger) !important;
-  box-shadow: 0 0 5px rgba(204, 0, 0, 0.5);
+  /* Destaca o campo com borda vermelha */
+  border: var(--border-width-sm) solid var(--color-alert-danger) !important;
+  /* Aplica box-shadow vermelha para reforçar o erro */
+  box-shadow: 0 0 var(--space-xxs-custom) rgba(204, 0, 0, 0.5) !important;
 }
 
 /* Mensagem de Erro (Texto de alerta) */
 .mensagem-erro {
+  /* Estilização do texto da mensagem de erro */
   color: var(--color-alert-danger);
   font-size: 0.9em; /* Tamanho de fonte reduzido para não ser muito invasivo */
-  margin-top: 4px;
+  margin-top: var(--space-xxs);
   display: block;
-  min-height: 1.2em; /* Garante que o layout não "salte" quando o erro aparece */
+  min-height: 1.2em; /* Garante que o layout não "salte" quando o erro aparece/desaparece */
   font-weight: 600;
   width: 100%;
+}
+
+.campo-erro:focus {
+  /* Estilo de foco do campo em estado de erro */
+  outline: none !important; /* Remove o outline azul/padrão do navegador */
+
+  /* Reafirma as propriedades de borda e sombra vermelha no foco */
+  border: var(--border-width-sm) solid var(--color-alert-danger) !important;
+  /* Garante que o box-shadow e a borda vermelha sejam mantidos (mesmo que já definidos) */
+  box-shadow: 0 0 var(--space-xxs-custom) rgba(204, 0, 0, 0.5) !important;
 }
 
 /* ========================================================= */
@@ -659,6 +2468,7 @@ button:focus {
     margin-right: 0;
   }
 
+  /* Reorganiza o header para disposição horizontal (logo à esquerda, menu/botão à direita) */
   header {
     flex-direction: row;
     justify-content: space-between;
@@ -678,10 +2488,16 @@ button:focus {
 /* BREAKPOINT: 768px (Tablets e Desktops) - Transição Principal   */
 /* -------------------------------------------------------------  */
 @media (min-width: 768px) {
+  /*
+   * **AVISO**: Este bloco ativa as modificações do layout base (Mobile-First).
+   * Todos os estilos a seguir (tipografia, layout de formulário e cartões) são
+   * ajustes de Desktop/Tablet que garantem o aproveitamento ideal do espaço horizontal.
+   */
+
   /* Otimização do Layout Principal (Aumenta o padding e a largura) */
   main {
-    max-width: 1200px;
-    margin: var(--space-lg) auto; /* Espaçamento maior em telas grandes */
+    max-width: 1200px; /* Limite de largura para o conteúdo principal */
+    margin: var(--space-lg) auto; /* Centraliza e aumenta o espaçamento vertical */
     padding: var(--space-lg) var(--space-lg); /* >> NOVO DS */
   }
 
@@ -689,7 +2505,7 @@ button:focus {
   .btn-abrir-menu,
   .menu-mobile,
   .overlay-menu {
-    display: none; /* Esconde todos os elementos do menu mobile */
+    display: none; /* Esconde todos os elementos de navegação do menu mobile */
   }
 
   /* Mostra o menu de navegação completo */
@@ -703,7 +2519,7 @@ button:focus {
     padding: var(--space-sm) var(--space-lg);
   }
 
-  /* Estilos do Menu Desktop */
+  /* Estilos de lista de links Menu Desktop */
   .menu-principal nav ul {
     display: flex;
     gap: var(--space-md);
@@ -717,18 +2533,19 @@ button:focus {
     font-weight: bold; /* Garante o negrito nos links */
   }
 
+  /* Estilos do Submenu Dropdown (Desktop) */
   .submenu {
     display: none; /* Esconde por padrão */
-    position: absolute;
+    position: absolute; /* Posicionamento relativo ao item pai (li) */
     top: 100%; /* Posiciona logo abaixo do link principal */
     left: 0;
     min-width: 200px;
     background-color: var(--color-neutral-white);
-    border: 1px solid var(--color-neutral-medium);
+    border: var(--border-width-xs) solid var(--color-neutral-medium); /* REFATORADO: 1px */
     z-index: 50;
     padding: var(--space-xs) 0;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px var(--space-xs) rgba(0, 0, 0, 0.1); /* REFATORADO: 8px */
   }
 
   .submenu li a {
@@ -741,27 +2558,28 @@ button:focus {
     background-color: var(--color-neutral-light);
   }
 
-  /* Mostrar o submenu ao passar o mouse */
+  /* Mostrar o submenu ao passar o mouse (interação desktop) */
   .menu-principal nav ul li:hover > .submenu {
     display: block;
   }
   /* << FIM Submenu Dropdown */
 
-  /* Layout Flexbox/Grid para Cartões de Projeto */
+  /* Layout Flexbox/Grid para Cartões de Projeto (Sistema de 12 Colunas) */
   /* Container que hospeda o sistema de 12 colunas */
   .grid-12-container,
   .cards-container {
     display: grid;
-    grid-template-columns: repeat(12, 1fr); /* 12 colunas */
+    grid-template-columns: repeat(12, 1fr);
+    /* O Grid cria 12 colunas de tamanho igual */
     gap: var(--space-md);
     margin-top: var(--space-md);
   }
 
   /* Classes para o Sistema de 12 Colunas (Mobile/Tablet/Desktop) */
-  /* Mobile/Tablet (768px+): 2 colunas */
+  /* Em Mobile/Tablet (768px+): o .col-md-6: Ocupa 6 de 12 colunas (50%) -> 2 cards por linha (12/6=2)*/
   .col-md-6 {
     grid-column: span 6;
-  } /* 2 cards por linha (12/6=2) */
+  }
 
   /* Estilos do Header e Menu Desktop */
   header h1 {
@@ -781,11 +2599,13 @@ button:focus {
 
   /* Layout de Cartões de Projeto (Flexbox/Grid) */
   .cards-container {
-    display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Força 2 colunas em 768px (pode ser sobrescrito pelo grid-12) */
+    gap: var(--space-lg); /* gap para melhor espaçamento visual */
     margin-top: var(--space-md);
   }
 
+  /* Reset de margem para o layout horizontal */
   /* Ajusta a largura dos cards para Flexbox (distribui o espaço) */
   #projetos article {
     margin-bottom: 0;
@@ -800,19 +2620,23 @@ button:focus {
 
   /* Campo de Largura Total (Span 2) */
   fieldset div.full-width {
-    grid-column: 1 / span 2; /* Faz o elemento ocupar as duas colunas */
+    grid-column: 1 / span 2; /* Faz o elemento ocupar as duas colunas inteiras */
     margin-top: var(--space-md);
   }
 }
 
-/* Ajuste no tamanho do botão de Cadastro */
+/* Ajuste no tamanho do botão de Cadastro (Formulário)*/
 button[type="submit"] {
-  font-size: 1.1em;
+  font-size: var(--font-size-md);
 }
 
 /* ------------------------------------------------------------------------- */
 /* **ATENÇÃO:** O bloco abaixo REAFIRMA os estilos de layout do menu.        */
 /* É uma repetição de regras que garantem a formatação horizontal (desktop)  */
+/* ------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------- */
+/* REAFIRMAÇÃO DE ESTILOS DE LAYOUT DO MENU (GARANTIA DE FORMATAÇÃO DESKTOP) */
 /* ------------------------------------------------------------------------- */
 
 /* Torna a lista de links horizontal */
@@ -845,7 +2669,7 @@ nav ul li a {
   }
 }
 
-/* Desktop Médio: 3 colunas em cards */
+/* Desktop Médio: 3 colunas em cards (Ocupa 4/12 colunas) */
 .col-lg-4 {
   grid-column: span 4;
 } /* 3 cards por linha (12/4=3) */
@@ -860,6 +2684,7 @@ nav ul li a {
 /* ---------------------------------------------------------- */
 @media (min-width: 1200px) {
   /* Aumento da largura máxima para melhor aproveitamento em telas grandes (Otimiza para 4 colunas em cards/layout) */
+
   /* Desktop Grande: 4 colunas em cards */
   .col-xl-3 {
     grid-column: span 3;
@@ -879,8 +2704,9 @@ nav ul li a {
 /* -------------------------------------------------------------  */
 /* BREAKPOINT: 1024px (Laptops e Desktops Intermediários)        */
 /* -------------------------------------------------------------  */
+/*(Ajustes de espaçamento e tipografia)*/
 @media (min-width: 1024px) {
-  /* Aumenta o espaçamento do main para aproveitar melhor a tela */
+  /* Aumenta o espaçamento inteiro do main para aproveitar melhor a tela */
   main {
     padding: var(--space-xl) var(--space-xxl);
   }
@@ -897,17 +2723,19 @@ nav ul li a {
   }
 }
 
-/* ======== AJUSTE DOS BOTÕES EM AGRADECIMENTO PARA MOBILE ======== */
+/* ============== AJUSTE DOS BOTÕES EM AGRADECIMENTO PARA MOBILE ============== */
+/* (Reverte o layout dos botões de retorno para vertical em telas pequenas)*/
 @media (max-width: 600px) {
   .opcoes-retorno {
     display: flex;
     flex-direction: column;
-    margin-top: 35px;
-    gap: 10px; /* distância entre os botões */
+    margin-top: 2rem; /* REFATORADO: 35px -> Aproximado para var(--space-lg) ou 2rem */
+    gap: var(--space-xxx);
+    /* gap de distância de 10px entre os botões (refatorado) */
     align-items: left; /* mantém alinhado no centro */
   }
 
   .opcoes-retorno a {
-    width: 70%; /* deixa proporcional à tela do celular */
+    width: 70%; /* Define uma largura proporcional à tela do celular */
   }
 }

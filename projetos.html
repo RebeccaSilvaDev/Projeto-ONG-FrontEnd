@@ -24,6 +24,7 @@
           <li><a href="index.html">Início</a></li>
           <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
           <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+          <li><a href="blog-mídia.html">Nosso Blog & Mídia</a></li>
         </ul>
       </nav>
       <div class="menu-mobile" id="menu-mobile">
@@ -36,13 +37,14 @@
             <li><a href="index.html">Início</a></li>
             <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
             <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+            <li><a href="blog-mídia.html">Nosso Blog & Mídia</a></li>
           </ul>
         </nav>
       </div>
-      <!--Menu de Navegação-->
     </header>
 
     <div class="overlay-menu" id="overlay-menu"></div>
+    <!--Menu de Navegação em Desktop e Celular-->
 
     <main>
       <h2>Nossos Projetos e Como Você Pode Ajudar</h2>
@@ -60,7 +62,55 @@
         de trabalho abaixo e descubra como a sua doação ou o seu tempo pode
         mudar a realidade de milhares de famílias e jovens.
       </p>
-      <!--Conteúdo em Texto da Página-->
+
+      <section id="indicadores-impacto">
+        <h2>Impacto e Resultados</h2>
+        <p>
+          Acompanhe em tempo real as métricas de sucesso que sua ajuda nos
+          permite alcançar.
+        </p>
+
+        <div class="kpis-container">
+          <div class="kpi">
+            <span class="icone" aria-hidden="true">🎯</span>
+
+            <div class="texto">
+              <h4>Refeições Distribuídas</h4>
+
+              <div class="valor destaque">+50K</div>
+              <p class="descricao">Meta anual de 60.000 refeições.</p>
+            </div>
+          </div>
+
+          <div class="kpi">
+            <div class="texto">
+              <h4>Jovens Capacitados</h4>
+
+              <div class="valor">150</div>
+              <p class="descricao">Alcançamos 75% da meta de 200 formandos.</p>
+            </div>
+          </div>
+
+          <div class="kpi">
+            <div class="texto">
+              <h4>Comunidades Atendidas</h4>
+              <div class="valor">+5</div>
+              <p class="descricao">
+                Nossa área de atuação se expandiu em 25% este ano.
+              </p>
+            </div>
+          </div>
+
+          <div class="kpi">
+            <div class="texto">
+              <h4>Voluntários Ativos</h4>
+              <div class="valor">120</div>
+              <p class="descricao">A equipe de voluntários cresceu 40%.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- KPIS -->
 
       <section id="projetos">
         <h2>Projetos Atuais de Impacto</h2>
@@ -69,7 +119,7 @@
           <article>
             <h3>
               Projeto Alimentação Solidária
-              <span class="badge">Prioridade Alta</span>
+              <span class="badge prioridade-alta">Prioridade Alta</span>
             </h3>
             <p>
               Focado na distribuição de refeições para famílias em situação de
@@ -98,7 +148,7 @@
           <article>
             <h3>
               Programa de Educação Digital
-              <span class="badge">Concluído</span>
+              <span class="badge badge-concluido">Concluído</span>
             </h3>
             <p>
               Oferecemos cursos básicos de informática e programação para jovens
@@ -122,9 +172,117 @@
               novembro.
             </p>
           </article>
+
+          <article>
+            <h3>
+              Projeto Dignidade: Kit Básico de Higiene
+              <span class="badge prioridade-media">Prioridade Média</span>
+            </h3>
+
+            <p>
+              Focado na distribuição mensal de kits de higiene e limpeza para
+              famílias e indivíduos em situação de rua, promovendo a saúde e a
+              autoestima. Nossa meta é distribuir 1.000 kits por mês na região
+              metropolitana.
+            </p>
+
+            <picture>
+              <source
+                srcset="assets/image/kit-higiene.webp"
+                type="image/webp"
+              />
+
+              <img
+                src="assets/image/kit-higiene.jpg"
+                alt="Voluntários montando kits de higiene."
+              />
+            </picture>
+
+            <p>
+              <strong>Voluntários Necessários:</strong> Necessitando de 12
+              voluntários para montagem e logística de distribuição.
+            </p>
+          </article>
+
+          <article>
+            <h3>
+              Apoio Escolar: Futuro Brilhante
+              <span class="badge em-andamento">Em andamento</span>
+            </h3>
+
+            <p>
+              Oferecemos reforço escolar e atividades lúdicas no contraturno das
+              aulas, além de distribuir materiais didáticos essenciais para
+              crianças de 6 a 12 anos. O foco é reduzir a evasão escolar e
+              garantir o aprendizado.
+            </p>
+
+            <picture>
+              <source
+                srcset="assets/image/reforco-escolar.webp"
+                type="image/webp"
+              />
+              <img
+                src="assets/image/reforco-escolar.jpg"
+                alt="Voluntário ensinando crianças em um centro comunitário."
+              />
+            </picture>
+
+            <p>
+              <strong>Próxima Turma:</strong> Inscrições para tutores
+              voluntários (reforço escolar) abertas em dezembro.
+            </p>
+          </article>
+        </div>
+
+        <div class="projeto-metas-dashboard">
+          <div class="meta-item">
+            <h4 class="meta-titulo">Progresso de Arrecadação:</h4>
+
+            <div class="barra-progresso">
+              <div
+                class="progresso-preenchido progresso-arrecadacao"
+                id="progressoArrecadacao"
+                data-porcentagem="75"
+              ></div>
+            </div>
+
+            <p class="detalhe-progresso" id="detalheProgressoTexto">
+              R$ 7.500 de R$ 10.000 arrecadados (75%)
+            </p>
+          </div>
+
+          <div class="meta-item">
+            <h4 class="meta-titulo">Meta de Kits Distribuídos:</h4>
+            <div class="barra-progresso">
+              <div
+                class="progresso-preenchido progresso-impacto"
+                id="progressoKits"
+                data-porcentagem="65"
+              ></div>
+            </div>
+            <p class="detalhe-progresso">
+              R$ 8.500 de R$ 12.000 kits distribuídos (65%)
+            </p>
+          </div>
+
+          <div class="meta-item">
+            <h4 class="meta-titulo">Recrutamento de Voluntários:</h4>
+
+            <div class="barra-progresso">
+              <div
+                class="progresso-preenchido progresso-voluntariado"
+                id="progressoVoluntarios"
+                data-porcentagem="90"
+              ></div>
+            </div>
+            <p class="detalhe-progresso">
+              10 de 12 voluntários necessários (90%)
+            </p>
+          </div>
         </div>
       </section>
-      <!--Cartões sobre os Projetos-->
+      <!--Cartões dos Projetos Sociais-->
 
       <section id="voluntariado">
         <h2>Faça a Diferença: Seja um Voluntário</h2>
@@ -138,7 +296,7 @@
           <li>Suporte Administrativo</li>
           <li>Aulas de Reforço Escolar</li>
         </ul>
-        <a href="cadastro.html">Quero me Cadastrar como Voluntário</a>
+        <a href="cadastro.html">Quero me Cadastrar como Voluntário</a> ✍
       </section>
       <!--Direcionamento ao Cadastro-->
 
@@ -148,22 +306,84 @@
           <p>
             Sua doação garante a continuidade de todos os nossos projetos.
             Acompanhe a transparência dos recursos em nosso
-            <a href="#">Relatório Anual</a>.
+            <a href="relatorio-anual.html">Relatório Anual</a>.
           </p>
         </aside>
+        <!--Direcionamento ao Relatório Anual-->
 
         <h3>Opções de Doação</h3>
         <p>
           Você pode doar por PIX, cartão de crédito ou boleto. Toda ajuda faz a
           diferença!
         </p>
-        <a href="#" class="btn">Doar Agora</a>
+
+        <div>
+          <a href="doacao.html" class="btn"
+            >Doar Agora
+            <i class="bi bi-heart-fill"></i>
+          </a>
+        </div>
       </section>
       <!--Direcionamento à Doações-->
     </main>
 
-    <footer>
-      <p>&copy; 2025 Transformando Vidas. Todos os direitos reservados.</p>
+    <footer id="main-footer">
+      <div class="container footer-grid">
+        <div class="footer-col footer-info">
+          <h4>Transformando Vidas</h4>
+          <p>
+            Conectando corações e recursos para gerar mudanças duradouras nas
+            comunidades carentes.
+          </p>
+          <p class="endereco">
+            Rua dos Heróis, 123 - Centro<br />São Paulo, SP
+          </p>
+          <p class="telefone">Tel: (00) 99999-8888</p>
+        </div>
+
+        <div class="footer-col footer-links">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos & Doações</a></li>
+            <li><a href="blog.html">Blog & Notícias</a></li>
+            <li><a href="relatorio-anual.html">Transparência</a></li>
+            <li><a href="imprensa.html">Área de Imprensa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-social">
+          <h4>Fique Conectado</h4>
+          <div class="social-icons">
+            <a href="#" target="_blank" aria-label="Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="YouTube"
+              ><i class="bi bi-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>
+            &copy; 2025 Transformando Vidas. Todos os direitos reservados. |
+            <a href="politica.html">Política de Privacidade</a>
+          </p>
+        </div>
+      </div>
     </footer>
+
+    <script src="js/interatividade.js" defer></script>
+    <script src="js/kpis-manager.js" defer></script>
+
+    <!--Linkagem com JS-->
   </body>
 </html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Relatório Anual</title>
+  </head>
+  <body>
+    <header>
+      <h1>Transformando Vidas</h1>
+    </header>
+
+    <div class="overlay-menu" id="overlay-menu"></div>
+
+    <main>
+      <section class="container-principal">
+        <h2>Transparência: Relatório Anual de 2024</h2>
+
+        <section class="sumario-executivo">
+          <h2>Mensagem da Presidente</h2>
+
+          <div class="introducao">
+            <p>
+              Em 2024, a Transformando Vidas não apenas resistiu aos desafios,
+              mas prosperou, graças à generosidade de cada doador e ao esforço
+              incansável dos nossos voluntários. Conseguimos expandir o Projeto
+              Alimentos para duas novas comunidades e lançamos a primeira edição
+              do nosso programa de capacitação digital.
+            </p>
+            <p>
+              Alcançamos a marca de <b>98.765,00 mil reais arrecadados</b>, um
+              recorde que nos enche de orgulho e nos impulsiona a sonhar mais
+              alto. Nossa meta para o próximo ano é clara: dobrar o número de
+              famílias assistidas pelo Projeto Educação. Agradeço a você por ser
+              a mudança que o mundo precisa.
+            </p>
+          </div>
+
+          <p class="assinatura">
+            <b>Maria Fátima</b><br />Presidente da Transformando Vidas
+          </p>
+        </section>
+
+        <section id="resumo-financeiro" class="resumo-financeiro">
+          <h2>📊 Resumo Financeiro Anual</h2>
+
+          <p class="introducao">
+            Apresentamos o nosso relatório anual consolidado, detalhando a
+            origem e a aplicação de todos os recursos recebidos e utilizados em
+            nossos projetos sociais.
+          </p>
+
+          <div class="kpis-container">
+            <div class="kpi">
+              <h4>Total Arrecadado</h4>
+              <p class="valor" id="kpi-arrecadado" data-valor="98765">
+                R$ 0,00
+              </p>
+            </div>
+
+            <div class="kpi">
+              <h4>Meta Anual</h4>
+              <p class="valor" id="kpi-meta" data-valor="100000">R$ 0,00</p>
+            </div>
+
+            <div class="kpi">
+              <h4>Arrecadação vs. Meta</h4>
+              <p class="valor destaque" id="kpi-percentual">0%</p>
+            </div>
+          </div>
+
+          <h3>Progresso da Meta de Arrecadação (R$)</h3>
+          <div class="grafico-container">
+            <canvas id="arrecadacaoChart"></canvas>
+          </div>
+
+          <div class="detalhes-agrupados">
+            <article class="relatorio-bloco aplicacao-detalhada">
+              <h3>Detalhes da Aplicação de Recursos 💸</h3>
+
+              <div class="aplicacao-detalhada">
+                <ul>
+                  <li><b>Projeto Educação:</b> 30% dos fundos</li>
+                  <li><b>Projeto Alimentos:</b> 20% dos fundos</li>
+                  <li><b>Projeto Dignidade:</b> 15% dos fundos</li>
+                  <li><b>Apoio Escolar:</b> 15% dos fundos</li>
+                  <li><b>Organização de Eventos:</b> 10% dos fundos</li>
+                  <li><b>Reserva de Emergência:</b> 10% dos fundos</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="relatorio-bloco detalhes-financeiros">
+              <h3>Detalhes Financeiros 💰</h3>
+
+              <div class="detalhes-financeiros">
+                <p><strong>Custos Operacionais:</strong> R$ 13.765,00</p>
+                <p>
+                  <strong>Total Investido em Projetos:</strong> R$ 85.000,00
+                </p>
+                <p><strong>Total Arrecadado:</strong> R$ 98.765,00</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="metas-por-projeto">
+          <h2>🎯 Metas e Conquistas por Projeto</h2>
+          <p>
+            Abaixo detalhamos o impacto direto que cada projeto alcançou com os
+            fundos aplicados no último ano.
+          </p>
+
+          <div class="projeto-report-box">
+            <h3>Projeto Alimentação Solidária</h3>
+            <p><strong>Meta Anual:</strong> 60.000 refeições distribuídas</p>
+            <p>
+              <strong>Resultado Alcançado:</strong> +50.000 Refeições
+              distribuídas
+            </p>
+            <p class="status-conquista">
+              Resultado: 83% da meta alcançada (próximo de 100%).
+            </p>
+          </div>
+
+          <div class="projeto-report-box">
+            <h3>Programa de Educação Digital</h3>
+            <p><strong>Meta Anual:</strong> 200 jovens capacitados</p>
+            <p><strong>Resultado Alcançado:</strong> 150 Jovens formados</p>
+            <p class="status-conquista">
+              Resultado: 75% da meta de formação alcançada. (Próxima turma em
+              andamento).
+            </p>
+          </div>
+
+          <div class="projeto-report-box">
+            <h3>Projeto Dignidade: Kit Básico de Higiene</h3>
+            <p>
+              <strong>Meta Anual:</strong> 12.000 kits distribuídos (1.000
+              kits/mês)
+            </p>
+            <p>
+              <strong>Resultado Alcançado:</strong> 10.500 kits distribuídos
+            </p>
+            <p class="status-conquista">
+              Resultado: 87,5% da meta alcançada. (Forte impacto inicial).
+            </p>
+          </div>
+
+          <div class="projeto-report-box">
+            <h3>Apoio Escolar: Futuro Brilhante</h3>
+            <p><strong>Meta Anual:</strong> 120 crianças atendidas</p>
+            <p><strong>Resultado Alcançado:</strong> 95 crianças atendidas</p>
+            <p class="status-conquista">
+              Resultado: 79% da meta alcançada. Foco na redução da evasão
+              escolar em andamento.
+            </p>
+          </div>
+        </section>
+
+        <section class="impacto-qualitativo">
+          <h3>🤝 Histórias que Transformam</h3>
+
+          <p>
+            Por trás de cada número, existe uma vida impactada. Veja como a sua
+            contribuição fez a diferença no último ano.
+          </p>
+
+          <div class="depoimentos-container">
+            <div class="depoimento">
+              <p>
+                "Graças ao Projeto Alimentos, minha família teve o básico
+                garantido enquanto eu procurava emprego. É mais do que comida, é
+                dignidade."
+              </p>
+              <p class="autor">
+                - Ana Lúcia, Beneficiária do Projeto Alimentos
+              </p>
+            </div>
+            <div class="depoimento">
+              <p>
+                "Participei da capacitação digital e consegui meu primeiro
+                trabalho como assistente virtual. Minha vida mudou
+                completamente!"
+              </p>
+              <p class="autor">
+                - João Victor, Participante do Projeto Educação
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="documentos-legais">
+          <h3>⚖️ Transparência e Governança</h3>
+          <p>
+            Comprometimento com a ética e a prestação de contas. Todos os nossos
+            documentos essenciais estão disponíveis para consulta.
+          </p>
+
+          <ul>
+            <li>
+              <a href="#" target="_blank"
+                ><i class="bi bi-file-earmark-text"></i> Estatuto Social
+                (PDF)</a
+              >
+            </li>
+            <li>
+              <a href="#" target="_blank"
+                ><i class="bi bi-currency-dollar"></i> Balanço Patrimonial de
+                2024 (PDF)</a
+              >
+            </li>
+            <li>
+              <a href="#" target="_blank"
+                ><i class="bi bi-patch-check"></i> Certificado CNPJ e
+                Regularidade Fiscal</a
+              >
+            </li>
+          </ul>
+
+          <p class="aviso-legal">
+            Nossa instituição preza pela máxima transparência, por isso, todos
+            os dados financeiros são auditados anualmente por uma entidade
+            independente, garantindo a correta aplicação dos recursos.
+          </p>
+        </section>
+
+        <a href="projetos.html" class="btn">Voltar para Projetos e Doações</a>
+      </section>
+    </main>
+
+    <footer id="main-footer">
+      <div class="container footer-grid">
+        <div class="footer-col footer-info">
+          <h4>Transformando Vidas</h4>
+          <p>
+            Conectando corações e recursos para gerar mudanças duradouras nas
+            comunidades carentes.
+          </p>
+          <p class="endereco">
+            Rua dos Heróis, 123 - Centro<br />São Paulo, SP
+          </p>
+          <p class="telefone">Tel: (00) 99999-8888</p>
+        </div>
+
+        <div class="footer-col footer-links">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos & Doações</a></li>
+            <li><a href="blog.html">Blog & Notícias</a></li>
+            <li><a href="relatorio-anual.html">Transparência</a></li>
+            <li><a href="imprensa.html">Área de Imprensa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-social">
+          <h4>Fique Conectado</h4>
+          <div class="social-icons">
+            <a href="#" target="_blank" aria-label="Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="YouTube"
+              ><i class="bi bi-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>
+            &copy; 2025 Transformando Vidas. Todos os direitos reservados. |
+            <a href="politica.html">Política de Privacidade</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"
+      defer
+    ></script>
+    <script src="js/interatividade.js" defer></script>
+    <script src="js/kpis-manager.js" defer></script>
+  </body>
+</html>

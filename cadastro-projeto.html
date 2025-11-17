@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Gestão de Projetos</title>
+  </head>
+  <body>
+    <header></header>
+
+    <div class="overlay-menu" id="overlay-menu"></div>
+
+    <main class="container">
+      <section>
+        <h2>Cadastrar Novo Projeto Social</h2>
+        <p>
+          Utilize este formulário (simulado) para registrar detalhes, metas e
+          requisitos de voluntariado para um novo projeto de impacto social,
+          alimentando as informações exibidas na página de projetos.
+        </p>
+
+        <form id="formulario-projeto-gestao" action="#">
+          <fieldset>
+            <legend>Informações Básicas do Projeto</legend>
+
+            <div>
+              <label for="nome-projeto">Nome do Projeto:</label>
+              <input
+                type="text"
+                id="nome-projeto"
+                name="nome-projeto"
+                placeholder="Ex: Projeto Alimentação Solidária"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="categoria">Categoria:</label>
+              <select id="categoria" name="categoria" required>
+                <option value="" disabled selected>
+                  Selecione a Categoria
+                </option>
+                <option value="alimentacao">
+                  Alimentação e Combate à Fome
+                </option>
+                <option value="educacao">Educação e Capacitação</option>
+                <option value="saude">Saúde e Bem-Estar</option>
+                <option value="infra">Infraestrutura Comunitária</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="descricao">Descrição Detalhada do Projeto:</label>
+              <textarea
+                id="descricao"
+                name="descricao"
+                rows="5"
+                placeholder="Descreva o objetivo, público-alvo e localização principal."
+                required
+              ></textarea>
+            </div>
+
+            <div>
+              <label for="descricao">Descrição Detalhada do Projeto:</label>
+              <textarea
+                id="descricao"
+                name="descricao"
+                rows="5"
+                placeholder="Descreva o objetivo, público-alvo e localização principal."
+                required
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Metas e Indicadores (KPIs)</legend>
+
+            <div>
+              <label for="meta-beneficiarios"
+                >Meta de Pessoas Beneficiadas:</label
+              >
+              <input
+                type="number"
+                id="meta-beneficiarios"
+                name="meta-beneficiarios"
+                min="1"
+                placeholder="Ex: 5000"
+                required
+              />
+              <small
+                >Pessoas ou famílias que serão diretamente impactadas.</small
+              >
+            </div>
+
+            <div>
+              <label for="meta-arrecadacao">Meta de Arrecadação (R$):</label>
+              <input
+                type="number"
+                id="meta-arrecadacao"
+                name="meta-arrecadacao"
+                min="0"
+                placeholder="Ex: 50000"
+                required
+              />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div>
+              <legend>Requisitos de Voluntariado</legend>
+
+              <label for="vagas-necessarias"
+                >Vagas de Voluntários Necessárias:</label
+              >
+              <input
+                type="number"
+                id="vagas-necessarias"
+                name="vagas-necessarias"
+                min="0"
+                placeholder="Ex: 15"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="requisitos">Habilidades/Requisitos (opcional):</label>
+              <textarea
+                id="requisitos"
+                name="requisitos"
+                rows="3"
+                placeholder="Ex: Experiência em logística, conhecimento em programação, etc."
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-finalizar">
+            Salvar e Publicar Projeto
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer id="main-footer">
+      <div class="container footer-grid">
+        <div class="footer-col footer-info">
+          <h4>Transformando Vidas</h4>
+          <p>
+            Conectando corações e recursos para gerar mudanças duradouras nas
+            comunidades carentes.
+          </p>
+          <p class="endereco">
+            Rua dos Heróis, 123 - Centro<br />São Paulo, SP
+          </p>
+          <p class="telefone">Tel: (00) 99999-8888</p>
+        </div>
+
+        <div class="footer-col footer-links">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos & Doações</a></li>
+            <li><a href="blog.html">Blog & Notícias</a></li>
+            <li><a href="relatorio-anual.html">Transparência</a></li>
+            <li><a href="imprensa.html">Área de Imprensa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-social">
+          <h4>Fique Conectado</h4>
+          <div class="social-icons">
+            <a href="#" target="_blank" aria-label="Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="YouTube"
+              ><i class="bi bi-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>
+            &copy; 2025 Transformando Vidas. Todos os direitos reservados. |
+            <a href="politica.html">Política de Privacidade</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/interatividade.js"></script>
+  </body>
+</html>
