@@ -35,6 +35,8 @@
   --color-neutral-gray: #333; /* Cor cinza padrão mais neutra para detalhes */
 
   /* CORES DE SUPORTE (Fundo/Borda) */
+  /* Exemplo de cor auxiliar para o gradiente (se a cor secundária for azul, use um verde) */
+  --color-aux-dark: #008080; /* Turquesa escuro (similar ao da fundação) */
   --color-background-card-subtle: #f9f9f9; /* Fundo sutil de cartões detalhes de internos */
   --color-border-subtle: rgba(0, 0, 0, 0.1);
   /* color-border-subtle - Borda fina e discreta (1px com baixa opacidade) */
@@ -445,12 +447,238 @@ section:last-of-type {
 footer {
   grid-area: footer;
 
-  text-align: center;
   padding: var(--space-sm) var(--space-xs);
   background-color: var(--color-neutral-dark);
   color: var(--color-neutral-white);
   margin-top: var(--space-md);
   border-top: var(--space-xxs-custom) solid var(--color-secondary); /* Borda de destaque superior */
+}
+
+/* Container de conteúdo principal (Social, Links, Info) */
+#main-footer > .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+/* Títulos das Seções */
+#main-footer h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------- */
+/* 1. LAYOUT DO CABEÇALHO (LOGO + REDES SOCIAIS) */
+/* ---------------------------------------------------- */
+
+.footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: var(--space-lg);
+}
+
+.footer-logo h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-secondary);
+}
+
+.footer-social-top .title-redes {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-neutral-lighter);
+  margin-bottom: var(--space-xs);
+  text-align: right; /* Alinha o título das redes à direita */
+}
+
+/* ESTILO DE REDES SOCIAIS MESCLADO (REDONDO E BORDADO) */
+.social-icons {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end; /* Alinha os ícones à direita do container */
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  color: var(--color-neutral-white);
+  background-color: transparent; /* Fundo transparente */
+  border: 1px solid var(--color-neutral-white); /* Borda branca */
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons a:hover {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+/* FIM DO ESTILO MESCLADO */
+
+/* Linha Divisória de Largura Total */
+.footer-divider {
+  height: 1px;
+  background-color: var(--color-neutral-medium);
+  margin-bottom: var(--space-xl);
+}
+
+/* ---------------------------------------------------- */
+/* 2. LAYOUT DE COLUNAS (3 COLUNAS) */
+/* ---------------------------------------------------- */
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  padding-top: 0;
+}
+
+/* Coluna 1: Links de Ajuda */
+.column-ajuda .lista-ajuda {
+  list-style: none;
+  padding: 0;
+}
+
+.column-ajuda li {
+  margin-bottom: var(--space-md);
+}
+
+.column-ajuda a {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.column-ajuda i {
+  font-size: 1.2rem;
+  margin-right: var(--space-sm);
+  color: var(--color-secondary);
+}
+
+/* Colunas 2 e 3: Links Simples (Privacidade e Organização) */
+.column-privacidade ul,
+.column-organizacao ul {
+  list-style: none;
+  padding: 0;
+}
+
+.column-privacidade li,
+.column-organizacao li {
+  margin-bottom: var(--space-sm);
+}
+
+.column-organizacao .endereco-info {
+  /* Formatação para o texto de contato/endereço */
+  display: block;
+  margin-top: var(--space-md);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-neutral-lighter);
+}
+
+/* ---------------------------------------------------- */
+/* 3. RODAPÉ INFERIOR (COPYRIGHT) */
+/* ---------------------------------------------------- */
+
+.footer-bottom {
+  /* Remove a cor escura anterior e aplica o gradiente */
+  background: linear-gradient(
+    to right,
+    var(--color-aux-dark),
+    var(--color-secondary)
+  );
+
+  /* Padding mínimo para torná-lo compacto */
+  padding: var(--space-xs) 0;
+
+  /* Garantir que não haja margem acima, já que a cor de fundo deve ser contínua */
+  margin-top: 0;
+
+  /* Borda superior deve ser removida se o gradiente for contínuo */
+  border-top: none;
+}
+
+.footer-bottom .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center; /* Centraliza o texto */
+}
+
+.copyright {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Links dentro do copyright devem ser brancos e sem sublinhado padrão */
+.copyright a {
+  color: var(--color-neutral-white);
+  text-decoration: none;
+  transition: color 0.2s; /* Adiciona transição para o hover suave */
+}
+
+.copyright a:hover {
+  /* Usando sua cor secundária (laranja/rosa/vermelho) ou defina um azul específico */
+  color: var(--color-primary-dark);
+
+  /* Se você quiser um azul específico, use um código hex, por exemplo: */
+  /* color: #007bff; */
+
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------- */
+/* REGRAS GERAIS DE LINK E HOVER */
+/* ---------------------------------------------------- */
+
+footer a {
+  color: var(--color-neutral-white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: var(--color-secondary);
+  /* Não usar text-decoration: underline aqui, pois queremos o hover da borda/cor do ícone */
+}
+
+/* ---------------------------------------------------- */
+/* RESPONSIVIDADE */
+/* ---------------------------------------------------- */
+@media (max-width: 992px) {
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+  .footer-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-logo {
+    margin-bottom: var(--space-md);
+  }
+  .footer-social-top {
+    align-self: flex-start;
+    width: 100%;
+  }
+  .footer-social-top .title-redes {
+    text-align: left;
+  }
+  .social-icons {
+    justify-content: flex-start;
+  }
 }
 
 /* ESTILOS ESPECÍFICOS PARA LISTAS DE CADASTRO/VOLUNTARIADO */
@@ -2456,6 +2684,56 @@ button:focus {
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
   }
+}
+
+/* --------------------------------------------------------- */
+/* AJUSTE PARA ALINHAMENTO DO TEXTO DESCRITIVO (Início)      */
+/* --------------------------------------------------------- */
+
+/* 1. SEÇÃO PRINCIPAL: Controla o respiro lateral e o espaçamento vertical */
+.destaque-blog {
+  /* Reduz o padding vertical (topo e fundo) e adiciona respiro lateral */
+  padding: var(--space-lg) var(--space-md);
+
+  /* Remove a margem superior (se vier de um elemento com margem-bottom grande, 
+  ajuste o elemento acima dele) */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* 2. WRAPPER DE CONTEÚDO: Define a largura e força o alinhamento esquerdo */
+.blog-content-wrapper {
+  /* Define a largura máxima, mas fica ancorado na esquerda (sem margin: auto) */
+  max-width: 800px;
+  margin-left: auto; /* Adicionado para centralizar o wrapper em telas maiores */
+  /* Força o alinhamento de TODO o conteúdo DENTRO deste wrapper à ESQUERDA */
+  text-align: left;
+}
+
+/* 3. AJUSTES DE TÍTULOS E ESPAÇAMENTO INTERNO */
+
+/* Título Principal (H2): Fica centralizado, sobrepondo o alinhamento do wrapper */
+.blog-content-wrapper h2 {
+  text-align: left;
+  font-size: var(--font-size-xl);
+  margin-top: var(--space-xxx);
+  margin-bottom: var(--space-md);
+}
+
+/* Subtítulos (H3): Reduz margens e herda o alinhamento esquerdo do wrapper */
+.blog-content-wrapper h3 {
+  font-size: 1.5em; /* Mantido */
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xxx);
+  text-align: left;
+}
+
+/* Parágrafos (P): Ajusta a altura da linha e remove margem superior desnecessária */
+.blog-content-wrapper p {
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  text-align: left;
 }
 
 /* ---------------------------------------------------------- */
