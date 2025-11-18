@@ -2599,7 +2599,7 @@ img.voluntariado-img {
 }
 
 /* ========================================================= */
-/* 5. ACESSIBILIDADE E FEEDBACK VISUAL                       */
+/* 6. ACESSIBILIDADE E FEEDBACK VISUAL                       */
 /* (Foco em WCAG 2.1 AA para estados de erro e interativos)  */
 /* ========================================================= */
 
@@ -2660,7 +2660,7 @@ button:focus {
 }
 
 /* ========================================================= */
-/* 6. RESPONSIVIDADE (MEDIA QUERIES)                         */
+/* 7. RESPONSIVIDADE (MEDIA QUERIES)                         */
 /* (Aplica ajustes de layout para telas maiores)             */
 /* ========================================================= */
 

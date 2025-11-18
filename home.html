@@ -2,32 +2,55 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
     <link rel="stylesheet" href="css/style.css" />
 
-    <title>Cadastro Concluído</title>
+    <title>Transformando Vidas</title>
   </head>
+
   <body>
-    <header></header>
+    <header>
+      <h1>Transformando Vidas</h1>
 
-    <main class="agradecimento">
-      <section class="sucesso-cadastro">
-        <h2>🎉 Cadastro Concluído com Sucesso!</h2>
-        <p>
-          Agradecemos imensamente por se juntar à missão da Transformando Vidas.
-          Sua vontade de ajudar é o primeiro passo para transformar vidas.
-        </p>
-        <p>
-          Em breve, nossa equipe entrará em contato com você para as próximas
-          etapas.
-        </p>
+      <div class="btn-abrir-menu" id="btn-menu">
+        <i class="bi bi-list"></i>
+      </div>
 
-        <div class="opcoes-retorno">
-          <a href="index.html" class="btn">Voltar para a Página Inicial</a>
-          <a href="projetos.html" class="btn">Conhecer Nossos Projetos</a>
+      <nav class="menu-principal menu-desktop">
+        <ul>
+          <li><a href="home.html">Início</a></li>
+          <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+          <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+          <li><a href="blogMidia.html">Nosso Blog & Mídia</a></li>
+        </ul>
+      </nav>
+      <div class="menu-mobile" id="menu-mobile">
+        <div class="btn-fechar">
+          <i class="bi bi-x-lg"></i>
         </div>
-      </section>
-    </main>
+
+        <nav>
+          <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="projetos.html">Projetos Sociais e Doações</a></li>
+            <li><a href="cadastro.html">Cadastre-se para Voluntariado</a></li>
+            <li><a href="blogMidia.html">Nosso Blog & Mídia</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="overlay-menu" id="overlay-menu"></div>
+    <!--Menu de Navegação em Desktop e Celular-->
+
+    <main id="app-content"></main>
 
     <footer id="main-footer">
       <div class="container footer-header">
@@ -61,12 +84,12 @@
           <h4>Precisa de Ajuda?</h4>
           <ul class="lista-ajuda">
             <li>
-              <a href="para-projetos-futuros.html"
+              <a href="futuro.html"
                 ><i class="bi bi-question-circle"></i> Perguntas frequentes</a
               >
             </li>
             <li>
-              <a href="blog-mídia.html"
+              <a href="b"
                 ><i class="bi bi-file-earmark-text"></i> Últimas Notícias</a
               >
             </li>
@@ -82,13 +105,13 @@
           <h4>Privacidade</h4>
           <ul>
             <li>
-              <a href="para-projetos-futuros.html">Diretiva de Privacidade</a>
+              <a href="Projetofuturo.html">Diretiva de Privacidade</a>
             </li>
             <li>
-              <a href="para-projetos-futuros.html">Termos e Condições de Uso</a>
+              <a href="Projetofuturo.html">Termos e Condições de Uso</a>
             </li>
             <li>
-              <a href="para-projetos-futuros.html">Informações Adicionais</a>
+              <a href="Projetofuturo.html">Informações Adicionais</a>
             </li>
           </ul>
         </div>
@@ -97,10 +120,11 @@
           <h4>Sites da Organização</h4>
           <ul>
             <li>
-              <a href="relatorio-anual.html">Transparência e Relatórios</a>
+              <a href="#relatorioAnual">Transparência e Relatórios</a>
             </li>
-            <li><a href="index.html">Nossa Missão</a></li>
-            <li><a href="projetos.html">Projetos Atuais</a></li>
+            <li><a href="#home">Nossa Missão</a></li>
+            <li><a href="#projetos">Projetos Atuais</a></li>
+            <li><a href="#doacao">Doe para Salvar Vidas</a></li>
             <li class="endereco-info">
               Rua dos Heróis, 123 - Centro<br />Tel: (00) 99999-8888
             </li>
@@ -117,5 +141,11 @@
         </div>
       </div>
     </footer>
+
+    <script src="js/interatividade.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/validacao.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/kpis-manager.js"></script>
   </body>
 </html>

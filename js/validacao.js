@@ -485,7 +485,7 @@ function validarFormulario(event) {
   // Em um projeto real, o envio de dados via fetch() ou XMLHttpRequest seria feito aqui.
 
   // Redireciona para a página de agradecimento (Simulação de sucesso na submissão)
-  window.location.href = "agradecimento.html";
+  window.location.hash = "agradecimento.html";
 
   return true; // Confirma que a validação passou
 }
@@ -589,35 +589,50 @@ function validarFormularioDoacao(event) {
   }
 
   // Se a validação passou
-  window.location.href = "agradecimento.html";
+  window.location.hash = "agradecimento.html";
   return true;
 }
 
-/* ========================================================= */
-/* 5.  INICIALIZAÇÃO DOS EVENT LISTENERS (SOLUÇÃO FINAL)     */
-/* ========================================================= */
+/* ================================================================ */
+/* 5.  PONTOS DE ENTRADA DO ROUTER.JS (Substitui DOMContentLoaded)  */
+/* ================================================================ */
 
-// Este bloco garante que o código é executado somente após o HTML ser carregado.
-document.addEventListener("DOMContentLoaded", () => {
-  // Inicializa a validação em tempo real para a página de Cadastro
-  inicializarValidacaoEmTempoReal();
+/**
+ * Ponto de entrada chamado pelo router.js para inicializar o form de Cadastro.
+ * Liga todos os listeners necessários assim que o template de 'cadastro' é injetado.
+ */
+function inicializarFormularioCadastro() {
+  console.log("-> Validacao de Cadastro ATIVADA.");
 
-  // Anexa o listener para o formulário de Cadastro
-  const formCadastro = document.getElementById("cadastro-form");
-  if (formCadastro) {
-    formCadastro.addEventListener("submit", validarFormulario);
+  // 1. Listeners de Máscara/CEP
+  const campoCpf = document.getElementById("cpf");
+  const campoTelefone = document.getElementById("telefone");
+  const campoCep = document.getElementById("cep");
+  const formulario = document.getElementById("cadastro-form");
+
+  if (campoCpf) campoCpf.addEventListener("input", formatarCpf);
+  if (campoTelefone) campoTelefone.addEventListener("input", formatarTelefone);
+  if (campoCep) campoCep.addEventListener("blur", buscarCep);
+
+  // 2. Inicializa a validação em tempo real (on blur)
+  inicializarValidacaoEmTempoReal(); // Esta função deve estar definida acima
+
+  // 3. Listener para a submissão final do formulário
+  if (formulario) {
+    formulario.addEventListener("submit", validarFormulario); // Chama a sua função de validação em massa
   }
+}
 
-  //   Alteração Crucial 3: Anexa o listener ao formulário de DOAÇÃO
+/**
+ * Ponto de entrada chamado pelo router.js para inicializar o form de Doação.
+ */
+function inicializarFormularioDoacao() {
+  console.log("-> Validacao de Doacao ATIVADA.");
+
   const formDoacao = document.getElementById("formulario-doacao");
   if (formDoacao) {
-    // Isso garante que sua função 'validarFormularioDoacao' seja chamada ao clicar em 'Finalizar Doação'.
+    // Isso anexa a função de validação de doação ao botão de submit
     formDoacao.addEventListener("submit", validarFormularioDoacao);
   }
-
-  // Listener de CEP para preenchimento automático
-  const cepInput = document.getElementById("cep");
-  if (cepInput) {
-    cepInput.addEventListener("blur", buscarCep);
-  }
-});
+  // NOTA: Se o formulário de Doação tiver campos de máscara ou CEP, você deve ligá-los aqui também.
+}
