@@ -1,4 +1,26 @@
 console.log("-> 1. ARQUIVO ROUTER.JS FOI EXECUTADO.");
+/* =========================================================== */
+/*  INÍCIO DA NOVA IMPLEMENTAÇÃO - BASE URL PARA GITHUB PAGES  */
+/* =========================================================== */
+
+/**
+ * Define a BASE_URL dinamicamente para lidar com o subdiretório do GitHub Pages.
+ * Se o host contém 'github.io' (ambiente online), usa o nome do repositório como prefixo.
+ * Caso contrário (localhost), usa a raiz (/).
+ */
+const getBaseUrl = () => {
+  //  ATENÇÃO: 'Projeto-ONG-FrontEnd' deve ser o nome exato do seu repositório no GitHub.
+  const REPO_NAME = "Projeto-ONG-FrontEnd";
+  const isGitHubPages = window.location.host.includes("github.io");
+
+  // Retorna a URL base correta com o nome do repositório se estiver no GitHub Pages
+  return isGitHubPages ? `/${REPO_NAME}/` : "/";
+};
+
+// Variável GLOBAL que pode ser usada em qualquer parte do seu código JS (ex: para chamadas de API/Fetch)
+const BASE_URL = getBaseUrl();
+
+console.log(` BASE_URL detectada: ${BASE_URL}`);
 
 /* ========================================================= */
 /* 1. VARIÁVEIS GLOBAIS E ROTEAMENTO (SPA)                   */
