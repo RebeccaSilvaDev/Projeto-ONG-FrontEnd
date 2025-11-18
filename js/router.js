@@ -1,122 +1,175 @@
+console.log("-> 1. ARQUIVO ROUTER.JS FOI EXECUTADO.");
+
 /* ========================================================= */
-/* 1. VARIÁVEIS GLOBAIS E ROTEAMENTO (SPA) 🧭                */
+/* 1. VARIÁVEIS GLOBAIS E ROTEAMENTO (SPA)                   */
 /* ========================================================= */
 
-// Área de injeção de conteúdo (Geralmente a tag <main> com id="app-content")
-const contentArea = document.getElementById("app-content");
-// Links de navegação no header para configurar o roteamento
-const menuLinks = document.querySelectorAll("header a");
-
-/**
- * Função principal para carregar o template e injetar no DOM.
- * @param {string} templateName - O nome da rota/template (ex: 'home', 'cadastro').
- */
-const loadTemplate = (templateName) => {
-  // Busca o template no objeto 'templates' (do templates.js).
-  const templateContent = templates[templateName] || templates.home;
-
-  // 1. Injeta o conteúdo no <main id="app-content">
-  contentArea.innerHTML = templateContent;
-
-  // 2. Executa funções pós-carregamento específicas (Pontos de Entrada)
-
-  // Liga a validação e listeners do formulário de Cadastro
-  if (
-    templateName === "cadastro" &&
-    typeof inicializarFormularioCadastro === "function"
-  ) {
-    console.log("-> Inicializando formulário de cadastro...");
-    inicializarFormularioCadastro();
-  }
-
-  // Liga a validação e listeners do formulário de Doação
-  if (
-    templateName === "doacao" &&
-    typeof inicializarFormularioDoacao === "function"
-  ) {
-    console.log("-> Inicializando formulário de doação...");
-    inicializarFormularioDoacao();
-  }
-
-  // 🚀 Lógica de KPIs e Interatividade (para Home E Projetos)
-  if (
-    (templateName === "projetos" || templateName === "home") &&
-    typeof inicializarProjetosKpis === "function"
-  ) {
-    console.log("-> Inicializando KPIs e interatividade...");
-    inicializarProjetosKpis();
-  }
-
-  // NOTA: Adicione chamadas para outras inicializações aqui, como 'blog' ou 'futuros',
-  // se elas exigirem execução de código JS específico.
+// Mapa que associa a URL (path) ao Template (templates.js) e à Função de Inicialização (se houver).
+const routes = {
+  // A rota deve corresponder à chave usada no seu objeto `templates` (do templates.js)
+  "/": {
+    templateKey: "home",
+    title: "Home | Transformando Vidas",
+    initializer: inicializarKpisIndex,
+  },
+  "/cadastro": {
+    templateKey: "cadastro",
+    title: "Cadastro de Voluntários",
+    initializer: inicializarFormularioCadastro,
+  },
+  "/doacao": {
+    templateKey: "doacao",
+    title: "Faça sua Doação",
+    // Essa função deve encapsular toda a lógica de validacao.js E interatividade.js para Doação.
+    initializer: inicializarFormularioDoacao,
+  },
+  "/projetos": {
+    templateKey: "projetos",
+    title: "Nossos Projetos e Impacto",
+    initializer: inicializarKpisProjetos,
+  },
+  "/relatorioAnual": {
+    templateKey: "relatorioAnual",
+    title: "Relatório Anual 2024",
+    // Reutiliza a inicialização de contadores/gráficos se o conteúdo for similar ao da home.
+    initializer: inicializarKpisRelatorio,
+  },
+  "/blogMidia": {
+    templateKey: "blogMidia",
+    title: "Blog e Imprensa",
+    initializer: null,
+  },
+  "/contato": {
+    templateKey: "contato",
+    title: "Contato",
+    initializer: null,
+  },
+  "/agradecimento": {
+    templateKey: "agradecimento",
+    title: "Obrigado por sua ação!",
+    initializer: null,
+  },
+  "/Projetofuturo": {
+    templateKey: "Projetofuturo",
+    title: "Agradecemos o seu interesse! Tente mais tarde!",
+    initializer: null,
+  },
+  // Adicione outras rotas aqui conforme o seu templates.js (ex: ProjetoFuturo)
 };
 
+// Área de injeção de conteúdo (Certifique-se que seu index.html tem <main id="content">)
+const contentArea = document.getElementById("content");
+
+/* ========================================================= */
+/* 2. FUNÇÃO PRINCIPAL DE NAVEGAÇÃO (History API)            */
+/* ========================================================= */
+
 /**
- * Lida com a mudança de rota (hashchange) e chama o carregamento do template.
+ * Navega para uma nova rota.
+ * Esta função foi colocada no ESCOPO GLOBAL para ser acessível
+ * por outros arquivos JS (como o validacao.js).
+ * * @param {string} path - O caminho da URL (ex: '/cadastro').
  */
-const handleRoute = () => {
-  // Pega o hash da URL (remove o # e qualquer extensão .html) ou define 'home' como padrão
-  const path = window.location.hash.slice(1).replace(".html", "") || "home";
-  loadTemplate(path);
-};
+function navigateTo(path) {
+  // 1. Encontra a configuração da rota
+  const route = routes[path] || routes["/"]; // Fallback para a Home
 
-/* ========================================================= */
-/* 2. FUNÇÕES DO MENU LATERAL MOBILE 📱                      */
-/* ========================================================= */
+  // Verifica se o container principal existe e se o template está disponível
+  if (!contentArea || !route || !templates[route.templateKey]) {
+    console.error(
+      `Erro 404: Rota ou template não encontrado para o caminho: ${path}`
+    );
+    // Você pode injetar um template de erro 404 aqui.
+    contentArea.innerHTML =
+      templates["Projetofuturo"] || "<h1>Página não encontrada.</h1>";
+    document.title = "404 - Não Encontrado";
 
-function abrirMenu() {
-  const menuMobile = document.getElementById("menu-mobile");
-  const overlay = document.getElementById("overlay-menu");
-  if (menuMobile && overlay) {
-    menuMobile.classList.add("abrir-menu");
-    overlay.style.display = "block";
+    return;
   }
+
+  // 2. Injeta o conteúdo HTML no container principal
+  contentArea.innerHTML = templates[route.templateKey];
+
+  // 3. Atualiza o Título da Página
+  document.title = route.title;
+
+  // 4. Executa a função de Inicialização da página
+  if (route.initializer && typeof route.initializer === "function") {
+    console.log(`-> Inicializando lógica para a rota: ${path}`);
+    route.initializer();
+
+    try {
+      route.initializer(); // 🚀 CHAMADA PRINCIPAL
+    } catch (error) {
+      // ❌ TRATAMENTO DE ERRO: Útil para identificar se a função não foi carregada
+      console.error(`Falha na inicialização da rota ${path}.`, error.message);
+    }
+  }
+
+  // 5. Rola para o topo da página (melhor UX, simula recarga)
+  window.scrollTo(0, 0);
 }
 
-function fecharMenu() {
-  const menuMobile = document.getElementById("menu-mobile");
-  const overlay = document.getElementById("overlay-menu");
-  if (menuMobile && overlay) {
-    menuMobile.classList.remove("abrir-menu");
-    overlay.style.display = "none";
-  }
+/**
+ * Função interna que carrega o conteúdo baseado na URL atual.
+ * Foi renomeada para 'router' para evitar confusão com navigateTo.
+ */
+function router() {
+  // Lê o 'hash' (ex: #/cadastro). O .substring(1) remove o '#'.
+  const currentPath = window.location.hash.substring(1) || "/";
+
+  // Nota: A lógica de injeção de conteúdo e inicialização
+  // já está totalmente contida em navigateTo.
+  // Basta chamar navigateTo com o path atual para re-renderizar.
+  navigateTo(currentPath);
 }
 
 /* ========================================================= */
-/* 3. SETUP E INICIALIZAÇÃO DE EVENTOS ✨                    */
+/* 3. EVENT LISTENERS E INICIALIZAÇÃO                        */
 /* ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-  // 1. Configura os links do menu para usar o roteador SPA
-  menuLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const novoHash = link
-        .getAttribute("href")
-        .replace("#", "")
-        .replace(".html", "");
-      // Mudar o hash dispara o evento 'hashchange'
-      window.location.hash = novoHash || "home";
-      fecharMenu();
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Listener para capturar cliques em links (A Magia da SPA)
+  document.body.addEventListener("click", (e) => {
+    // Encontra o link <a> mais próximo do alvo do clique
+    const anchor = e.target.closest("a");
+
+    // Regras para roteamento interno:
+    // Agora o roteamento interno verifica se o href começa com '#/'
+    // (link interno com hash, não um link externo ou sem hash).
+    if (
+      anchor &&
+      anchor.hasAttribute("href") &&
+      anchor.getAttribute("href").startsWith("#/")
+    ) {
+      e.preventDefault(); // Impede a recarga padrão!
+
+      // O navigateTo só precisa do path (sem o #), que o router.js já entende.
+      const href = anchor.getAttribute("href").substring(1);
+      // Atualizamos o HASH na URL. Isso dispara o evento 'hashchange'
+      // mas como estamos em "popstate", mantemos a chamada direta por simplicidade.
+      window.location.hash = href; // A navigateTo está DEFINIDA e será chamada
+
+      // Chamamos navigateTo() diretamente para renderizar imediatamente
+      navigateTo(href);
+
+      // Fecha o menu mobile após a navegação (melhor UX)
+      if (anchor.closest(".menu-mobile")) {
+        if (typeof fecharMenu === "function") {
+          fecharMenu();
+        }
+      }
+    }
   });
 
-  // 2. Escuta mudanças na URL (hash) e executa o handleRoute
-  window.addEventListener("hashchange", handleRoute);
-
-  // 3. Carrega a rota inicial (executa handleRoute uma vez)
-  handleRoute();
-
-  // 4. Configuração do Menu Mobile (permanece inalterada)
-  const btnAbrirMenu = document.getElementById("btn-menu");
-  const overlay = document.getElementById("overlay-menu");
-  const btnFecharMenu = document.querySelector(".menu-mobile .btn-fechar");
-  const menuMobileLinks = document.querySelectorAll(".menu-mobile nav ul li a");
-
-  if (btnAbrirMenu) btnAbrirMenu.addEventListener("click", abrirMenu);
-  if (btnFecharMenu) btnFecharMenu.addEventListener("click", fecharMenu);
-  if (overlay) overlay.addEventListener("click", fecharMenu);
-  menuMobileLinks.forEach((link) => {
-    link.addEventListener("click", fecharMenu);
+  // 3. Listener para o botão Voltar/Avançar do navegador
+  // O evento popstate funciona bem para hash. Mantemos a chamada ao router().
+  window.addEventListener("popstate", () => {
+    // Chama a função principal do router que agora usa o navigateTo
+    router();
   });
+
+  // 4. Carrega a rota inicial (garante que o conteúdo correto apareça no primeiro acesso)
+  // Como navigateTo já chama pushState e router(), chamamos apenas o router para iniciar
+  router();
 });

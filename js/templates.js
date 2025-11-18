@@ -1,70 +1,8 @@
-/* ========================================================= */
-/* 0. DADOS GLOBAIS                                          */
-/* ========================================================= */
-
-// Dados para renderização dinâmica do template de Projetos
-const dadosProjetos = [
-  {
-    titulo: "Alimentação Solidária",
-    resumo:
-      "Focado na distribuição de refeições para famílias em situação de vulnerabilidade na região central. Nossa meta é 5.000 refeições por mês.",
-    status: "Ativo",
-    imagem: "assets/image/projeto_alimentos.jpg", // Caminho atualizado
-  },
-  {
-    titulo: "Programa de Educação Digital",
-    resumo:
-      "Oferecemos cursos básicos de informática e programação para jovens de 16 a 24 anos, preparando-os para o mercado de trabalho.",
-    status: "Concluído",
-    imagem: "assets/image/projeto_educacao.jpg", // Caminho atualizado
-  },
-
-  {
-    titulo: "Projeto Dignidade: Kit Básico Higiene",
-    resumo:
-      "Distribuição contínua de kits de higiene pessoal, visando promover saúde e dignidade nas comunidades de baixa renda.",
-    status: "Ativo",
-    imagem: "assets/image/kit-higiene.jpg",
-  },
-  {
-    titulo: "Apoio Escolar: Futuro Brilhante",
-    resumo:
-      "Oferecimento de reforço escolar e material didático para crianças e adolescentes, focando em matemática e português para melhorar o desempenho escolar.",
-    status: "Pendente",
-    imagem: "assets/image/reforco-escolar.jpg",
-  },
-];
+console.log("-> 3. ARQUIVO TEMPLATES.JS FOI EXECUTADO.");
 
 /* ========================================================= */
-/* 1. FUNÇÕES DE TEMPLATE AUXILIARES                         */
+/* 1. TEMPLATES HTML (Template Strings)                      */
 /* ========================================================= */
-
-/**
- * Gera o template HTML de um cartão de projeto.
- * Usado para popular a seção de projetos dinamicamente.
- * @param {Object} projeto - O objeto do projeto.
- * @returns {string} O HTML do cartão de projeto.
- */
-const projetoCard = (projeto) => `
-    <div class="projeto-card">
-        <img src="${projeto.imagem}" alt="Imagem do projeto ${
-  projeto.titulo
-}" class="projeto-imagem"/>
-        <div class="projeto-info">
-            <h3>${projeto.titulo}</h3>
-            <p>${projeto.resumo}</p>
-            <span class="status ${projeto.status.toLowerCase()}">${
-  projeto.status
-}</span>
-            <a href="#detalhes-projeto" class="btn-detalhes">Ver Detalhes</a>
-        </div>
-    </div>
-`;
-
-/* ========================================================= */
-/* 2. TEMPLATES HTML (Template Strings)                      */
-/* ========================================================= */
-
 const templates = {
   // ----------------------------------------------------
   // Template 'home' (Conteúdo completo do index.html)
@@ -103,9 +41,9 @@ const templates = {
 
             <figure class="imagem-missao">
                 <picture>
-                    <source srcset="assets/image/missao.webp" type="image/webp" />
+                    <source srcset="/assets/image/missao.webp" type="image/webp" />
                     <img
-                        src="assets/image/missao.jpg"
+                        src="/assets/image/missao.jpg"
                         alt="Voluntários da ONG organizando caixas de doação de alimentos, ilustrando o trabalho de frente da Missão."
                         class="imagem-principal-index"
                     />
@@ -207,7 +145,7 @@ const templates = {
             <div class="equipe-cards">
                 <div class="membro-card">
                     <img
-                        src="assets/image/membro-presidente-demo.jpg"
+                        src="/assets/image/membro-presidente-demo.jpg"
                         alt="Foto de Maria Silva, Presidente"
                         class="membro-foto"
                     />
@@ -221,7 +159,7 @@ const templates = {
 
                 <div class="membro-card">
                     <img
-                        src="assets/image/membro-coordenador-demo.jpg"
+                        src="/assets/image/membro-coordenador-demo.jpg"
                         alt="Foto de João Santos, Coordenador de Projetos"
                         class="membro-foto"
                     />
@@ -236,7 +174,7 @@ const templates = {
 
                 <div class="membro-card">
                     <img
-                        src="assets/image/membro-financeiro-demo.jpg"
+                        src="/assets/image/membro-financeiro-demo.jpg"
                         alt="Foto de Ana Lima, Diretora Financeira"
                         class="membro-foto"
                     />
@@ -374,7 +312,7 @@ const templates = {
                 <div>
                 <p>
                     ➡️ Visite nosso Blog Agora e Junte-se à Conversa sobre a Mudança!
-                    <a href="blogMidia">Nosso Blog e Mídia</a>.
+                    <a href="#/blogMidia">Nosso Blog e Mídia</a>.
                 </p>
                 </div>
             </div>
@@ -467,6 +405,130 @@ const templates = {
         </div>
       </section>
 
+      <section id="projetos">
+        <h2>Projetos Atuais de Impacto</h2>
+
+        <div class="cards-container">
+          <article>
+            <h3>
+              Projeto Alimentação Solidária
+              <span class="badge prioridade-alta">Prioridade Alta</span>
+            </h3>
+            <p>
+              Focado na distribuição de refeições para famílias em situação de
+              vulnerabilidade na região central. Nossa meta é 5.000 refeições
+              por mês.
+            </p>
+
+            <picture>
+              <source
+                srcset="/assets/image/projeto_alimentos.webp"
+                type="image/webp"
+              />
+
+              <img
+                src="/assets/image/projeto_alimentos.jpg"
+                alt="Voluntários embalando alimentos para doação."
+              />
+            </picture>
+
+            <p>
+              <strong>Voluntários Necessários:</strong> Necessitando de 15
+              voluntários!.
+            </p>
+          </article>
+
+          <article>
+            <h3>
+              Programa de Educação Digital
+              <span class="badge badge-concluido">Concluído</span>
+            </h3>
+            <p>
+              Oferecemos cursos básicos de informática e programação para jovens
+              de 16 a 24 anos, preparando-os para o mercado de trabalho.
+            </p>
+
+            <picture>
+              <source
+                srcset="/assets/image/projeto_educacao.webp"
+                type="image/webp"
+              />
+
+              <img
+                src="/assets/image/projeto_educacao.jpg"
+                alt="Jovens em sala de aula de informática."
+              />
+            </picture>
+
+            <p>
+              <strong>Próxima Turma:</strong> Inscrições abertas até 30 de
+              novembro.
+            </p>
+          </article>
+
+          <article>
+            <h3>
+              Projeto Dignidade: Kit Básico de Higiene
+              <span class="badge prioridade-media">Prioridade Média</span>
+            </h3>
+
+            <p>
+              Focado na distribuição mensal de kits de higiene e limpeza para
+              famílias e indivíduos em situação de rua, promovendo a saúde e a
+              autoestima. Nossa meta é distribuir 1.000 kits por mês na região
+              metropolitana.
+            </p>
+
+            <picture>
+              <source
+                srcset="/assets/image/kit-higiene.webp"
+                type="image/webp"
+              />
+
+              <img
+                src="/assets/image/kit-higiene.jpg"
+                alt="Voluntários montando kits de higiene."
+              />
+            </picture>
+
+            <p>
+              <strong>Voluntários Necessários:</strong> Necessitando de 12
+              voluntários para montagem e logística de distribuição.
+            </p>
+          </article>
+
+          <article>
+            <h3>
+              Apoio Escolar: Futuro Brilhante
+              <span class="badge em-andamento">Em andamento</span>
+            </h3>
+
+            <p>
+              Oferecemos reforço escolar e atividades lúdicas no contraturno das
+              aulas, além de distribuir materiais didáticos essenciais para
+              crianças de 6 a 12 anos. O foco é reduzir a evasão escolar e
+              garantir o aprendizado.
+            </p>
+
+            <picture>
+              <source
+                srcset="/assets/image/reforco-escolar.webp"
+                type="image/webp"
+              />
+              <img
+                src="/assets/image/reforco-escolar.jpg"
+                alt="Voluntário ensinando crianças em um centro comunitário."
+              />
+            </picture>
+
+            <p>
+              <strong>Próxima Turma:</strong> Inscrições para tutores
+              voluntários (reforço escolar) abertas em dezembro.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <div class="projeto-metas-dashboard">
           <div class="meta-item">
             <h4 class="meta-titulo">Progresso de Arrecadação:</h4>
@@ -515,148 +577,238 @@ const templates = {
         </div>
       </section>
 
-            <section id="projetos-content">
-                <h2>Projetos Atuais de Impacto</h2>
+        <section id="voluntariado">
+        <h2>Faça a Diferença: Seja um Voluntário</h2>
+        <p>
+          Temos diversas oportunidades que se encaixam na sua agenda e nas suas
+          habilidades. Conheça as áreas e candidate-se hoje!
+        </p>
 
-                <div id="cards-container" class="cards-container">
-                    ${dadosProjetos.map(projetoCard).join("")}
-                </div>
-            </section>
+        <ul>
+          <li>Organização de Eventos</li>
+          <li>Suporte Administrativo</li>
+          <li>Aulas de Reforço Escolar</li>
+        </ul>
+        <a href="#/cadastro">Quero me Cadastrar como Voluntário</a> ✍
+      </section>
 
-            <section id="voluntariado">
-                <h2>Faça a Diferença: Seja um Voluntário</h2>
-                <p>
-                    Temos diversas oportunidades que se encaixam na sua agenda e nas suas
-                    habilidades. Conheça as áreas e candidate-se hoje!
-                </p>
+      <section id="doacoes">
+        <h2>Como Doar e Acompanhar o Impacto</h2>
+        <aside>
+          <p>
+            Sua doação garante a continuidade de todos os nossos projetos.
+            Acompanhe a transparência dos recursos em nosso
+            <a href="#/relatorioAnual">Relatório Anual</a>.
+          </p>
+        </aside>
 
-                <ul>
-                    <li>Organização de Eventos</li>
-                    <li>Suporte Administrativo</li>
-                    <li>Aulas de Reforço Escolar</li>
-                </ul>
-                <a href="cadastro">Quero me Cadastrar como Voluntário</a>
-            </section>
+        <h3>Opções de Doação</h3>
+        <p>
+          Você pode doar por PIX, cartão de crédito ou boleto. Toda ajuda faz a
+          diferença!
+        </p>
 
-            <section id="doacoes">
-                <h2>Como Doar e Acompanhar o Impacto</h2>
-                <aside>
-                    <p>
-                        Sua doação garante a continuidade de todos os nossos projetos.
-                        Acompanhe a transparência dos recursos em nosso
-                        <a href="">Relatório Anual</a>.
-                    </p>
-                </aside>
-
-                <h3>Opções de Doação</h3>
-                <p>
-                    Você pode doar por PIX, cartão de crédito ou boleto. Toda ajuda faz a
-                    diferença!
-                </p>
-                <a href="doacao" class="btn">Doar Agora</a>
-            </section>
-        </section>
+        <div>
+          <a href="#/doacao" class="btn"
+            >Doar Agora
+            <i class="bi bi-heart-fill"></i>
+          </a>
+        </div>
+      </section>
     `,
 
   // ----------------------------------------------------
   // Template 'cadastro' (Conteúdo do cadastro.hmtl)
   // ----------------------------------------------------
   cadastro: `
-        <section class="pagina-cadastro">
-            <h2>Cadastre-se para Ser um Voluntário</h2>
-            <section id="chamada-voluntario">
-                <h3>O que Esperamos de Você?</h3>
-                <p>Buscamos pessoas com vontade de fazer a diferença, seja com seu tempo, conhecimento ou energia. Não importa sua área de atuação, sua contribuição é essencial para:</p>
+        
+      <section id="chamada-voluntario">
 
-                <ul>
-                    <li>Apoiar a distribuição de cestas básicas e refeições.</li>
-                    <li>Participar de projetos de capacitação digital e profissional.</li>
-                    <li>Levar esperança e suporte às comunidades mais vulneráveis.</li>
-                </ul>
-                <p><b>Seja a mudança que o mundo precisa. Preencha seus dados abaixo e comece a transformar vidas hoje mesmo!</b></p>
-            </section>
+        <h2>Cadastre-se para Ser um Voluntário</h2>
+        <p>
+          Na Transformando Vidas, acreditamos no poder da união e da ação. O
+          voluntariado é o coração da nossa missão. Ao preencher este
+          formulário, você está dando o primeiro passo para se juntar a uma rede
+          de pessoas dedicadas a combater a insegurança alimentar e a promover
+          dignidade.
+        </p>
 
-            <section>
-                <h2>Preencha Seus Dados</h2>
-                <p>Seu cadastro é o primeiro passo para transformar o mundo. Todos os campos são obrigatórios.</p>
+        <h3>O que Esperamos de Você?</h3>
+        <p>
+          Buscamos pessoas com vontade de fazer a diferença, seja com seu tempo,
+          conhecimento ou energia. Não importa sua área de atuação, sua
+          contribuição é essencial para:
+        </p>
+        <ul>
+          <li>Apoiar a distribuição de cestas básicas e refeições.</li>
+          <li>Participar de projetos de capacitação digital e profissional.</li>
+          <li>Levar esperança e suporte às comunidades mais vulneráveis.</li>
+        </ul>
 
-                <form id="cadastro-form" action="#" method="POST">
-                    <fieldset>
-                        <legend>Informações Pessoais</legend>
-                        <div>
-                            <label for="nome">Nome Completo:</label>
-                            <input type="text" id="nome" name="nome" required minlength="5" placeholder="Seu nome completo"/>
-                            <span id="nome-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
+        <p>
+          <b
+            >Seja a mudança que o mundo precisa. Preencha seus dados abaixo e
+            comece a transformar vidas hoje mesmo!</b
+          >
+        </p>
 
-                        <div>
-                            <label for="email">E-mail:</label>
-                            <input type="email" id="email" name="email" required placeholder="exemplo@email.com"/>
-                            <span id="email-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
+        <figure class="imagem-voluntariado">
+          <picture>
+            <source srcset="/assets/image/voluntariado.webp" type="image/webp" />
+            <img
+              src="/assets/image/voluntariado.jpg"
+              alt="Voluntários da Transformando Vidas organizando caixas de ajuda humanitária para a distribuição de alimentos e kits de higiene."
+              class="voluntariado-img"
+            />
+          </picture>
+          <figcaption class="legenda-cadastro">
+            Junte-se à nossa equipe! <b>Voluntários</b> dedicados garantem que
+            os recursos cheguem a quem mais precisa. Cadastre-se e faça parte!
+          </figcaption>
+        </figure>
+      </section>
 
-                        <div>
-                            <label for="cpf">CPF:</label>
-                            <input type="text" id="cpf" name="cpf" required maxlength="14" placeholder="000.000.000-00"/>
-                            <span id="cpf-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
+      <section>
+        <h2>Preencha Seus Dados</h2>
+        <p>
+          Seu cadastro é o primeiro passo para transformar o mundo. Todos os
+          campos são obrigatórios.
+        </p>
 
-                        <div>
-                            <label for="nascimento">Data de Nascimento:</label>
-                            <input type="date" id="nascimento" name="nascimento" required/>
-                            <span id="nascimento-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
-                    </fieldset>
+        <form id="cadastro-form" action="#/agradecimento" method="POST">
+          <fieldset>
+            <legend>Informações Pessoais</legend>
 
-                    <fieldset>
-                        <legend>Endereço e Contato</legend>
-                        <div>
-                            <label for="telefone">Telefone:</label>
-                            <input type="tel" id="telefone" name="telefone" required maxlength="15" placeholder="(00) 90000-0000"/>
-                            <span id="telefone-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
+            <div>
+              <label for="nome">Nome Completo:</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                required
+                minlength="5"
+                placeholder="Seu nome completo"
+              />
 
-                        <div>
-                            <label for="cep">CEP:</label>
-                            <input type="text" id="cep" name="cep" required maxlength="9" placeholder="00000-000"/>
-                            <span id="cep-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
-                    
-                        <div class="full-width">
-                            <label for="endereco">Endereço (Rua, Número):</label>
-                            <input type="text" id="endereco" name="endereco" required />
-                            <span id="endereco-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
+              <span id="nome-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
 
-                        <div>
-                            <label for="cidade">Cidade:</label>
-                            <input type="text" id="cidade" name="cidade" required />
-                            <span id="cidade-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
+            <div>
+              <label for="email">E-mail:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="exemplo@email.com"
+              />
 
-                        <div>
-                            <label for="estado">Estado:</label>
-                            <select id="estado" name="estado" required>
-                                <option value="" disabled selected>Selecione um Estado</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="SP">São Paulo</option>
-                                </select>
-                            <span id="estado-erro" class="mensagem-erro" aria-live="polite"></span>
-                        </div>
-                    </fieldset>
+              <span id="email-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
 
-                    <div>
-                        <button type="submit">Enviar Cadastro e Ajudar</button>
-                    </div>
-                </form>
-            </section>
-        </section>
+            <div>
+              <label for="cpf">CPF:</label>
+              <input
+                type="text"
+                id="cpf"
+                name="cpf"
+                required
+                maxlength="14"
+                placeholder="Formato: 000.000.000-00"
+              />
+
+              <span id="cpf-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
+
+            <div>
+              <label for="nascimento">Data de Nascimento:</label>
+              <input type="date" id="nascimento" name="nascimento" required />
+
+              <span
+                id="nascimento-erro"
+                class="mensagem-erro"
+                aria-live="polite"
+              >
+              </span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Endereço e Contato</legend>
+            <div>
+              <label for="telefone">Telefone:</label>
+              <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                required
+                maxlength="15"
+                placeholder="(00) 90000-0000"
+              />
+
+              <span id="telefone-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
+
+            <div>
+              <label for="cep">CEP:</label>
+              <input
+                type="text"
+                id="cep"
+                name="cep"
+                required
+                maxlength="9"
+                placeholder="00000-000"
+              />
+
+              <span id="cep-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Detalhes de Localização</legend>
+            <div class="full-width">
+              <label for="endereco">Endereço (Rua, Número):</label>
+              <input type="text" id="endereco" name="endereco" required />
+
+              <span id="endereco-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
+
+            <div>
+              <label for="cidade">Cidade:</label>
+              <input type="text" id="cidade" name="cidade" required />
+
+              <span id="cidade-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
+
+            <div>
+              <label for="estado">Estado:</label>
+              <select id="estado" name="estado" required>
+                <option value="" disabled selected>Selecione um Estado</option>
+                <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="CE">Ceará</option>
+              </select>
+
+              <span id="estado-erro" class="mensagem-erro" aria-live="polite">
+              </span>
+            </div>
+          </fieldset>
+
+          <div>
+            <button type="submit" class="btn-finalizar">
+              Enviar Cadastro e Ajudar
+            </button>
+          </div>
+        </form>
+      </section>
     `,
 
   // ------------------------------------------------------
@@ -699,7 +851,7 @@ const templates = {
               </li>
               <li>
                 <strong>Transparência:</strong>
-                <a href="#relatorio-anual">Estatuto Social e Balanço Anual</a>
+                <a href="#/relatorioAnual">Estatuto Social e Balanço Anual</a>
                 disponíveis na íntegra.
               </li>
             </ul>
@@ -715,7 +867,7 @@ const templates = {
             garantir <b>transparência e prestação de contas</b>. Para
             contextualizar rapidamente o impacto de nossas ações e o volume de
             recursos mobilizados em nossos projetos,
-            <a href="#projetos">visite a nossa página de projetos.</a>
+            <a href="#/projetos">visite a nossa página de projetos.</a>
           </p>
 
           <ul class="dados-de-impacto">
@@ -750,14 +902,14 @@ const templates = {
             </div>
 
             <div class="blog-cards-grid">
-              <a href="#link-artigo-1" class="blog-card">
+              <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="assets/image/reuniao-planejamento.webp"
+                    srcset="/assets/image/reuniao-planejamento.webp"
                     type="image/webp"
                   />
                   <img
-                    src="assets/image/reuniao-planejamento.jpg"
+                    src="/assets/image/reuniao-planejamento.jpg"
                     alt="Equipe em reunião de planejamento"
                     class="card-imagem"
                   />
@@ -777,14 +929,14 @@ const templates = {
                 </div>
               </a>
 
-              <a href="#link-artigo-2" class="blog-card">
+              <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="assets/image/evento-comunitario.webp"
+                    srcset="/assets/image/evento-comunitario.webp"
                     type="image/webp"
                   />
                   <img
-                    src="assets/image/evento-comunitario.jpg"
+                    src="/assets/image/evento-comunitario.jpg"
                     alt="Pessoas sorrindo em um evento comunitário"
                     class="card-imagem"
                   />
@@ -804,14 +956,14 @@ const templates = {
                 </div>
               </a>
 
-              <a href="#link-artigo-3" class="blog-card">
+              <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="assets/image/relatorio-financeiro.webp"
+                    srcset="/assets/image/relatorio-financeiro.webp"
                     type="image/webp"
                   />
                   <img
-                    src="assets/image/relatorio-financeiro.jpg"
+                    src="/assets/image/relatorio-financeiro.jpg"
                     alt="Relatório financeiro em gráficos"
                     class="card-imagem"
                   />
@@ -831,14 +983,14 @@ const templates = {
                 </div>
               </a>
 
-              <a href="#link-artigo-4" class="blog-card">
+              <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="assets/image/voluntarios-distribuindo-kits.webp"
+                    srcset="/assets/image/voluntarios-distribuindo-kits.webp"
                     type="image/webp"
                   />
                   <img
-                    src="assets/image/voluntarios-distribuindo-kits.jpg"
+                    src="/assets/image/voluntarios-distribuindo-kits.jpg"
                     alt="Voluntários distribuindo kits"
                     class="card-imagem"
                   />
@@ -857,14 +1009,14 @@ const templates = {
                 </div>
               </a>
 
-              <a href="#link-artigo-fundacao" class="blog-card">
+              <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="assets/image/fundacao-2018.webp"
+                    srcset="/assets/image/fundacao-2018.webp"
                     type="image/webp"
                   />
                   <img
-                    src="assets/image/fundacao-2018.jpg"
+                    src="/assets/image/fundacao-2018.jpg"
                     alt="Mesa de reunião com documentos históricos ou foto antiga de voluntários"
                     class="card-imagem"
                   />
@@ -886,7 +1038,7 @@ const templates = {
               </a>
 
               <div class="ver-mais-link">
-                <a href="#link-blog-completo"
+                <a href="#/Projetofuturo"
                   >Ver todas as Notícias <i class="fas fa-arrow-right"></i
                 ></a>
               </div>
@@ -919,13 +1071,13 @@ const templates = {
                     <picture>
                       <source
                         srcset="
-                          assets/image/voluntarios-em-evento-comunitario.webp
+                          /assets/image/voluntarios-em-evento-comunitario.webp
                         "
                         type="image/webp"
                       />
 
                       <img
-                        src="assets/image/voluntarios-em-evento-comunitario.jpg"
+                        src="/assets/image/voluntarios-em-evento-comunitario.jpg"
                         alt="Voluntarios em Evento Comunitario"
                         class="card-imagem"
                       />
@@ -948,12 +1100,12 @@ const templates = {
 
                     <picture>
                       <source
-                        srcset="assets/image/balanço-anual-em-gráficos.webp"
+                        srcset="/assets/image/balanço-anual-em-gráficos.webp"
                         type="image/webp"
                       />
 
                       <img
-                        src="assets/image/balanço-anual-em-gráficos.jpg"
+                        src="/assets/image/balanço-anual-em-gráficos.jpg"
                         alt="Relatório financeiro do Balanço Anual em gráficos"
                         class="card-imagem"
                       />
@@ -970,7 +1122,7 @@ const templates = {
 
                   <div class="arquivo-link">
                     <i class="fas fa-archive"></i>
-                    <a href="#arquivo-releases"
+                    <a href="#/Projetofuturo"
                       >Ver Arquivo Completo de Releases</a
                     >
                   </div>
@@ -1021,7 +1173,7 @@ const templates = {
               impacto diretamente na sua caixa de entrada.
             </p>
 
-            <form class="newsletter-form-two-fields">
+            <form class="newsletter-form-two-fields" action="#agradecimento" method="POST">
               <input
                 type="text"
                 placeholder="Seu Nome"
@@ -1045,219 +1197,219 @@ const templates = {
   // ---------------------------------------------------------------
   relatorioAnual: `
         <section class="container-principal">
-            <h2>Transparência: Relatório Anual de 2024</h2>
+        <h2>Transparência: Relatório Anual de 2024</h2>
 
-            <section class="sumario-executivo">
-                <h2>Mensagem da Presidente</h2>
+        <section class="sumario-executivo">
+          <h2>Mensagem da Presidente</h2>
 
-                <div class="introducao">
-                    <p>
-                    Em 2024, a Transformando Vidas não apenas resistiu aos desafios,
-                    mas prosperou, graças à generosidade de cada doador e ao esforço
-                    incansável dos nossos voluntários. Conseguimos expandir o Projeto
-                    Alimentos para duas novas comunidades e lançamos a primeira edição
-                    do nosso programa de capacitação digital.
-                    </p>
-                    <p>
-                    Alcançamos a marca de <b>98.765,00 mil reais arrecadados</b>, um
-                    recorde que nos enche de orgulho e nos impulsiona a sonhar mais
-                    alto. Nossa meta para o próximo ano é clara: dobrar o número de
-                    famílias assistidas pelo Projeto Educação. Agradeço a você por ser
-                    a mudança que o mundo precisa.
-                    </p>
-                </div>
+          <div class="introducao">
+            <p>
+              Em 2024, a Transformando Vidas não apenas resistiu aos desafios,
+              mas prosperou, graças à generosidade de cada doador e ao esforço
+              incansável dos nossos voluntários. Conseguimos expandir o Projeto
+              Alimentos para duas novas comunidades e lançamos a primeira edição
+              do nosso programa de capacitação digital.
+            </p>
+            <p>
+              Alcançamos a marca de <b>98.765,00 mil reais arrecadados</b>, um
+              recorde que nos enche de orgulho e nos impulsiona a sonhar mais
+              alto. Nossa meta para o próximo ano é clara: dobrar o número de
+              famílias assistidas pelo Projeto Educação. Agradeço a você por ser
+              a mudança que o mundo precisa.
+            </p>
+          </div>
 
-                <p class="assinatura">
-                    <b>Maria Fátima</b><br />Presidente da Transformando Vidas
-                </p>
-            </section>
-
-            <section id="resumo-financeiro" class="resumo-financeiro">
-                <h2>📊 Resumo Financeiro Anual</h2>
-
-                <p class="introducao">
-                    Apresentamos o nosso relatório anual consolidado, detalhando a
-                    origem e a aplicação de todos os recursos recebidos e utilizados em
-                    nossos projetos sociais.
-                </p>
-
-                <div class="kpis-container">
-                    <div class="kpi">
-                        <h4>Total Arrecadado</h4>
-                        <p class="valor" id="kpi-arrecadado" data-valor="98765">
-                            R$ 0,00
-                        </p>
-                    </div>
-
-                    <div class="kpi">
-                        <h4>Meta Anual</h4>
-                        <p class="valor" id="kpi-meta" data-valor="100000">R$ 0,00</p>
-                    </div>
-
-                    <div class="kpi">
-                        <h4>Arrecadação vs. Meta</h4>
-                        <p class="valor destaque" id="kpi-percentual">0%</p>
-                    </div>
-                </div>
-
-                <h3>Progresso da Meta de Arrecadação (R$)</h3>
-                <div class="grafico-container">
-                    <canvas id="arrecadacaoChart"></canvas>
-                </div>
-
-                <div class="detalhes-agrupados">
-                    <article class="relatorio-bloco aplicacao-detalhada">
-                        <h3>Detalhes da Aplicação de Recursos 💸</h3>
-
-                        <div class="aplicacao-detalhada">
-                            <ul>
-                                <li><b>Projeto Educação:</b> 30% dos fundos</li>
-                                <li><b>Projeto Alimentos:</b> 20% dos fundos</li>
-                                <li><b>Projeto Dignidade:</b> 15% dos fundos</li>
-                                <li><b>Apoio Escolar:</b> 15% dos fundos</li>
-                                <li><b>Organização de Eventos:</b> 10% dos fundos</li>
-                                <li><b>Reserva de Emergência:</b> 10% dos fundos</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="relatorio-bloco detalhes-financeiros">
-                        <h3>Detalhes Financeiros 💰</h3>
-
-                        <div class="detalhes-financeiros">
-                            <p><strong>Custos Operacionais:</strong> R$ 13.765,00</p>
-                            <p>
-                            <strong>Total Investido em Projetos:</strong> R$ 85.000,00
-                            </p>
-                            <p><strong>Total Arrecadado:</strong> R$ 98.765,00</p>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section id="metas-por-projeto">
-                <h2>🎯 Metas e Conquistas por Projeto</h2>
-                <p>
-                    Abaixo detalhamos o impacto direto que cada projeto alcançou com os
-                    fundos aplicados no último ano.
-                </p>
-
-                <div class="projeto-report-box">
-                    <h3>Projeto Alimentação Solidária</h3>
-                    <p><strong>Meta Anual:</strong> 60.000 refeições distribuídas</p>
-                    <p>
-                    <strong>Resultado Alcançado:</strong> +50.000 Refeições
-                    distribuídas
-                    </p>
-                    <p class="status-conquista">
-                    Resultado: 83% da meta alcançada (próximo de 100%).
-                    </p>
-                </div>
-
-                <div class="projeto-report-box">
-                    <h3>Programa de Educação Digital</h3>
-                    <p><strong>Meta Anual:</strong> 200 jovens capacitados</p>
-                    <p><strong>Resultado Alcançado:</strong> 150 Jovens formados</p>
-                    <p class="status-conquista">
-                    Resultado: 75% da meta de formação alcançada. (Próxima turma em
-                    andamento).
-                    </p>
-                </div>
-
-                <div class="projeto-report-box">
-                    <h3>Projeto Dignidade: Kit Básico de Higiene</h3>
-                    <p>
-                    <strong>Meta Anual:</strong> 12.000 kits distribuídos (1.000
-                    kits/mês)
-                    </p>
-                    <p>
-                    <strong>Resultado Alcançado:</strong> 10.500 kits distribuídos
-                    </p>
-                    <p class="status-conquista">
-                    Resultado: 87,5% da meta alcançada. (Forte impacto inicial).
-                    </p>
-                </div>
-
-                <div class="projeto-report-box">
-                    <h3>Apoio Escolar: Futuro Brilhante</h3>
-                    <p><strong>Meta Anual:</strong> 120 crianças atendidas</p>
-                    <p><strong>Resultado Alcançado:</strong> 95 crianças atendidas</p>
-                    <p class="status-conquista">
-                    Resultado: 79% da meta alcançada. Foco na redução da evasão
-                    escolar em andamento.
-                    </p>
-                </div>
-            </section>
-
-            <section class="impacto-qualitativo">
-                <h3>🤝 Histórias que Transformam</h3>
-
-                <p>
-                    Por trás de cada número, existe uma vida impactada. Veja como a sua
-                    contribuição fez a diferença no último ano.
-                </p>
-
-                <div class="depoimentos-container">
-                    <div class="depoimento">
-                        <p>
-                            "Graças ao Projeto Alimentos, minha família teve o básico
-                            garantido enquanto eu procurava emprego. É mais do que comida, é
-                            dignidade."
-                        </p>
-                        <p class="autor">
-                            - Ana Lúcia, Beneficiária do Projeto Alimentos
-                        </p>
-                    </div>
-                    <div class="depoimento">
-                        <p>
-                            "Participei da capacitação digital e consegui meu primeiro
-                            trabalho como assistente virtual. Minha vida mudou
-                            completamente!"
-                        </p>
-                        <p class="autor">
-                            - João Victor, Participante do Projeto Educação
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="documentos-legais">
-                <h3>⚖️ Transparência e Governança</h3>
-                <p>
-                    Comprometimento com a ética e a prestação de contas. Todos os nossos
-                    documentos essenciais estão disponíveis para consulta.
-                </p>
-
-                <ul>
-                    <li>
-                        <a href="#" target="_blank"
-                            ><i class="bi bi-file-earmark-text"></i> Estatuto Social
-                            (PDF)</a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" target="_blank"
-                            ><i class="bi bi-currency-dollar"></i> Balanço Patrimonial de
-                            2024 (PDF)</a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" target="_blank"
-                            ><i class="bi bi-patch-check"></i> Certificado CNPJ e
-                            Regularidade Fiscal</a
-                        >
-                    </li>
-                </ul>
-
-                <p class="aviso-legal">
-                    Nossa instituição preza pela máxima transparência, por isso, todos
-                    os dados financeiros são auditados anualmente por uma entidade
-                    independente, garantindo a correta aplicação dos recursos.
-                </p>
-            </section>
-
-            <a href="#projetos" class="btn">Voltar para Projetos e Doações</a>
+          <p class="assinatura">
+            <b>Maria Fátima</b><br />Presidente da Transformando Vidas
+          </p>
         </section>
+
+        <section id="resumo-financeiro" class="resumo-financeiro">
+          <h2>📊 Resumo Financeiro Anual</h2>
+
+          <p class="introducao">
+            Apresentamos o nosso relatório anual consolidado, detalhando a
+            origem e a aplicação de todos os recursos recebidos e utilizados em
+            nossos projetos sociais.
+          </p>
+
+          <div class="kpis-container">
+            <div class="kpi">
+              <h4>Total Arrecadado</h4>
+              <p class="valor" id="kpi-arrecadado" data-valor="98765">
+                R$ 0,00
+              </p>
+            </div>
+
+            <div class="kpi">
+              <h4>Meta Anual</h4>
+              <p class="valor" id="kpi-meta" data-valor="100000">R$ 0,00</p>
+            </div>
+
+            <div class="kpi">
+              <h4>Arrecadação vs. Meta</h4>
+              <p class="valor destaque" id="kpi-percentual">0%</p>
+            </div>
+          </div>
+
+          <h3>Progresso da Meta de Arrecadação (R$)</h3>
+          <div class="grafico-container">
+            <canvas id="arrecadacaoChart"></canvas>
+          </div>
+
+          <div class="detalhes-agrupados">
+            <article class="relatorio-bloco aplicacao-detalhada">
+              <h3>Detalhes da Aplicação de Recursos 💸</h3>
+
+              <div class="aplicacao-detalhada">
+                <ul>
+                  <li><b>Projeto Educação:</b> 30% dos fundos</li>
+                  <li><b>Projeto Alimentos:</b> 20% dos fundos</li>
+                  <li><b>Projeto Dignidade:</b> 15% dos fundos</li>
+                  <li><b>Apoio Escolar:</b> 15% dos fundos</li>
+                  <li><b>Organização de Eventos:</b> 10% dos fundos</li>
+                  <li><b>Reserva de Emergência:</b> 10% dos fundos</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="relatorio-bloco detalhes-financeiros">
+              <h3>Detalhes Financeiros 💰</h3>
+
+              <div class="detalhes-financeiros">
+                <p><strong>Custos Operacionais:</strong> R$ 13.765,00</p>
+                <p>
+                  <strong>Total Investido em Projetos:</strong> R$ 85.000,00
+                </p>
+                <p><strong>Total Arrecadado:</strong> R$ 98.765,00</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="metas-por-projeto">
+          <h2>🎯 Metas e Conquistas por Projeto</h2>
+          <p>
+            Abaixo detalhamos o impacto direto que cada projeto alcançou com os
+            fundos aplicados no último ano.
+          </p>
+
+          <div class="projeto-report-box">
+            <h3>Projeto Alimentação Solidária</h3>
+            <p><strong>Meta Anual:</strong> 60.000 refeições distribuídas</p>
+            <p>
+              <strong>Resultado Alcançado:</strong> +50.000 Refeições
+              distribuídas
+            </p>
+            <p class="status-conquista">
+              Resultado: 83% da meta alcançada (próximo de 100%).
+            </p>
+          </div>
+
+          <div class="projeto-report-box">
+            <h3>Programa de Educação Digital</h3>
+            <p><strong>Meta Anual:</strong> 200 jovens capacitados</p>
+            <p><strong>Resultado Alcançado:</strong> 150 Jovens formados</p>
+            <p class="status-conquista">
+              Resultado: 75% da meta de formação alcançada. (Próxima turma em
+              andamento).
+            </p>
+          </div>
+
+          <div class="projeto-report-box">
+            <h3>Projeto Dignidade: Kit Básico de Higiene</h3>
+            <p>
+              <strong>Meta Anual:</strong> 12.000 kits distribuídos (1.000
+              kits/mês)
+            </p>
+            <p>
+              <strong>Resultado Alcançado:</strong> 10.500 kits distribuídos
+            </p>
+            <p class="status-conquista">
+              Resultado: 87,5% da meta alcançada. (Forte impacto inicial).
+            </p>
+          </div>
+
+          <div class="projeto-report-box">
+            <h3>Apoio Escolar: Futuro Brilhante</h3>
+            <p><strong>Meta Anual:</strong> 120 crianças atendidas</p>
+            <p><strong>Resultado Alcançado:</strong> 95 crianças atendidas</p>
+            <p class="status-conquista">
+              Resultado: 79% da meta alcançada. Foco na redução da evasão
+              escolar em andamento.
+            </p>
+          </div>
+        </section>
+
+        <section class="impacto-qualitativo">
+          <h3>🤝 Histórias que Transformam</h3>
+
+          <p>
+            Por trás de cada número, existe uma vida impactada. Veja como a sua
+            contribuição fez a diferença no último ano.
+          </p>
+
+          <div class="depoimentos-container">
+            <div class="depoimento">
+              <p>
+                "Graças ao Projeto Alimentos, minha família teve o básico
+                garantido enquanto eu procurava emprego. É mais do que comida, é
+                dignidade."
+              </p>
+              <p class="autor">
+                - Ana Lúcia, Beneficiária do Projeto Alimentos
+              </p>
+            </div>
+            <div class="depoimento">
+              <p>
+                "Participei da capacitação digital e consegui meu primeiro
+                trabalho como assistente virtual. Minha vida mudou
+                completamente!"
+              </p>
+              <p class="autor">
+                - João Victor, Participante do Projeto Educação
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="documentos-legais">
+          <h3>⚖️ Transparência e Governança</h3>
+          <p>
+            Comprometimento com a ética e a prestação de contas. Todos os nossos
+            documentos essenciais estão disponíveis para consulta.
+          </p>
+
+          <ul>
+            <li>
+              <a href="#" target="_blank"
+                ><i class="bi bi-file-earmark-text"></i> Estatuto Social
+                (PDF)</a
+              >
+            </li>
+            <li>
+              <a href="#" target="_blank"
+                ><i class="bi bi-currency-dollar"></i> Balanço Patrimonial de
+                2024 (PDF)</a
+              >
+            </li>
+            <li>
+              <a href="#" target="_blank"
+                ><i class="bi bi-patch-check"></i> Certificado CNPJ e
+                Regularidade Fiscal</a
+              >
+            </li>
+          </ul>
+
+          <p class="aviso-legal">
+            Nossa instituição preza pela máxima transparência, por isso, todos
+            os dados financeiros são auditados anualmente por uma entidade
+            independente, garantindo a correta aplicação dos recursos.
+          </p>
+        </section>
+
+        <a href="/projetos" class="btn">Voltar para Projetos e Doações</a>
+      </section>
     `,
 
   // -------------------------------------------------------
@@ -1275,7 +1427,7 @@ const templates = {
         <form
           class="form-doacao"
           id="formulario-doacao"
-          action="agradecimento.html"
+          action="#/agradecimento"
           method="POST"
         >
           <div class="bloco-informacoes">
@@ -1403,11 +1555,11 @@ const templates = {
                 <div class="bandeiras-cartao">
                   <picture>
                     <source
-                      srcset="assets/image/visa.logo.webp"
+                      srcset="/assets/image/visa.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="assets/image/visa.logo.png"
+                      src="/assets/image/visa.logo.png"
                       alt="Bandeira Visa"
                       class="bandeira-icon"
                     />
@@ -1415,11 +1567,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="assets/image/elo.logo.webp"
+                      srcset="/assets/image/elo.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="assets/image/elo.logo.png"
+                      src="/assets/image/elo.logo.png"
                       alt="Bandeira Elo"
                       class="bandeira-icon"
                     />
@@ -1427,11 +1579,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="assets/image/nubank.logo.webp"
+                      srcset="/assets/image/nubank.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="assets/image/nubank.logo.png"
+                      src="/assets/image/nubank.logo.png"
                       alt="Bandeira Nubank"
                       class="bandeira-icon"
                     />
@@ -1439,11 +1591,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="assets/image/hipercard.logo.webp"
+                      srcset="/assets/image/hipercard.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="assets/image/hipercard.logo.png"
+                      src="/assets/image/hipercard.logo.png"
                       alt="Bandeira Hipercard"
                       class="bandeira-icon"
                     />
@@ -1451,11 +1603,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="assets/image/mastercard.logo.webp"
+                      srcset="/assets/image/mastercard.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="assets/image/mastercard.logo.png"
+                      src="/assets/image/mastercard.logo.png"
                       alt="Bandeira Mastercard"
                       class="bandeira-icon"
                     />
@@ -1463,11 +1615,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="assets/image/americanexpress.logo.webp"
+                      srcset="/assets/image/americanexpress.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="assets/image/americanexpress.logo.png"
+                      src="/assets/image/americanexpress.logo.png"
                       alt="Bandeira American Express"
                       class="bandeira-icon"
                     />
@@ -1475,11 +1627,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="assets/image/bancodobrasil.logo.webp"
+                      srcset="/assets/image/bancodobrasil.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="assets/image/bancodobrasil.logo.png"
+                      src="/assets/image/bancodobrasil.logo.png"
                       alt="Bandeira Banco do Brasil"
                       class="bandeira-icon"
                     />
@@ -1570,9 +1722,9 @@ const templates = {
 
                 <div class="bloco-qrcode-pix-demo">
                   <picture>
-                    <source srcset="assets/image/bloco-qrcode-pix-demo.webp" />
+                    <source srcset="#/assets/image/bloco-qrcode-pix-demo.webp" />
                     <img
-                      scr="assets/image/bloco-qrcode-pix-demo.png"
+                      scr="#/assets/image/bloco-qrcode-pix-demo.png"
                       alt="QR Code demonstrativo para pagamento PIX"
                       class="qrcode-img"
                     />
@@ -1650,92 +1802,79 @@ const templates = {
   // Template 'contato' (Conteúdo principal do contato.html)
   // ------------------------------------------------------------
   contato: `
-        <section class="pagina-contato">
-            <h2>Fale Conosco: Estamos Aqui para Você</h2>
-            <p class="introducao">
-                Seja para tirar dúvidas sobre doações, projetos ou voluntariado,
-                nossa equipe está pronta para te atender.
-            </p>
+        <section id="contato-principal">
+        <div class="container">
+          <h2>Fale Conosco e Junte-se à Causa</h2>
+          <p class="subtitulo-contato">
+            Seja para tirar dúvidas, pedir informações de imprensa ou fazer uma
+            parceria, nossa equipe está pronta para te atender.
+          </p>
 
-            <div class="contato-info-mapa">
-                <section class="info-contato">
-                    <h3>Informações e Canais</h3>
+          <div class="contato-grid">
+            <div class="contato-formulario">
+              <h3>Envie sua Mensagem</h3>
+              <form class="formulario-padrao">
+                <input type="text" placeholder="Seu Nome Completo" required />
+                <input type="email" placeholder="Seu Melhor E-mail" required />
+                <input type="tel" placeholder="Telefone (Opcional)" />
 
-                    <address>
-                        <p><strong>Endereço do Centro Comunitário:</strong></p>
-                        <p>Rua dos Heróis, 123 - Centro</p>
-                        <p>Cidade da Esperança, CE - 60000-000</p>
-                    </address>
+                <select required>
+                  <option value="">Assunto da Mensagem</option>
+                  <option value="duvida">Dúvida Geral / Informação</option>
+                  <option value="parceria">Parceria / Patrocínio</option>
+                  <option value="voluntariado">Voluntariado</option>
+                  <option value="imprensa">Contato de Imprensa</option>
+                </select>
 
-                    <ul>
-                        <li>
-                            <strong>E-mail Geral:</strong>
-                            <a href="mailto:contato@transformandovidas.org">
-                                contato@transformandovidas.org
-                            </a>
-                        </li>
-                        <li>
-                            <strong>Telefone:</strong>
-                            <a href="tel:+5500999999999">
-                                (00) 99999-9999
-                            </a>
-                        </li>
-                        <li>
-                            <strong>Imprensa/Mídia:</strong>
-                            <a href="mailto:imprensa@transformandovidas.org">
-                                imprensa@transformandovidas.org
-                            </a>
-                        </li>
-                    </ul>
+                <textarea
+                  placeholder="Digite sua mensagem detalhada aqui..."
+                  rows="5"
+                  required
+                ></textarea>
 
-                    <p>
-                        Horário de Atendimento: Segunda a Sexta, das 9h às 17h.
-                    </p>
-                </section>
-
-                <section class="mapa-localizacao">
-                    <h3>Onde Estamos</h3>
-                    <div class="mapa-simulado">
-                        
-                    </div>
-                </section>
+                <button type="submit" class="btn btn-primary">
+                  Enviar Mensagem
+                </button>
+              </form>
             </div>
 
-            <section class="formulario-contato">
-                <h2>Envie uma Mensagem Direta</h2>
-                <p>Preencha o formulário abaixo e responderemos o mais breve possível.</p>
-                
-                <form id="contato-form" action="#" method="POST">
-                    <div>
-                        <label for="nome-contato">Seu Nome:</label>
-                        <input type="text" id="nome-contato" name="nome-contato" required placeholder="Nome Completo" />
-                    </div>
+            <div class="contato-info-mapa">
+              <h3>Nossa Sede</h3>
 
-                    <div>
-                        <label for="email-contato">Seu E-mail:</label>
-                        <input type="email" id="email-contato" name="email-contato" required placeholder="seu.melhor@email.com" />
-                    </div>
+              <div class="info-detalhes">
+                <p>
+                  <i class="bi bi-geo-alt-fill"></i>
+                  Rua dos Heróis, 123 - Centro<br />
+                  São Paulo, SP - CEP 01234-567
+                </p>
+                <p>
+                  <i class="bi bi-telephone-fill"></i>
+                  (00) 99999-8888
+                </p>
+                <p>
+                  <i class="bi bi-envelope-fill"></i>
+                  <a href="mailto:contato@transformandovidas.org"
+                    >contato@transformandovidas.org</a
+                  >
+                </p>
+                <p>
+                  <i class="bi bi-clock-fill"></i>
+                  Segunda a Sexta: 9:00h às 17:00h
+                </p>
+              </div>
 
-                    <div>
-                        <label for="assunto">Assunto:</label>
-                        <select id="assunto" name="assunto" required>
-                            <option value="" disabled selected>Selecione o Assunto</option>
-                            <option value="duvida-doacao">Dúvida sobre Doação</option>
-                            <option value="voluntariado">Quero Ser Voluntário</option>
-                            <option value="parceria">Proposta de Parceria</option>
-                            <option value="geral">Assunto Geral/Outros</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="mensagem">Mensagem:</label>
-                        <textarea id="mensagem" name="mensagem" rows="6" required placeholder="Escreva sua mensagem aqui..."></textarea>
-                    </div>
-
-                    <button type="submit">Enviar Mensagem</button>
-                </form>
-            </section>
-        </section>
+              <div class="mapa-container">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1532847.6683885623!2d-48.51345474999999!3d-23.550519999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59a341e06497%3A0x27276707833a0429!2sS%C3%A3o%20Paulo!5e0!3m2!1spt-BR!2sbr!4v1699900000000!5m2!1spt-BR!2sbr"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     `,
 
   // ---------------------------------------------------------------
@@ -1743,23 +1882,23 @@ const templates = {
   // ---------------------------------------------------------------
   agradecimento: `
         <main class="agradecimento">
-            <section class="sucesso-cadastro">
-                <h2>🎉 Cadastro Concluído com Sucesso!</h2>
-                <p>
-                    Agradecemos imensamente por se juntar à missão da Transformando Vidas.
-                    Sua vontade de ajudar é o primeiro passo para transformar vidas.
-                </p>
-                <p>
-                    Em breve, nossa equipe entrará em contato com você para as próximas
-                    etapas.
-                </p>
+      <section class="sucesso-cadastro">
+        <h2>🎉 Cadastro Concluído com Sucesso!</h2>
+        <p>
+          Agradecemos imensamente por se juntar à missão da Transformando Vidas.
+          Sua vontade de ajudar é o primeiro passo para transformar vidas.
+        </p>
+        <p>
+          Em breve, nossa equipe entrará em contato com você para as próximas
+          etapas.
+        </p>
 
-                <div class="opcoes-retorno">
-                    <a href="#home" class="btn">Voltar para a Página Inicial</a>
-                    <a href="#projetos" class="btn">Conhecer Nossos Projetos</a>
-                </div>
-            </section>
-        </main>
+        <div class="opcoes-retorno">
+          <a href="#/home" class="btn">Voltar para a Página Inicial</a>
+          <a href="#/projetos" class="btn">Conhecer Nossos Projetos</a>
+        </div>
+      </section>
+    </main>
     `,
 
   // ----------------------------------------------------

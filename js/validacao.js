@@ -1,3 +1,5 @@
+console.log("-> 2. ARQUIVO VALIDACAO.JS FOI EXECUTADO.");
+
 /* =================================================================================== */
 /* 1. FUNÇÕES DE FEEDBACK VISUAL (WCAG 2.1 AA), UTILIDADE E EXIBIÇÃO DE ERROS          */
 /* =================================================================================== */
@@ -484,8 +486,16 @@ function validarFormulario(event) {
   // SE FOR VÁLIDO: MÓDULO DE CONFIRMAÇÃO
   // Em um projeto real, o envio de dados via fetch() ou XMLHttpRequest seria feito aqui.
 
-  // Redireciona para a página de agradecimento (Simulação de sucesso na submissão)
-  window.location.hash = "agradecimento.html";
+  // Substitui window.location.hash pela chamada ao Router
+  if (typeof navigateTo === "function") {
+    navigateTo("/agradecimento");
+  } else {
+    // Fallback caso a função ainda não esteja disponível
+    console.error(
+      "ERRO: navigateTo não está definido. Usando hash como fallback."
+    );
+    window.location.hash = "agradecimento";
+  }
 
   return true; // Confirma que a validação passou
 }
@@ -589,7 +599,17 @@ function validarFormularioDoacao(event) {
   }
 
   // Se a validação passou
-  window.location.hash = "agradecimento.html";
+  // Substitui window.location.hash pela chamada ao Router
+  if (typeof navigateTo === "function") {
+    navigateTo("/agradecimento");
+  } else {
+    // Fallback
+    console.error(
+      "ERRO: navigateTo não está definido. Usando hash como fallback."
+    );
+    window.location.hash = "agradecimento";
+  }
+
   return true;
 }
 
@@ -619,7 +639,7 @@ function inicializarFormularioCadastro() {
 
   // 3. Listener para a submissão final do formulário
   if (formulario) {
-    formulario.addEventListener("submit", validarFormulario); // Chama a sua função de validação em massa
+    formulario.addEventListener("submit", validarFormulario); // Chama a função de validação em massa
   }
 }
 
@@ -629,10 +649,15 @@ function inicializarFormularioCadastro() {
 function inicializarFormularioDoacao() {
   console.log("-> Validacao de Doacao ATIVADA.");
 
+  // CHAMA A INTERATIVIDADE DA DOAÇÃO
+  if (typeof inicializarDoacaoInteratividade === "function") {
+    // Isso anexa TODOS os listeners da doação (pagamento, máscaras, blurs de validação)
+    inicializarDoacaoInteratividade();
+  }
+
   const formDoacao = document.getElementById("formulario-doacao");
   if (formDoacao) {
     // Isso anexa a função de validação de doação ao botão de submit
     formDoacao.addEventListener("submit", validarFormularioDoacao);
   }
-  // NOTA: Se o formulário de Doação tiver campos de máscara ou CEP, você deve ligá-los aqui também.
 }
