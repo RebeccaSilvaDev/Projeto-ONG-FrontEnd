@@ -1,27 +1,3 @@
-console.log("-> 1. ARQUIVO ROUTER.JS FOI EXECUTADO.");
-/* =========================================================== */
-/*  INÍCIO DA NOVA IMPLEMENTAÇÃO - BASE URL PARA GITHUB PAGES  */
-/* =========================================================== */
-
-/**
- * Define a BASE_URL dinamicamente para lidar com o subdiretório do GitHub Pages.
- * Se o host contém 'github.io' (ambiente online), usa o nome do repositório como prefixo.
- * Caso contrário (localhost), usa a raiz (/).
- */
-const getBaseUrl = () => {
-  //  ATENÇÃO: 'Projeto-ONG-FrontEnd' deve ser o nome exato do seu repositório no GitHub.
-  const REPO_NAME = "Projeto-ONG-FrontEnd";
-  const isGitHubPages = window.location.host.includes("github.io");
-
-  // Retorna a URL base correta com o nome do repositório se estiver no GitHub Pages
-  return isGitHubPages ? `/${REPO_NAME}/` : "/";
-};
-
-// Variável GLOBAL que pode ser usada em qualquer parte do seu código JS (ex: para chamadas de API/Fetch)
-const BASE_URL = getBaseUrl();
-
-console.log(` BASE_URL detectada: ${BASE_URL}`);
-
 /* ========================================================= */
 /* 1. VARIÁVEIS GLOBAIS E ROTEAMENTO (SPA)                   */
 /* ========================================================= */
@@ -33,6 +9,13 @@ const routes = {
     templateKey: "home",
     title: "Home | Transformando Vidas",
     initializer: inicializarKpisIndex,
+  },
+
+  // ALIAS ADICIONADO:
+  "/home": {
+    templateKey: "home", // Aponta para o mesmo template
+    title: "Home | Transformando Vidas",
+    initializer: inicializarKpisIndex, // Aponta para o mesmo inicializador
   },
   "/cadastro": {
     templateKey: "cadastro",
@@ -97,33 +80,31 @@ function navigateTo(path) {
   const route = routes[path] || routes["/"]; // Fallback para a Home
 
   // Verifica se o container principal existe e se o template está disponível
-  if (!contentArea || !route || !templates[route.templateKey]) {
+  if (!contentArea || !route || !window.templates[route.templateKey]) {
     console.error(
       `Erro 404: Rota ou template não encontrado para o caminho: ${path}`
     );
     // Você pode injetar um template de erro 404 aqui.
     contentArea.innerHTML =
-      templates["Projetofuturo"] || "<h1>Página não encontrada.</h1>";
+      window.templates["Projetofuturo"] || "<h1>Página não encontrada.</h1>";
     document.title = "404 - Não Encontrado";
 
     return;
   }
 
   // 2. Injeta o conteúdo HTML no container principal
-  contentArea.innerHTML = templates[route.templateKey];
+  contentArea.innerHTML = window.templates[route.templateKey];
 
   // 3. Atualiza o Título da Página
   document.title = route.title;
 
   // 4. Executa a função de Inicialização da página
   if (route.initializer && typeof route.initializer === "function") {
-    console.log(`-> Inicializando lógica para a rota: ${path}`);
-    route.initializer();
-
     try {
-      route.initializer(); // 🚀 CHAMADA PRINCIPAL
+      console.log(`-> Inicializando lógica para a rota: ${path}`);
+      route.initializer();
     } catch (error) {
-      // ❌ TRATAMENTO DE ERRO: Útil para identificar se a função não foi carregada
+      //  TRATAMENTO DE ERRO: Útil para identificar se a função não foi carregada
       console.error(`Falha na inicialização da rota ${path}.`, error.message);
     }
   }

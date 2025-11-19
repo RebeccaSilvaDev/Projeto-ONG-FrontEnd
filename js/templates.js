@@ -3,11 +3,13 @@ console.log("-> 3. ARQUIVO TEMPLATES.JS FOI EXECUTADO.");
 /* ========================================================= */
 /* 1. TEMPLATES HTML (Template Strings)                      */
 /* ========================================================= */
+
 const templates = {
   // ----------------------------------------------------
   // Template 'home' (Conteúdo completo do index.html)
   // ----------------------------------------------------
   home: `
+
         <section id="missao">
             <h2>Nossa Missão</h2>
             <p>
@@ -41,9 +43,9 @@ const templates = {
 
             <figure class="imagem-missao">
                 <picture>
-                    <source srcset="Projeto-ONG-FrontEnd/assets/image/missao.webp" type="image/webp" />
+                    <source srcset="assets/image/missao.webp" type="image/webp" />
                     <img
-                        src="Projeto-ONG-FrontEnd/assets/image/missao.jpg"
+                        src="assets/image/missao.jpg"
                         alt="Voluntários da ONG organizando caixas de doação de alimentos, ilustrando o trabalho de frente da Missão."
                         class="imagem-principal-index"
                     />
@@ -145,7 +147,7 @@ const templates = {
             <div class="equipe-cards">
                 <div class="membro-card">
                     <img
-                        src="Projeto-ONG-FrontEnd/assets/image/membro-presidente-demo.jpg"
+                        src="assets/image/membro-presidente-demo.jpg"
                         alt="Foto de Maria Silva, Presidente"
                         class="membro-foto"
                     />
@@ -159,7 +161,7 @@ const templates = {
 
                 <div class="membro-card">
                     <img
-                        src="Projeto-ONG-FrontEnd/assets/image/membro-coordenador-demo.jpg"
+                        src="assets/image/membro-coordenador-demo.jpg"
                         alt="Foto de João Santos, Coordenador de Projetos"
                         class="membro-foto"
                     />
@@ -174,7 +176,7 @@ const templates = {
 
                 <div class="membro-card">
                     <img
-                        src="Projeto-ONG-FrontEnd/assets/image/membro-financeiro-demo.jpg"
+                        src="assets/image/membro-financeiro-demo.jpg"
                         alt="Foto de Ana Lima, Diretora Financeira"
                         class="membro-foto"
                     />
@@ -422,12 +424,12 @@ const templates = {
 
             <picture>
               <source
-                srcset="Projeto-ONG-FrontEnd/assets/image/projeto_alimentos.webp"
+                srcset="assets/image/projeto_alimentos.webp"
                 type="image/webp"
               />
 
               <img
-                src="Projeto-ONG-FrontEnd/assets/image/projeto_alimentos.jpg"
+                src="assets/image/projeto_alimentos.jpg"
                 alt="Voluntários embalando alimentos para doação."
               />
             </picture>
@@ -450,12 +452,12 @@ const templates = {
 
             <picture>
               <source
-                srcset="Projeto-ONG-FrontEnd/assets/image/projeto_educacao.webp"
+                srcset="assets/image/projeto_educacao.webp"
                 type="image/webp"
               />
 
               <img
-                src="Projeto-ONG-FrontEnd/assets/image/projeto_educacao.jpg"
+                src="assets/image/projeto_educacao.jpg"
                 alt="Jovens em sala de aula de informática."
               />
             </picture>
@@ -481,12 +483,12 @@ const templates = {
 
             <picture>
               <source
-                srcset="Projeto-ONG-FrontEnd/assets/image/kit-higiene.webp"
+                srcset="assets/image/kit-higiene.webp"
                 type="image/webp"
               />
 
               <img
-                src="Projeto-ONG-FrontEnd/assets/image/kit-higiene.jpg"
+                src="assets/image/kit-higiene.jpg"
                 alt="Voluntários montando kits de higiene."
               />
             </picture>
@@ -512,11 +514,11 @@ const templates = {
 
             <picture>
               <source
-                srcset="Projeto-ONG-FrontEnd/assets/image/reforco-escolar.webp"
+                srcset="assets/image/reforco-escolar.webp"
                 type="image/webp"
               />
               <img
-                src="Projeto-ONG-FrontEnd/assets/image/reforco-escolar.jpg"
+                src="assets/image/reforco-escolar.jpg"
                 alt="Voluntário ensinando crianças em um centro comunitário."
               />
             </picture>
@@ -654,9 +656,9 @@ const templates = {
 
         <figure class="imagem-voluntariado">
           <picture>
-            <source srcset="Projeto-ONG-FrontEnd/assets/image/voluntariado.webp" type="image/webp" />
+            <source srcset="assets/image/voluntariado.webp" type="image/webp" />
             <img
-              src="Projeto-ONG-FrontEnd/assets/image/voluntariado.jpg"
+              src="assets/image/voluntariado.jpg"
               alt="Voluntários da Transformando Vidas organizando caixas de ajuda humanitária para a distribuição de alimentos e kits de higiene."
               class="voluntariado-img"
             />
@@ -905,11 +907,11 @@ const templates = {
               <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="Projeto-ONG-FrontEnd/assets/image/reuniao-planejamento.webp"
+                    srcset="assets/image/reuniao-planejamento.webp"
                     type="image/webp"
                   />
                   <img
-                    src="Projeto-ONG-FrontEnd/assets/image/reuniao-planejamento.jpg"
+                    src="assets/image/reuniao-planejamento.jpg"
                     alt="Equipe em reunião de planejamento"
                     class="card-imagem"
                   />
@@ -932,11 +934,11 @@ const templates = {
               <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="Projeto-ONG-FrontEnd/assets/image/evento-comunitario.webp"
+                    srcset="assets/image/evento-comunitario.webp"
                     type="image/webp"
                   />
                   <img
-                    src="Projeto-ONG-FrontEnd/assets/image/evento-comunitario.jpg"
+                    src="assets/image/evento-comunitario.jpg"
                     alt="Pessoas sorrindo em um evento comunitário"
                     class="card-imagem"
                   />
@@ -959,11 +961,11 @@ const templates = {
               <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="Projeto-ONG-FrontEnd/assets/image/relatorio-financeiro.webp"
+                    srcset="assets/image/relatorio-financeiro.webp"
                     type="image/webp"
                   />
                   <img
-                    src="Projeto-ONG-FrontEnd/assets/image/relatorio-financeiro.jpg"
+                    src="assets/image/relatorio-financeiro.jpg"
                     alt="Relatório financeiro em gráficos"
                     class="card-imagem"
                   />
@@ -986,11 +988,11 @@ const templates = {
               <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="Projeto-ONG-FrontEnd/assets/image/voluntarios-distribuindo-kits.webp"
+                    srcset="assets/image/voluntarios-distribuindo-kits.webp"
                     type="image/webp"
                   />
                   <img
-                    src="Projeto-ONG-FrontEnd/assets/image/voluntarios-distribuindo-kits.jpg"
+                    src="assets/image/voluntarios-distribuindo-kits.jpg"
                     alt="Voluntários distribuindo kits"
                     class="card-imagem"
                   />
@@ -1012,11 +1014,11 @@ const templates = {
               <a href="#/Projetofuturo" class="blog-card">
                 <picture>
                   <source
-                    srcset="Projeto-ONG-FrontEnd/assets/image/fundacao-2018.webp"
+                    srcset="assets/image/fundacao-2018.webp"
                     type="image/webp"
                   />
                   <img
-                    src="Projeto-ONG-FrontEnd/assets/image/fundacao-2018.jpg"
+                    src="assets/image/fundacao-2018.jpg"
                     alt="Mesa de reunião com documentos históricos ou foto antiga de voluntários"
                     class="card-imagem"
                   />
@@ -1071,13 +1073,13 @@ const templates = {
                     <picture>
                       <source
                         srcset="
-                          Projeto-ONG-FrontEnd/assets/image/voluntarios-em-evento-comunitario.webp
+                          assets/image/voluntarios-em-evento-comunitario.webp
                         "
                         type="image/webp"
                       />
 
                       <img
-                        src="Projeto-ONG-FrontEnd/assets/image/voluntarios-em-evento-comunitario.jpg"
+                        src="assets/image/voluntarios-em-evento-comunitario.jpg"
                         alt="Voluntarios em Evento Comunitario"
                         class="card-imagem"
                       />
@@ -1100,12 +1102,12 @@ const templates = {
 
                     <picture>
                       <source
-                        srcset="Projeto-ONG-FrontEnd/assets/image/balanço-anual-em-gráficos.webp"
+                        srcset="assets/image/balanço-anual-em-gráficos.webp"
                         type="image/webp"
                       />
 
                       <img
-                        src="Projeto-ONG-FrontEnd/assets/image/balanço-anual-em-gráficos.jpg"
+                        src="assets/image/balanço-anual-em-gráficos.jpg"
                         alt="Relatório financeiro do Balanço Anual em gráficos"
                         class="card-imagem"
                       />
@@ -1555,11 +1557,11 @@ const templates = {
                 <div class="bandeiras-cartao">
                   <picture>
                     <source
-                      srcset="Projeto-ONG-FrontEnd/assets/image/visa.logo.webp"
+                      srcset="assets/image/visa.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="Projeto-ONG-FrontEnd/assets/image/visa.logo.png"
+                      src="assets/image/visa.logo.png"
                       alt="Bandeira Visa"
                       class="bandeira-icon"
                     />
@@ -1567,11 +1569,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="Projeto-ONG-FrontEnd/assets/image/elo.logo.webp"
+                      srcset="assets/image/elo.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="Projeto-ONG-FrontEnd/assets/image/elo.logo.png"
+                      src="assets/image/elo.logo.png"
                       alt="Bandeira Elo"
                       class="bandeira-icon"
                     />
@@ -1579,11 +1581,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="Projeto-ONG-FrontEnd/assets/image/nubank.logo.webp"
+                      srcset="assets/image/nubank.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="Projeto-ONG-FrontEnd/assets/image/nubank.logo.png"
+                      src="assets/image/nubank.logo.png"
                       alt="Bandeira Nubank"
                       class="bandeira-icon"
                     />
@@ -1591,11 +1593,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="Projeto-ONG-FrontEnd/assets/image/hipercard.logo.webp"
+                      srcset="assets/image/hipercard.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="Projeto-ONG-FrontEnd/assets/image/hipercard.logo.png"
+                      src="assets/image/hipercard.logo.png"
                       alt="Bandeira Hipercard"
                       class="bandeira-icon"
                     />
@@ -1603,11 +1605,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="Projeto-ONG-FrontEnd/assets/image/mastercard.logo.webp"
+                      srcset="assets/image/mastercard.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="Projeto-ONG-FrontEnd/assets/image/mastercard.logo.png"
+                      src="assets/image/mastercard.logo.png"
                       alt="Bandeira Mastercard"
                       class="bandeira-icon"
                     />
@@ -1615,11 +1617,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="Projeto-ONG-FrontEnd/assets/image/americanexpress.logo.webp"
+                      srcset="assets/image/americanexpress.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="Projeto-ONG-FrontEnd/assets/image/americanexpress.logo.png"
+                      src="assets/image/americanexpress.logo.png"
                       alt="Bandeira American Express"
                       class="bandeira-icon"
                     />
@@ -1627,11 +1629,11 @@ const templates = {
 
                   <picture>
                     <source
-                      srcset="Projeto-ONG-FrontEnd/assets/image/bancodobrasil.logo.webp"
+                      srcset="assets/image/bancodobrasil.logo.webp"
                       type="image/webp"
                     />
                     <img
-                      src="Projeto-ONG-FrontEnd/assets/image/bancodobrasil.logo.png"
+                      src="assets/image/bancodobrasil.logo.png"
                       alt="Bandeira Banco do Brasil"
                       class="bandeira-icon"
                     />
@@ -1722,9 +1724,9 @@ const templates = {
 
                 <div class="bloco-qrcode-pix-demo">
                   <picture>
-                    <source srcset="Projeto-ONG-FrontEnd/assets/image/bloco-qrcode-pix-demo.webp" />
+                    <source srcset="assets/image/bloco-qrcode-pix-demo.webp" />
                     <img
-                      scr="Projeto-ONG-FrontEnd/assets/image/bloco-qrcode-pix-demo.png"
+                      scr="assets/image/bloco-qrcode-pix-demo.png"
                       alt="QR Code demonstrativo para pagamento PIX"
                       class="qrcode-img"
                     />
@@ -2036,3 +2038,6 @@ const templates = {
         </section>
     `,
 };
+
+window.templates = templates;
+console.log(Object.keys(templates));
